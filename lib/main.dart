@@ -1,3 +1,5 @@
+import 'package:desafio/presentation/static_page.dart';
+import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,11 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        colorSchemeSeed: BaseColors().getWhiteColor(),
+        brightness: Brightness.light,
       ),
+      home: StaticPage(),
       //home: const MyHomePage(title: 'Desafio Supreme'),
     );
   }
