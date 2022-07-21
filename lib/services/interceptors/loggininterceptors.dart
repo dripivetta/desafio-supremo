@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:http_interceptor/http_interceptor.dart';
 
 class LoggingInterceptor implements InterceptorContract {
@@ -19,3 +21,5 @@ class LoggingInterceptor implements InterceptorContract {
     return data;
   }
 }
+
+// SERVE PARA INTERCEPTAR AS MENSAGENS AS MENSAGENS QUE O SERVIDOR ESTÁ PASSANDO
