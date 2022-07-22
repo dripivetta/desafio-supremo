@@ -17,7 +17,7 @@ class StatementsRemoteDataSourceImpl implements StatementsRemoteDataSource {
   @override
   Future<Amount> getAmount() async {
     var response = await httpService.get(Urls.amount());
-    Amount amount =  Amount.fromJson(response);
+    Amount amount = Amount.fromJson(response);
 
     return amount;
   }
@@ -43,13 +43,11 @@ class StatementsRemoteDataSourceImpl implements StatementsRemoteDataSource {
 
   //   return detStatement;
   // }
-@override
+  @override
   Future<DetStatement> getDetStatement() async {
     var response = await httpService.get(Urls.statementDetail);
-    DetStatement detStatements =  DetStatement.fromJson(response);
+    DetStatement detStatements = DetStatement.fromJson(response);
 
     return detStatements;
   }
-
-
 }

@@ -4,10 +4,8 @@ class Urls {
 
   /// Transações
   static String statement = '$baseUrl/myStatement/10/0';
-
   //static String statementDetail(int id) => '$baseUrl/myStatement/detail/49E27207-F3A7-4264-B021-0188690F7D43';
   static String statementDetail = '$baseUrl/myStatement/detail/49E27207-F3A7-4264-B021-0188690F7D43';
-
   static String amount() => '$baseUrl/myBalance';
 
 

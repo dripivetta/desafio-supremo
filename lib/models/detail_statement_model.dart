@@ -27,14 +27,14 @@ class DetStatement {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['amount'] = amount;
-    _data['id'] = id;
-    _data['authentication'] = authentication;
-    _data['tType'] = tType;
-    _data['createdAt'] = createdAt;
-    _data['to'] = to;
-    _data['description'] = description;
-    return _data;
+    final data = <String, dynamic>{};
+    data['amount'] = amount;
+    data['id'] = id;
+    data['authentication'] = authentication;
+    data['tType'] = tType;
+    data['createdAt'] = createdAt;
+    data['to'] = to;
+    data['description'] = description;
+    return data;
   }
 }

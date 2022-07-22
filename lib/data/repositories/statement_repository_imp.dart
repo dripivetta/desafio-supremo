@@ -25,7 +25,7 @@ class StatementsRepositoryImpl implements StatementsRepository {
   //   final result = await remoteDataSource.getDetStatement(id);
   //   return result;
   // }
-   @override
+  @override
   Future<DetStatement> getStatementsDetail() async {
     final result = await remoteDataSource.getDetStatement();
     return result;
