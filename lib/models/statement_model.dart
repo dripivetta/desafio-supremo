@@ -9,13 +9,14 @@ List<Statement> statementFromJson(String str) => List<Statement>.from(json.decod
 String statementToJson(List<Statement> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Statement {
+  
     Statement({
         required this.createdAt,
         required this.id,
         required this.amount,
-        this.to,
         required this.description,
         required this.tType,
+        this.to,
         this.from,
         this.bankName,
     });
