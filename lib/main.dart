@@ -1,14 +1,18 @@
-import 'package:desafio/presentation/static_page.dart';
+
 import 'package:desafio/widgets/component/base_colors.dart';
+import 'package:desafio/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +23,9 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: BaseColors().getWhiteColor(),
         brightness: Brightness.light,
       ),
-      home: StaticPage(),
+      home: HomePage(),
       //home: const MyHomePage(title: 'Desafio Supreme'),
+
     );
   }
 }
-
