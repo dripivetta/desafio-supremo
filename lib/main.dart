@@ -1,7 +1,14 @@
+
+import 'package:desafio/widgets/component/base_colors.dart';
+import 'package:desafio/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,52 +17,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        colorSchemeSeed: BaseColors().getWhiteColor(),
+        brightness: Brightness.light,
       ),
-      home: const MyHomePage(),
+
+      home: HomePage(),
+      //home: const MyHomePage(title: 'Desafio Supreme'),
+
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      //itemCount:  ,
-      itemBuilder: (_, idx) =>
-          const Comprovante(), // VAI PASSAR OS PARÂMETROS DA LISTA DA API PUXANDO TODOS COMPROVANTES PELO IDX
-    );
-  }
-}
-
-class Comprovante extends StatelessWidget {
-  const Comprovante({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) =>
-                const ComprovantePage(), // VAI PASSAR OS PARÂMETROS DO COMPROVANTE PUXANDO A API PELO ID
-          ),
-        );
-      },
-      child: const Text('teste'),
-    );
-  }
-}
-
-class ComprovantePage extends StatelessWidget {
-  const ComprovantePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
-  }
-}
