@@ -1,8 +1,14 @@
 import 'package:desafio/presentation/pages/comprovante_details_page.dart';
+import 'package:desafio/widgets/component/base_colors.dart';
+import 'package:desafio/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,20 +18,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       // home: const MyHomePage(title: 'Desafio Supreme'),
 
-      home: const ComprovanteDetailsPage(
-        amount: null,
-        authentication: '',
-        createdAt: '',
-        description: '',
-        to: '',
-        tTipe: '',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: BaseColors().getWhiteColor(),
+        brightness: Brightness.light,
       ),
+
+      home: HomePage(),
+      //home: const MyHomePage(title: 'Desafio Supreme'),
     );
   }
 }
