@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -26,7 +26,7 @@ class MyHomePage extends StatelessWidget {
     return ListView.builder(
       //itemCount:  ,
       itemBuilder: (_, idx) =>
-          Comprovante(), // VAI PASSAR OS PARÂMETROS DA LISTA DA API PUXANDO TODOS COMPROVANTES PELO IDX
+          const Comprovante(), // VAI PASSAR OS PARÂMETROS DA LISTA DA API PUXANDO TODOS COMPROVANTES PELO IDX
     );
   }
 }
@@ -42,7 +42,7 @@ class Comprovante extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (_) =>
-                ComprovantePage(), // VAI PASSAR OS PARÂMETROS DO COMPROVANTE PUXANDO A API PELO ID
+                const ComprovantePage(), // VAI PASSAR OS PARÂMETROS DO COMPROVANTE PUXANDO A API PELO ID
           ),
         );
       },
@@ -56,6 +56,6 @@ class ComprovantePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }
