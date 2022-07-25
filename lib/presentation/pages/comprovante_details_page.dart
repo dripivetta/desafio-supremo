@@ -2,7 +2,6 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-
 class ComprovanteDetailsPage extends StatefulWidget {
   final String description;
   final int? amount;
@@ -26,20 +25,22 @@ class ComprovanteDetailsPage extends StatefulWidget {
 }
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         // leading para inserir um ícone do lado esquerdo
         leading: IconButton(
+          color: Colors.black,
           iconSize: 35,
           icon: const Icon(Icons.keyboard_arrow_left),
           onPressed: () {},
         ),
       ),
       body: Container(
-        margin: const EdgeInsets.all(20),
+        margin: const EdgeInsets.all(10),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,14 +58,16 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                 ],
               ),
 
+              const SizedBox(height: 2),
+
               // Divider para criar uma linha de separação
               const Divider(
                 height: 15,
-                thickness: 1,
+                thickness: 1.2,
                 color: Colors.black,
-                endIndent: 100,
+                // endIndent: 100,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -78,6 +81,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
+
+              const SizedBox(height: 3),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -89,7 +95,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -102,6 +108,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
+
+              const SizedBox(height: 3),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -113,7 +122,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -126,6 +135,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
+
+              const SizedBox(height: 3),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -137,7 +149,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -150,6 +162,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
+
+              const SizedBox(height: 3),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -161,7 +176,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -174,6 +189,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
+
+              const SizedBox(height: 5),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -185,7 +203,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -198,6 +216,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
+
+              const SizedBox(height: 5),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -209,7 +230,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 60),
               ElevatedButton(
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(
@@ -233,5 +254,4 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
       ),
     );
   }
-
 }
