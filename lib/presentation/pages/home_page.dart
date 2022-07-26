@@ -37,35 +37,43 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Extrato'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            ValueListenableBuilder<Amount?>(
-              valueListenable: _amount.amount,
-              builder: (__, amount, _) {
-                return amount != null
-                    ? AmountWidget(amount: amount) //Widget Ricardo
-                    : Center(
-                        child: CircularProgressIndicator(),
-                      );
-              },
-            ),
-            Text('Suas movimentações'),
-            ValueListenableBuilder<List<Statement>?>(
-              valueListenable: _statement.statements,
-              builder: (__, statements, _) {
-                return statements != null
-                    ? StatementsListWidget(statements: statements) //Widget Igor
-                    : Center(
-                        child: CircularProgressIndicator(),
-                      );
-              },
-            ),
-          ],
+        title: Text(
+          'Extrato',
+          style: TextStyle(
+            shadows: <Shadow>[
+              Shadow(
+                offset: Offset(1.0, 4.0),
+                blurRadius: 8.0,
+                color: Color.fromARGB(255, 190, 185, 185),
+              ),
+            ],
+          ),
         ),
+      ),
+      body: Column(
+        children: [
+          ValueListenableBuilder<Amount?>(
+            valueListenable: _amount.amount,
+            builder: (__, amount, _) {
+              return amount != null
+                  ? AmountWidget(amount: amount) //Widget Ricardo
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
+            },
+          ),
+          Text('Suas movimentações'),
+          ValueListenableBuilder<List<Statement>?>(
+            valueListenable: _statement.statements,
+            builder: (__, statements, _) {
+              return statements != null
+                  ? StatementsListWidget(statements: statements) //Widget Igor
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
+            },
+          ),
+        ],
       ),
     );
   }
