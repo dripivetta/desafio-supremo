@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:desafio/data/repositories/statement_repository_imp.dart';
 import 'package:desafio/data/repositories/statements_remote_ds.dart';
 import 'package:desafio/data/usecases/get_amount.dart';
@@ -22,9 +24,8 @@ class _HomePageState extends State<HomePage> {
   bool _isFirstLoadRunning = false;
   bool _isLoadMoreRunning = false;
   List<Statement> x = [];
-  
 
-  final GetStatements _statement = GetStatements(
+  GetStatements _statement = GetStatements(
     StatementsRepositoryImpl(
       StatementsRemoteDataSourceImpl(
         httpService: HttpServiceImpl(),
@@ -40,27 +41,28 @@ class _HomePageState extends State<HomePage> {
     ),
   );
 
-  @override
-  void initState() {
-    super.initState();
-    _statement.get(_offset);
-
-    _firstLoad();
-    _controller = ScrollController()..addListener(_loadMore);
-  }
-
   void _firstLoad() async {
     setState(() {
       _isFirstLoadRunning = true;
     });
     try {
-      
-      x = _statement.get(_offset);
+      GetStatements _statement = GetStatements(
+        StatementsRepositoryImpl(
+          StatementsRemoteDataSourceImpl(
+            httpService: HttpServiceImpl(),
+          ),
+        ),
+      );
+      _statement.get(_offset);
+      setState(() {
+        List<Statement> y = _statement.statements.value!  ;
+      });
     } catch (err) {
       print('Something went wrong1');
     }
 
     setState(() {
+      
       _isFirstLoadRunning = false;
     });
   }
@@ -73,15 +75,21 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         _isLoadMoreRunning = true; // Display a progress indicator at the bottom
       });
+      print('fdogiofjgiofjdgiojdfiogjfdiojgd $x');
       _offset += 1; // Increase _page by 1
       try {
+       _statement.get(_offset);
+       List<Statement> y  = _statement.statements.value!;
+       
         
-        final List<Statement> y = _statement.get(_offset);
-         if (y.isNotEmpty) {
+        //print(_statement.statements.value);
+        
+        //print('Valor do Y =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $y'  );
+        if (y.isNotEmpty) {
           setState(() {
             x.addAll(y);
+            
           });
-          
         } else {
           // This means there is no more data
           // and therefore, we will not send another GET request
@@ -99,8 +107,14 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  // The controller for the ListView
-  late ScrollController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _statement.get(_offset);
+
+    _firstLoad();
+    _controller = ScrollController()..addListener(_loadMore);
+  }
 
   @override
   void dispose() {
@@ -108,68 +122,19 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
+  // The controller for the ListView
+  //late ScrollController _controller;
+  late ScrollController _controller = new ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-
-      //   title: Text('Extrato'),
-      // ),
-      // body: Padding(
-      //   padding: const EdgeInsets.all(12),
-      //   child: Column(
-      //     children: [
-      //       ValueListenableBuilder<Amount?>(
-      //         valueListenable: _amount.amount,
-      //         builder: (__, amount, _) {
-      //           return amount != null
-      //               ? AmountWidget(amount: amount) //Widget Ricardo
-      //               : Center(
-      //                   child: CircularProgressIndicator(),
-      //                 );
-      //         },
-      //       ),
-      //       Expanded(
-      //         child: ValueListenableBuilder<List<Statement>?>(
-      //           valueListenable: _statement.statements,
-      //           builder: (context, statements, _) {
-      //             return statements != null
-      //                 ? StatementsListWidget(
-      //                     statements: x,
-      //                     controller: _controller,
-      //                   )
-      //                 //Widget Igor
-      //                 : Center(
-      //                     child: CircularProgressIndicator(),
-      //                   );
-      //           },
-      //         ),
-      //       ),
-      //       // when the _loadMore function is running
-      //       if (_isLoadMoreRunning == true)
-      //         const Padding(
-      //           padding: EdgeInsets.only(top: 10, bottom: 40),
-      //           child: Center(
-      //             child: CircularProgressIndicator(),
-      //           ),
-      //         ),
-
-      //       // When nothing else to load
-      //       if (_hasNextPage == false)
-      //         Container(
-      //           padding: const EdgeInsets.only(top: 30, bottom: 40),
-      //           color: Colors.amber,
-      //           child: const Center(
-      //             child: Text('You have fetched all of the content'),
-      //           ),
-      //         ),
-      //     ],
-
         title: Text(
           'Extrato',
           style: TextStyle(
-            shadows: <Shadow>[
+            shadows: const <Shadow>[
               Shadow(
                 offset: Offset(1.0, 4.0),
                 blurRadius: 8.0,
@@ -179,30 +144,62 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          ValueListenableBuilder<Amount?>(
-            valueListenable: _amount.amount,
-            builder: (__, amount, _) {
-              return amount != null
-                  ? AmountWidget(amount: amount) //Widget Ricardo
-                  : Center(
-                      child: CircularProgressIndicator(),
-                    );
-            },
-          ),
-          Text('Suas movimentações'),
-          ValueListenableBuilder<List<Statement>?>(
-            valueListenable: _statement.statements,
-            builder: (__, statements, _) {
-              return statements != null
-                  ? StatementsListWidget(statements: statements) //Widget Igor
-                  : Center(
-                      child: CircularProgressIndicator(),
-                    );
-            },
-          ),
-        ],
+      body: _isFirstLoadRunning
+          ? const Center(
+              child: const CircularProgressIndicator(),
+            )
+          : Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            ValueListenableBuilder<Amount?>(
+              valueListenable: _amount.amount,
+              builder: (__, amount, _) {
+                return amount != null
+                    ? AmountWidget(amount: amount) //Widget Ricardo
+                    : Center(
+                        child: CircularProgressIndicator(),
+                      );
+              },
+            ),
+            
+            Expanded(
+              child: 
+              ValueListenableBuilder<List<Statement>?>(
+                valueListenable: _statement.statements,
+                builder: (__, x, _) {
+                  return x != null
+                      ? StatementsListWidget(
+                          statements: x,
+                          controller: _controller,
+                        )
+                      //Widget Igor
+                      : Center(
+                          child: CircularProgressIndicator(),
+                        );
+                },
+              ),
+            ),
+            // when the _loadMore function is running
+            if (_isLoadMoreRunning == true)
+              const Padding(
+                padding: EdgeInsets.only(top: 10, bottom: 40),
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+
+            // When nothing else to load
+            if (_hasNextPage == false)
+              Container(
+                padding: const EdgeInsets.only(top: 30, bottom: 40),
+                color: Colors.amber,
+                child: const Center(
+                  child: Text('You have fetched all of the content'),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

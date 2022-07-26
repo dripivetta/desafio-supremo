@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 class StatementsListWidget extends StatefulWidget {
   final List<Statement> statements;
-  final dynamic controller;
+  final ScrollController controller;
 
-  const StatementsListWidget(
-      {Key? key,
-      required this.statements, this.controller,
-      //required this.controller,
-      })
-      : super(key: key);
+  const StatementsListWidget({
+    Key? key,
+    required this.statements,
+    required this.controller,
+    //required this.controller,
+  }) : super(key: key);
 
   @override
   State<StatementsListWidget> createState() => _StatementsListWidgetState();
