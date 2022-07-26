@@ -3,6 +3,8 @@ import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../presentation/pages/static_page.dart';
+
 class AmountWidget extends StatefulWidget {
   const AmountWidget({Key? key, required this.amount}) : super(key: key);
   final Amount amount;
@@ -31,6 +33,8 @@ class _AmountWidgetState extends State<AmountWidget>
         SizedBox(
           height: 100,
           child: Card(
+            color: BaseColors().getWhiteColor(),
+            elevation: 0,
             shape: RoundedRectangleBorder(),
             child: Padding(
               padding: EdgeInsets.all(10),
@@ -73,7 +77,7 @@ class _AmountWidgetState extends State<AmountWidget>
                             )
                           : Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(2, 12, 4, 4),
+                                  EdgeInsetsDirectional.fromSTEB(1, 12, 4, 4),
                               child: Container(
                                 height: 5,
                                 width: 150,
@@ -93,9 +97,15 @@ class _AmountWidgetState extends State<AmountWidget>
         Padding(
           padding: const EdgeInsets.all(12),
           child: SizedBox(
-            child: Text(
-              'Suas movimentações',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            child: GestureDetector(
+              child: Text(
+                'Suas movimentações',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => StaticPage()),
+                );
+              },
             ),
           ),
         ),

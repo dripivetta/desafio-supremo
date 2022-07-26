@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           'Extrato',
           style: TextStyle(
+            fontWeight: FontWeight.bold,
             shadows: <Shadow>[
               Shadow(
                 offset: Offset(1.0, 4.0),
