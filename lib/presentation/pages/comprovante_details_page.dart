@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'package:desafio/models/detail_statement_model.dart';
 import 'package:desafio/widgets/component/comprovante_details_page/custom_button_compartilhar.dart';
 import 'package:desafio/widgets/component/comprovante_details_page/customdivider.dart';
 import 'package:desafio/widgets/component/comprovante_details_page/customrow.dart';
@@ -27,6 +28,8 @@ class ComprovanteDetailsPage extends StatefulWidget {
 }
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
+  late final DetStatement statement;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,99 +56,27 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Tipo de movimentação', fontSize: 18, fontWeight: FontWeight.bold,),
               const SizedBox(height: 3),
-              
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'description.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(cabecalho: statement.description.toString(), fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Valor', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'R\$ ' 'amount.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(cabecalho: 'R\$ ' + statement.amount.toString(), fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Recebedor', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'to.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(cabecalho: statement.to.toString(), fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Instituição Bancária', fontSize: 18, fontWeight: FontWeight.bold), 
               const SizedBox(height: 3),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'tTipe.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(cabecalho: statement.tType.toString(), fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Data/Hora', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'createdAt.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(cabecalho: statement.createdAt.toString(), fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Autenticação', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'authentication.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(cabecalho: statement.authentication.toString(), fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 60),
               CustomButtonCompartilhar(titulo: 'Compartilhar', fontSize: 18,),
               const SizedBox(height: 5),
