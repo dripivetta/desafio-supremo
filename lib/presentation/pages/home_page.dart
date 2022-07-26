@@ -113,58 +113,96 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Extrato'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            ValueListenableBuilder<Amount?>(
-              valueListenable: _amount.amount,
-              builder: (__, amount, _) {
-                return amount != null
-                    ? AmountWidget(amount: amount) //Widget Ricardo
-                    : Center(
-                        child: CircularProgressIndicator(),
-                      );
-              },
-            ),
-            Expanded(
-              child: ValueListenableBuilder<List<Statement>?>(
-                valueListenable: _statement.statements,
-                builder: (context, statements, _) {
-                  return statements != null
-                      ? StatementsListWidget(
-                          statements: x,
-                          controller: _controller,
-                        )
-                      //Widget Igor
-                      : Center(
-                          child: CircularProgressIndicator(),
-                        );
-                },
-              ),
-            ),
-            // when the _loadMore function is running
-            if (_isLoadMoreRunning == true)
-              const Padding(
-                padding: EdgeInsets.only(top: 10, bottom: 40),
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
 
-            // When nothing else to load
-            if (_hasNextPage == false)
-              Container(
-                padding: const EdgeInsets.only(top: 30, bottom: 40),
-                color: Colors.amber,
-                child: const Center(
-                  child: Text('You have fetched all of the content'),
-                ),
+      //   title: Text('Extrato'),
+      // ),
+      // body: Padding(
+      //   padding: const EdgeInsets.all(12),
+      //   child: Column(
+      //     children: [
+      //       ValueListenableBuilder<Amount?>(
+      //         valueListenable: _amount.amount,
+      //         builder: (__, amount, _) {
+      //           return amount != null
+      //               ? AmountWidget(amount: amount) //Widget Ricardo
+      //               : Center(
+      //                   child: CircularProgressIndicator(),
+      //                 );
+      //         },
+      //       ),
+      //       Expanded(
+      //         child: ValueListenableBuilder<List<Statement>?>(
+      //           valueListenable: _statement.statements,
+      //           builder: (context, statements, _) {
+      //             return statements != null
+      //                 ? StatementsListWidget(
+      //                     statements: x,
+      //                     controller: _controller,
+      //                   )
+      //                 //Widget Igor
+      //                 : Center(
+      //                     child: CircularProgressIndicator(),
+      //                   );
+      //           },
+      //         ),
+      //       ),
+      //       // when the _loadMore function is running
+      //       if (_isLoadMoreRunning == true)
+      //         const Padding(
+      //           padding: EdgeInsets.only(top: 10, bottom: 40),
+      //           child: Center(
+      //             child: CircularProgressIndicator(),
+      //           ),
+      //         ),
+
+      //       // When nothing else to load
+      //       if (_hasNextPage == false)
+      //         Container(
+      //           padding: const EdgeInsets.only(top: 30, bottom: 40),
+      //           color: Colors.amber,
+      //           child: const Center(
+      //             child: Text('You have fetched all of the content'),
+      //           ),
+      //         ),
+      //     ],
+
+        title: Text(
+          'Extrato',
+          style: TextStyle(
+            shadows: <Shadow>[
+              Shadow(
+                offset: Offset(1.0, 4.0),
+                blurRadius: 8.0,
+                color: Color.fromARGB(255, 190, 185, 185),
               ),
-          ],
+            ],
+          ),
         ),
+      ),
+      body: Column(
+        children: [
+          ValueListenableBuilder<Amount?>(
+            valueListenable: _amount.amount,
+            builder: (__, amount, _) {
+              return amount != null
+                  ? AmountWidget(amount: amount) //Widget Ricardo
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
+            },
+          ),
+          Text('Suas movimentações'),
+          ValueListenableBuilder<List<Statement>?>(
+            valueListenable: _statement.statements,
+            builder: (__, statements, _) {
+              return statements != null
+                  ? StatementsListWidget(statements: statements) //Widget Igor
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
+            },
+          ),
+        ],
       ),
     );
   }

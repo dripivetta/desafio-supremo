@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   material_design_icons_flutter: ^5.0.6996
+  intl:
   
   http:
   http_interceptor:
