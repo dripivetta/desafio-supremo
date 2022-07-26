@@ -5,16 +5,15 @@ import 'package:flutter/material.dart';
 
 class GetStatements {
   final StatementsRepository repository;
-  GetStatements(this.repository){
-    get();
-  }
+  GetStatements(this.repository);
+  
 
   ValueNotifier<List<Statement>?> statements = ValueNotifier<List<Statement>?>(null);
 
-  get() async {
+  get(int offset) async {
       // ignore: avoid_print
       print('getting api');
-      statements.value = await repository.getStatements();
+      statements.value = await repository.getStatements(offset);
     
   }
 }

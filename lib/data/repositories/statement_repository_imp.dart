@@ -15,8 +15,8 @@ class StatementsRepositoryImpl implements StatementsRepository {
   }
 
   @override
-  Future<List<Statement>> getStatements() async {
-    final result = await remoteDataSource.getStatements();
+  Future<List<Statement>> getStatements(int offset) async {
+    final result = await remoteDataSource.getStatements(offset);
     return result;
   }
 
