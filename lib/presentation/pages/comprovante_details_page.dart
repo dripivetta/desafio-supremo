@@ -1,6 +1,8 @@
 import 'dart:core';
+import 'package:desafio/widgets/component/comprovante_details_page/custom_button_compartilhar.dart';
+import 'package:desafio/widgets/component/comprovante_details_page/customdivider.dart';
+import 'package:desafio/widgets/component/comprovante_details_page/customrow.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ComprovanteDetailsPage extends StatefulWidget {
   final String description;
@@ -45,45 +47,13 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Comprovante',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(cabecalho: 'Comprovante', fontSize: 20, fontWeight: FontWeight.bold,),
               const SizedBox(height: 2),
-
-              // Divider para criar uma linha de separação
-              const Divider(
-                height: 15,
-                thickness: 1.2,
-                color: Colors.black,
-                // endIndent: 100,
-              ),
+              CustomDivider(), 
               const SizedBox(height: 15),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Tipo de movimentação',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(cabecalho: 'Tipo de movimentação', fontSize: 18, fontWeight: FontWeight.bold,),
               const SizedBox(height: 3),
-
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -95,20 +65,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Valor',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
 
+              const SizedBox(height: 15),
+              CustomRow(cabecalho: 'Valor', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
 
               Row(
@@ -122,20 +81,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Recebedor',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
 
+              const SizedBox(height: 15),
+              CustomRow(cabecalho: 'Recebedor', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
 
               Row(
@@ -149,20 +97,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Instituição Bancária',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
 
+              const SizedBox(height: 15),
+              CustomRow(cabecalho: 'Instituição Bancária', fontSize: 18, fontWeight: FontWeight.bold), 
               const SizedBox(height: 3),
 
               Row(
@@ -176,20 +113,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Data/Hora',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
 
+              const SizedBox(height: 15),
+              CustomRow(cabecalho: 'Data/Hora', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
 
               Row(
@@ -203,20 +129,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Autenticação',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
 
+              const SizedBox(height: 15),
+              CustomRow(cabecalho: 'Autenticação', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
 
               Row(
@@ -230,23 +145,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
+
               const SizedBox(height: 60),
-              ElevatedButton(
-                style: ButtonStyle(
-                  minimumSize: MaterialStateProperty.all(
-                    const Size(500, 50),
-                  ),
-                ),
-                child: const Text(
-                  'Compartilhar',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
+              CustomButtonCompartilhar(titulo: 'Compartilhar', fontSize: 18,),
               const SizedBox(height: 5),
             ],
           ),
