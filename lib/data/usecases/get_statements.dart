@@ -1,4 +1,3 @@
-
 import 'package:desafio/data/repositories/statement_repository.dart';
 import 'package:desafio/models/statement_model.dart';
 import 'package:flutter/material.dart';

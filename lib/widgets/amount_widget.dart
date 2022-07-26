@@ -11,8 +11,8 @@ class AmountWidget extends StatefulWidget {
   State<AmountWidget> createState() => _AmountWidgetState();
 }
 
-class _AmountWidgetState extends State<AmountWidget> with AutomaticKeepAliveClientMixin{
-
+class _AmountWidgetState extends State<AmountWidget>
+    with AutomaticKeepAliveClientMixin {
   bool _showSaldo = true;
 
   var nfc = NumberFormat.currency(
@@ -62,21 +62,24 @@ class _AmountWidgetState extends State<AmountWidget> with AutomaticKeepAliveClie
                   Padding(padding: EdgeInsets.all(3)),
                   Row(
                     children: [
-                      _showSaldo ? Text(
-                        nfc.format(widget.amount.amount),
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: BaseColors().getGreenColor(),
-                        ),
-                      ): Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(2, 12, 4, 4),
-                        child: Container(                         
-                          height: 5,
-                          width: 150,
-                          color: BaseColors().getGreenColor(),
-                        ),
-                      ),
+                      _showSaldo
+                          ? Text(
+                              nfc.format(widget.amount.amount),
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: BaseColors().getGreenColor(),
+                              ),
+                            )
+                          : Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(2, 12, 4, 4),
+                              child: Container(
+                                height: 5,
+                                width: 150,
+                                color: BaseColors().getGreenColor(),
+                              ),
+                            ),
                     ],
                   ),
                 ],
@@ -99,7 +102,7 @@ class _AmountWidgetState extends State<AmountWidget> with AutomaticKeepAliveClie
       ],
     );
   }
-  
+
   @override
   bool get wantKeepAlive => true;
 }
