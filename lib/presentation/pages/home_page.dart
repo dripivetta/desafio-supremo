@@ -158,59 +158,56 @@ class _HomePageState extends State<HomePage> {
           ? const Center(
               child: const CircularProgressIndicator(),
             )
-          : Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                children: [
-                  ValueListenableBuilder<Amount?>(
-                    valueListenable: _amount.amount,
-                    builder: (__, amount, _) {
-                      return amount != null
-                          ? AmountWidget(amount: amount) //Widget Ricardo
-                          : Center(
-                              child: CircularProgressIndicator(),
-                            );
-                    },
-                  ),
-
-                  Expanded(
-                      //flex: 10,
-                      child: StatementsListWidget(
-                    statementsList: statementsList,
-                    controller: _controller,
-                  )),
-
-                  // Expanded(
-                  //   child: ValueListenableBuilder<List<Statement>?>(
-                  //     valueListenable: _statement.statements,
-                  //     builder: (__, x, _) {
-                  //       return x != null
-                  //           ? StatementsListWidget(
-                  //               statements: x,
-                  //               controller: _controller,
-                  //             )
-                  //           //Widget Igor
-                  //           : Center(
-                  //               child: CircularProgressIndicator(),
-                  //             );
-                  //     },
-                  //   ),
-                  // ),
-                  // // when the _loadMore function is running
-                  if (_isLoadMoreRunning == true)
-                    const Padding(
-                      padding: EdgeInsets.only(top: 10, bottom: 40),
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    ),
-
-                  // When nothing else to load
-                  //if (_hasNextPage == false)
-                    //Text('chegou no final')
-                ],
+          : Column(
+            children: [
+              ValueListenableBuilder<Amount?>(
+                valueListenable: _amount.amount,
+                builder: (__, amount, _) {
+                  return amount != null
+                      ? AmountWidget(amount: amount) //Widget Ricardo
+                      : Center(
+                          child: CircularProgressIndicator(),
+                        );
+                },
               ),
-            ),
+
+              Expanded(
+                  //flex: 10,
+                  child: StatementsListWidget(
+                statementsList: statementsList,
+                controller: _controller,
+              )),
+
+              // Expanded(
+              //   child: ValueListenableBuilder<List<Statement>?>(
+              //     valueListenable: _statement.statements,
+              //     builder: (__, x, _) {
+              //       return x != null
+              //           ? StatementsListWidget(
+              //               statements: x,
+              //               controller: _controller,
+              //             )
+              //           //Widget Igor
+              //           : Center(
+              //               child: CircularProgressIndicator(),
+              //             );
+              //     },
+              //   ),
+              // ),
+              // // when the _loadMore function is running
+              if (_isLoadMoreRunning == true)
+                const Padding(
+                  padding: EdgeInsets.only(top: 10, bottom: 40),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+
+              // When nothing else to load
+              //if (_hasNextPage == false)
+                //Text('chegou no final')
+            ],
+          ),
     );
   }
 }
