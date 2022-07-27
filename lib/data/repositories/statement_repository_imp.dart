@@ -1,7 +1,5 @@
-import 'package:desafio/data/repositories/statement_repository.dart';
-import 'package:desafio/data/repositories/statements_remote_ds.dart';
-import 'package:desafio/models/amount_model.dart';
-import 'package:desafio/models/detail_statement_model.dart';
+import 'package:desafio/data/repositories/repository.dart';
+import 'package:desafio/data/datasources/statements_remote_ds.dart';
 import 'package:desafio/models/statement_model.dart';
 
 class StatementsRepositoryImpl implements StatementsRepository {
@@ -9,25 +7,8 @@ class StatementsRepositoryImpl implements StatementsRepository {
   StatementsRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Amount> getAmount() async {
-    final result = await remoteDataSource.getAmount();
-    return result;
-  }
-
-  @override
-  Future<List<Statement>> getStatements(int offset) async {
-    final result = await remoteDataSource.getStatements(offset);
-    return result;
-  }
-
-  // @override
-  // Future<List<DetStatement>> getStatementsDetail(int id) async {
-  //   final result = await remoteDataSource.getDetStatement(id);
-  //   return result;
-  // }
-  @override
-  Future<DetStatement> getStatementsDetail() async {
-    final result = await remoteDataSource.getDetStatement();
-    return result;
+  Future<List<Statement>> getStatements(int limit, int offset) async {
+    final result = await remoteDataSource.getStatements(limit, offset);
+    return result.map((e) => e.toEntity()).toList();
   }
 }

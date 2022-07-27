@@ -4,34 +4,13 @@ import 'package:desafio/models/detail_statement_model.dart';
 import 'package:desafio/models/statement_model.dart';
 import 'package:desafio/services/http_service.dart';
 
-abstract class StatementsRemoteDataSource {
-  Future<List<Statement>> getStatements(int offset);
+abstract class DetStatementsRemoteDataSource {
   Future<DetStatement> getDetStatement();
-  Future<Amount> getAmount();
 }
 
-class StatementsRemoteDataSourceImpl implements StatementsRemoteDataSource {
+class DetStatementsRemoteDataSourceImpl implements DetStatementsRemoteDataSource {
   final HttpService httpService;
-  StatementsRemoteDataSourceImpl({required this.httpService});
-
-  @override
-  Future<Amount> getAmount() async {
-    var response = await httpService.get(Urls.amount());
-    Amount amount = Amount.fromJson(response);
-
-    return amount;
-  }
-
-  @override
-  Future<List<Statement>> getStatements(int offset) async {
-    var response = await httpService.get(Urls.statement(offset));
-    var statements = response['items'] as List;
-    List<Statement> statement = [
-      for (final item in statements) Statement.fromJson(item)
-    ];
-
-    return statement;
-  }
+  DetStatementsRemoteDataSourceImpl({required this.httpService});
 
   // @override
   // Future<List<DetStatement>> getDetStatement(int id) async {

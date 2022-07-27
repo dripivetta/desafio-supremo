@@ -1,15 +1,21 @@
 import 'dart:io';
 
+import 'package:desafio/data/datasources/amount_remote_ds.dart';
+import 'package:desafio/data/repositories/amount_repository_imp.dart';
 import 'package:desafio/data/repositories/statement_repository_imp.dart';
-import 'package:desafio/data/repositories/statements_remote_ds.dart';
+import 'package:desafio/data/datasources/statements_remote_ds.dart';
 import 'package:desafio/data/usecases/get_amount.dart';
 import 'package:desafio/data/usecases/get_statements.dart';
 import 'package:desafio/models/amount_model.dart';
 import 'package:desafio/models/statement_model.dart';
-import 'package:desafio/widgets/statements_list_widget.dart';
 import 'package:desafio/services/http_service_imp.dart';
 import 'package:desafio/widgets/amount_widget.dart';
+import 'package:desafio/widgets/statements_list_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,13 +25,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final int _limit = 10;
   int _offset = 0;
   bool _hasNextPage = true;
   bool _isFirstLoadRunning = false;
   bool _isLoadMoreRunning = false;
-  List<Statement> x = [];
+  List<Statement> statementsList = [];
 
-  GetStatements _statement = GetStatements(
+  final GetStatements _statement = GetStatements(
     StatementsRepositoryImpl(
       StatementsRemoteDataSourceImpl(
         httpService: HttpServiceImpl(),
@@ -34,8 +41,8 @@ class _HomePageState extends State<HomePage> {
   );
 
   final GetAmount _amount = GetAmount(
-    StatementsRepositoryImpl(
-      StatementsRemoteDataSourceImpl(
+    AmountRepositoryImpl(
+      AmountRemoteDataSourceImpl(
         httpService: HttpServiceImpl(),
       ),
     ),
@@ -46,23 +53,18 @@ class _HomePageState extends State<HomePage> {
       _isFirstLoadRunning = true;
     });
     try {
-      GetStatements _statement = GetStatements(
-        StatementsRepositoryImpl(
-          StatementsRemoteDataSourceImpl(
-            httpService: HttpServiceImpl(),
-          ),
-        ),
-      );
-      _statement.get(_offset);
+      final y = (await _statement.get(_limit, _offset))!;
+
       setState(() {
-        List<Statement> y = _statement.statements.value!  ;
+        //List<Statement?> y = _statement.get(_limit, _offset);
+        //_getStatements();
+        statementsList = y;
       });
     } catch (err) {
       print('Something went wrong1');
     }
 
     setState(() {
-      
       _isFirstLoadRunning = false;
     });
   }
@@ -75,20 +77,21 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         _isLoadMoreRunning = true; // Display a progress indicator at the bottom
       });
-      print('fdogiofjgiofjdgiojdfiogjfdiojgd $x');
+
+      //print('fdogiofjgiofjdgiojdfiogjfdiojgd $x');
       _offset += 1; // Increase _page by 1
       try {
-       _statement.get(_offset);
-       List<Statement> y  = _statement.statements.value!;
-       
-        
+        final y = (await _statement.get(_limit, _offset))!;
+        final List<Statement> lista = y;
+        //_statement.get(_limit, _offset);
+        //List<Statement> y = _statement.statements.value!;
+
         //print(_statement.statements.value);
-        
+
         //print('Valor do Y =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $y'  );
-        if (y.isNotEmpty) {
+        if (lista.isNotEmpty) {
           setState(() {
-            x.addAll(y);
-            
+            statementsList.addAll(lista);
           });
         } else {
           // This means there is no more data
@@ -110,11 +113,18 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _statement.get(_offset);
+    //_getStatements();
 
     _firstLoad();
     _controller = ScrollController()..addListener(_loadMore);
   }
+
+  // void _getStatements() async {
+  //   statementsList = (await _statement.get(_limit, _offset))!;
+  //   setState(() {
+
+  //   });
+  // }
 
   @override
   void dispose() {
@@ -122,9 +132,9 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  // The controller for the ListView
-  //late ScrollController _controller;
-  late ScrollController _controller = new ScrollController();
+  // // The controller for the ListView
+  late ScrollController _controller;
+  //late ScrollController _controller = new ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -149,58 +159,58 @@ class _HomePageState extends State<HomePage> {
               child: const CircularProgressIndicator(),
             )
           : Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            ValueListenableBuilder<Amount?>(
-              valueListenable: _amount.amount,
-              builder: (__, amount, _) {
-                return amount != null
-                    ? AmountWidget(amount: amount) //Widget Ricardo
-                    : Center(
-                        child: CircularProgressIndicator(),
-                      );
-              },
-            ),
-            
-            Expanded(
-              child: 
-              ValueListenableBuilder<List<Statement>?>(
-                valueListenable: _statement.statements,
-                builder: (__, x, _) {
-                  return x != null
-                      ? StatementsListWidget(
-                          statements: x,
-                          controller: _controller,
-                        )
-                      //Widget Igor
-                      : Center(
-                          child: CircularProgressIndicator(),
-                        );
-                },
-              ),
-            ),
-            // when the _loadMore function is running
-            if (_isLoadMoreRunning == true)
-              const Padding(
-                padding: EdgeInsets.only(top: 10, bottom: 40),
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                children: [
+                  ValueListenableBuilder<Amount?>(
+                    valueListenable: _amount.amount,
+                    builder: (__, amount, _) {
+                      return amount != null
+                          ? AmountWidget(amount: amount) //Widget Ricardo
+                          : Center(
+                              child: CircularProgressIndicator(),
+                            );
+                    },
+                  ),
 
-            // When nothing else to load
-            if (_hasNextPage == false)
-              Container(
-                padding: const EdgeInsets.only(top: 30, bottom: 40),
-                color: Colors.amber,
-                child: const Center(
-                  child: Text('You have fetched all of the content'),
-                ),
+                  Expanded(
+                      //flex: 10,
+                      child: StatementsListWidget(
+                    statementsList: statementsList,
+                    controller: _controller,
+                  )),
+
+                  // Expanded(
+                  //   child: ValueListenableBuilder<List<Statement>?>(
+                  //     valueListenable: _statement.statements,
+                  //     builder: (__, x, _) {
+                  //       return x != null
+                  //           ? StatementsListWidget(
+                  //               statements: x,
+                  //               controller: _controller,
+                  //             )
+                  //           //Widget Igor
+                  //           : Center(
+                  //               child: CircularProgressIndicator(),
+                  //             );
+                  //     },
+                  //   ),
+                  // ),
+                  // // when the _loadMore function is running
+                  if (_isLoadMoreRunning == true)
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10, bottom: 40),
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+
+                  // When nothing else to load
+                  //if (_hasNextPage == false)
+                    //Text('chegou no final')
+                ],
               ),
-          ],
-        ),
-      ),
+            ),
     );
   }
 }
