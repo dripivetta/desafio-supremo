@@ -13,6 +13,10 @@ dependencies:
     sdk: flutter
   material_design_icons_flutter: ^5.0.6996
   intl:
+  screenshot: ^1.2.3
+  share_plus: ^4.0.10
+  path_provider: ^2.0.11
+ 
   
   http:
   http_interceptor:
@@ -20,6 +24,7 @@ dependencies:
   google_fonts:
   #icon google
   font_awesome_flutter: ^9.0.0
+
 
 flutter_native_splash:
   color: "#00C1AF" 

@@ -3,6 +3,7 @@ import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+
 class AmountWidget extends StatefulWidget {
   const AmountWidget({Key? key, required this.amount}) : super(key: key);
   final Amount amount;
@@ -11,8 +12,8 @@ class AmountWidget extends StatefulWidget {
   State<AmountWidget> createState() => _AmountWidgetState();
 }
 
-class _AmountWidgetState extends State<AmountWidget> with AutomaticKeepAliveClientMixin{
-
+class _AmountWidgetState extends State<AmountWidget>
+    with AutomaticKeepAliveClientMixin {
   bool _showSaldo = true;
 
   var nfc = NumberFormat.currency(
@@ -24,7 +25,7 @@ class _AmountWidgetState extends State<AmountWidget> with AutomaticKeepAliveClie
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: [   
         SizedBox(
           height: 100,
           width: MediaQuery.of(context).size.width,
@@ -62,21 +63,24 @@ class _AmountWidgetState extends State<AmountWidget> with AutomaticKeepAliveClie
                   Padding(padding: EdgeInsets.all(3)),
                   Row(
                     children: [
-                      _showSaldo ? Text(
-                        nfc.format(widget.amount.amount),
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: BaseColors().getGreenColor(),
-                        ),
-                      ): Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(2, 12, 4, 4),
-                        child: Container(                         
-                          height: 5,
-                          width: 150,
-                          color: BaseColors().getGreenColor(),
-                        ),
-                      ),
+                      _showSaldo
+                          ? Text(
+                              nfc.format(widget.amount.amount),
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: BaseColors().getGreenColor(),
+                              ),
+                            )
+                          : Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(1, 12, 4, 4),
+                              child: Container(
+                                height: 5,
+                                width: 150,
+                                color: BaseColors().getGreenColor(),
+                              ),
+                            ),
                     ],
                   ),
                 ],
@@ -99,7 +103,7 @@ class _AmountWidgetState extends State<AmountWidget> with AutomaticKeepAliveClie
       ],
     );
   }
-  
+
   @override
   bool get wantKeepAlive => true;
 }
