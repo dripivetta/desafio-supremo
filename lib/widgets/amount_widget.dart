@@ -22,14 +22,12 @@ class _AmountWidgetState extends State<AmountWidget> with AutomaticKeepAliveClie
 
   @override
   Widget build(BuildContext context) {
-    //Widget do Amount (Ricardo)
-    //
-    //return Text(amount.amount.toString());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
           height: 100,
+          width: MediaQuery.of(context).size.width,
           child: Card(
             shape: RoundedRectangleBorder(),
             child: Padding(

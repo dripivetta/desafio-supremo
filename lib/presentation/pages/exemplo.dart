@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _isFirstLoadRunning
           ? const Center(
-              child: const CircularProgressIndicator(),
+              child: CircularProgressIndicator(),
             )
           : Column(
               children: [

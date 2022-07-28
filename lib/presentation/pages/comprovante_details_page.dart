@@ -1,22 +1,25 @@
 import 'dart:core';
+import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 
 class ComprovanteDetailsPage extends StatefulWidget {
-  final String description;
-  final int? amount;
-  final String to;
-  final String tTipe;
-  final String createdAt;
-  final String authentication;
+  // final String description;
+  // final int? amount;
+  // final String to;
+  // final String tTipe;
+  // final String createdAt;
+  // final String authentication;
+  final String id;
 
   const ComprovanteDetailsPage({
     Key? key,
-    required this.description,
-    required this.amount,
-    required this.to,
-    required this.tTipe,
-    required this.createdAt,
-    required this.authentication,
+    // required this.description,
+    // required this.amount,
+    // required this.to,
+    // required this.tTipe,
+    // required this.createdAt,
+    // required this.authentication, 
+    required this.id,
   }) : super(key: key);
 
   @override
@@ -45,13 +48,14 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
-                  Text(
-                    'Comprovante',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Text(
+                      'Comprovante',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -232,6 +236,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
               const SizedBox(height: 60),
               ElevatedButton(
                 style: ButtonStyle(
+                  
                   minimumSize: MaterialStateProperty.all(
                     const Size(500, 50),
                   ),

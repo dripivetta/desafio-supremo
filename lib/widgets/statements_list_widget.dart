@@ -1,7 +1,6 @@
 import 'package:desafio/models/statement_model.dart';
 import 'package:desafio/widgets/custom_card_statement.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class StatementsListWidget extends StatefulWidget {
   final List<Statement> statementsList;
@@ -11,7 +10,6 @@ class StatementsListWidget extends StatefulWidget {
     Key? key,
     required this.statementsList,
     required this.controller,
-    //required this.controller,
   }) : super(key: key);
 
   @override
@@ -25,11 +23,13 @@ class _StatementsListWidgetState extends State<StatementsListWidget> {
       shrinkWrap: true,
       controller: widget.controller,
       itemCount: widget.statementsList.length,
-      itemBuilder: (BuildContext context, int index) => CustomCardStatement(
+      itemBuilder: (BuildContext context, int index) => 
+      CustomCardStatement(
         statement: widget.statementsList[index],
         idx: index,
       ),
-      separatorBuilder: (_, __) => SizedBox(
+      separatorBuilder: (_, __) => 
+      SizedBox(
         height: 16,
       ),
     );
