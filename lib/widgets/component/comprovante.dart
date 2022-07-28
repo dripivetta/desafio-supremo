@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:desafio/models/detail_statement_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -55,7 +54,7 @@ class ComprovantePage extends StatelessWidget {
 
   Future saveAndShare(Uint8List bytes) async {
     final directory = await getApplicationDocumentsDirectory();
-    final image = File('${directory.path}/flutter.jpg');
+    final image = File('${directory.path}/flutter.jpg',);
     image.writeAsBytesSync(bytes);
 
     await Share.shareFiles([image.path]);
