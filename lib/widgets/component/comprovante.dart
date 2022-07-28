@@ -5,6 +5,7 @@ import 'package:desafio/models/detail_statement_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 import 'comprovante_details_page/custom_button_compartilhar.dart';
@@ -12,16 +13,19 @@ import 'comprovante_details_page/customdivider.dart';
 import 'comprovante_details_page/customrow.dart';
 
 class ComprovantePage extends StatelessWidget {
-  ComprovantePage({Key? key, required this.value, this.controller})
+  final controller = ScreenshotController();
+
+
+  ComprovantePage({Key? key, required this.value})
       : super(key: key);
 
   final DetStatement value;
-  final controller;
 
   final nfc = NumberFormat.currency(
     symbol: "R\$",
     locale: "pt_BR",
   );
+  
 
   @override
   Widget build(BuildContext context) {
