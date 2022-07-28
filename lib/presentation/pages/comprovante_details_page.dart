@@ -68,7 +68,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                 margin: const EdgeInsets.only(
                     top: 10, bottom: 10, left: 16, right: 10),
                 child: SingleChildScrollView(
-                  physics: NeverScrollableScrollPhysics(),
+                  //physics: NeverScrollableScrollPhysics(),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
