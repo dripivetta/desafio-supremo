@@ -54,27 +54,21 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
 
   @override
   Widget build(BuildContext context) => Screenshot(
-    controller: controller,
-    child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56),
-          child: CustomAppBar(),
-        ),
-        body: Container(
-          margin: const EdgeInsets.all(10),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildImage(),
-              ],
-            ),
+        controller: controller,
+        child: Scaffold(
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(56),
+            child: CustomAppBar(),
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              buildImage(),
+            ],
           ),
         ),
-      ),
-  );
-  
+      );
 
   Widget buildImage() => Stack(
         children: [

@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: BaseColors().getWhiteColor(),
         brightness: Brightness.light,
       ),
-      home: CustomLoading(),
+      home: HomePage(),
     );
   }
 }
