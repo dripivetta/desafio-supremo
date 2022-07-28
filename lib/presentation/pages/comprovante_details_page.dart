@@ -59,7 +59,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
       ),
       body: Container(
         margin: const EdgeInsets.all(10),
-        child: Center(
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
