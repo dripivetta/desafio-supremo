@@ -6,22 +6,10 @@ import 'package:desafio/widgets/component/comprovante_details_page/customrow.dar
 import 'package:flutter/material.dart';
 
 class ComprovanteDetailsPage extends StatefulWidget {
-  // final String description;
-  // final int? amount;
-  // final String to;
-  // final String tTipe;
-  // final String createdAt;
-  // final String authentication;
   final String id;
 
   const ComprovanteDetailsPage({
     Key? key,
-    // required this.description,
-    // required this.amount,
-    // required this.to,
-    // required this.tTipe,
-    // required this.createdAt,
-    // required this.authentication, 
     required this.id,
   }) : super(key: key);
 
@@ -30,7 +18,7 @@ class ComprovanteDetailsPage extends StatefulWidget {
 }
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
-  late final DetStatement statement;
+  late final DetStatement detStatement;
 
   @override
   Widget build(BuildContext context) {
@@ -59,27 +47,27 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Tipo de movimentação', fontSize: 18, fontWeight: FontWeight.bold,),
               const SizedBox(height: 3),
-              CustomRow(cabecalho: statement.description.toString(), fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(cabecalho: 'detStatement.description.toString()', fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Valor', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-              CustomRow(cabecalho: 'R\$ ${statement.amount}', fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(cabecalho: 'R\$ ${'detStatement.amoun'}', fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Recebedor', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-              CustomRow(cabecalho: statement.to.toString(), fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(cabecalho: 'detStatement.to.toString()', fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Instituição Bancária', fontSize: 18, fontWeight: FontWeight.bold), 
               const SizedBox(height: 3),
-              CustomRow(cabecalho: statement.tType.toString(), fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(cabecalho: 'detStatement.tType.toString()', fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Data/Hora', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
-              CustomRow(cabecalho: statement.createdAt.toString(), fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(cabecalho: 'detStatement.createdAt.toString()', fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
               CustomRow(cabecalho: 'Autenticação', fontSize: 18, fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
-              CustomRow(cabecalho: statement.authentication.toString(), fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(cabecalho: 'detStatement.authentication.toString()', fontSize: 20, fontWeight: FontWeight.normal),
               const SizedBox(height: 60),
             
               CustomButtonCompartilhar(titulo: 'Compartilhar', fontSize: 18,),

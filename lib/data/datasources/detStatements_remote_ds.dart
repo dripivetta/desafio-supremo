@@ -3,7 +3,7 @@ import 'package:desafio/models/detail_statement_model.dart';
 import 'package:desafio/services/http_service.dart';
 
 abstract class DetStatementsRemoteDataSource {
-  Future<DetStatement> getDetStatement();
+  Future<DetStatement> getDetStatement(String id);
 }
 
 class DetStatementsRemoteDataSourceImpl implements DetStatementsRemoteDataSource {
@@ -11,8 +11,8 @@ class DetStatementsRemoteDataSourceImpl implements DetStatementsRemoteDataSource
   DetStatementsRemoteDataSourceImpl({required this.httpService});
 
   @override
-  Future<DetStatement> getDetStatement() async {
-    var response = await httpService.get(Urls.statementDetail);
+  Future<DetStatement> getDetStatement(String id) async {
+    var response = await httpService.get(Urls.statementDetail(id));
     DetStatement detStatements = DetStatement.fromJson(response);
 
     return detStatements;

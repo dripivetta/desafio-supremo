@@ -12,6 +12,6 @@ abstract class AmountRepository {
 
 abstract class DetStatementsRepository {
   //Future<List<DetStatement>> getStatementsDetail(int id);
-  Future<DetStatement> getStatementsDetail();
+  Future<DetStatement> getStatementsDetail(String id);
 
 }

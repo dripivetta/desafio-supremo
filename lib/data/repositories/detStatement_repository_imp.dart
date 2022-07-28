@@ -6,14 +6,9 @@ class DetStatementsRepositoryImpl implements DetStatementsRepository {
   final DetStatementsRemoteDataSource remoteDataSource;
   DetStatementsRepositoryImpl(this.remoteDataSource);
 
-    // @override
-  // Future<List<DetStatement>> getStatementsDetail(int id) async {
-  //   final result = await remoteDataSource.getDetStatement(id);
-  //   return result;
-  // }
   @override
-  Future<DetStatement> getStatementsDetail() async {
-    final result = await remoteDataSource.getDetStatement();
+  Future<DetStatement> getStatementsDetail(String id) async {
+    final result = await remoteDataSource.getDetStatement(id);
     return result;
   }
 }

@@ -4,16 +4,11 @@ import 'package:flutter/material.dart';
 
 class GetDetStatements {
   final DetStatementsRepository repository;
-  GetDetStatements(this.repository){
-    get();
-  }
-
-  ValueNotifier<DetStatement?> detStatements = ValueNotifier<DetStatement?>(null);
-
-  get() async {
-      // ignore: avoid_print
-      print('getting api');
-      detStatements.value = await repository.getStatementsDetail();
-    
+  GetDetStatements(this.repository);
+  
+  Future<DetStatement> get(String id) {
+    // ignore: avoid_print
+    print('getting api');
+    return repository.getStatementsDetail(id);
   }
 }
