@@ -1,9 +1,9 @@
-import 'package:desafio/data/repositories/statement_repository.dart';
+import 'package:desafio/data/repositories/repository.dart';
 import 'package:desafio/models/amount_model.dart';
 import 'package:flutter/material.dart';
 
 class GetAmount {
-  final StatementsRepository repository;
+  final AmountRepository repository;
   GetAmount(this.repository) {
     get();
   }

@@ -23,9 +23,6 @@ class _AmountWidgetState extends State<AmountWidget>
 
   @override
   Widget build(BuildContext context) {
-    //Widget do Amount (Ricardo)
-    //
-    //return Text(amount.amount.toString());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [   

@@ -1,30 +1,24 @@
-// ignore_for_file: prefer_final_fields
-
 import 'package:flutter/material.dart';
 
-class BaseColors{
-  Color _activeWhiteColor = Color(0xFFF8F8F8);
-  Color _activeGreyColor = Color(0xFF828282);
-  Color _activeBlackColor = Color(0XFF202021);
-  Color _activeGreenColor = Color(0XFF00C1AF);
+class BaseColors {
+  final Color _activeWhiteColor = Color(0xFFF8F8F8);
+  final Color _activeGreyColor = Color(0xFF828282);
+  final Color _activeBlackColor = Color(0XFF202021);
+  final Color _activeGreenColor = Color(0XFF00C1AF);
 
-  Color getWhiteColor (){
+  Color getWhiteColor() {
     return _activeWhiteColor;
   }
 
-  
-  Color getGreyColor (){
+  Color getGreyColor() {
     return _activeGreyColor;
   }
 
-  
-  Color getBlackColor (){
+  Color getBlackColor() {
     return _activeBlackColor;
   }
 
-  
-  Color getGreenColor (){
+  Color getGreenColor() {
     return _activeGreenColor;
   }
-
 }

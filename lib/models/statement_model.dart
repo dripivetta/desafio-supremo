@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
+
 List<Statement> statementFromJson(String str) => List<Statement>.from(json.decode(str).map((x) => Statement.fromJson(x)));
 
 String statementToJson(List<Statement> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -21,14 +23,14 @@ class Statement {
         this.bankName,
     });
 
-    DateTime createdAt;
-    String id;
-    int amount;
+    final DateTime createdAt;
+    final String id;
+    final int amount;
     String? to;
-    String description;
-    String tType;
+    final String description;
+    final String tType;
     String? from;
-    String? bankName;
+    final String? bankName;
 
     factory Statement.fromJson(Map<String, dynamic> json) => Statement(
         createdAt: DateTime.parse(json["createdAt"]),
@@ -42,7 +44,7 @@ class Statement {
     );
 
     Map<String, dynamic> toJson() => {
-        "createdAt": createdAt.toIso8601String(),
+        "createdAt": DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(createdAt),
         "id": id,
         "amount": amount,
         "to": to,
@@ -51,4 +53,16 @@ class Statement {
         "from": from,
         "bankName": bankName,
     };
+
+     Statement toEntity() => Statement(
+        createdAt: createdAt,
+        id: id,
+        amount: amount,
+        to: to,
+        description: description,
+        tType: tType,
+        from: from,
+        bankName: bankName,
+      );
+
 }

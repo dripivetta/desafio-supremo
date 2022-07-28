@@ -1,22 +1,23 @@
 import 'dart:core';
+import 'package:desafio/data/datasources/detStatements_remote_ds.dart';
+import 'package:desafio/data/repositories/detStatement_repository_imp.dart';
+import 'package:desafio/data/usecases/get_detail_statements.dart';
+import 'package:desafio/models/detail_statement_model.dart';
+import 'package:desafio/services/http_service_imp.dart';
+import 'package:desafio/widgets/component/comprovante_details_page/custom_app_bar.dart';
+import 'package:desafio/widgets/component/comprovante_details_page/custom_button_compartilhar.dart';
+import 'package:desafio/widgets/component/comprovante_details_page/customdivider.dart';
+import 'package:desafio/widgets/component/comprovante_details_page/customrow.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 
 class ComprovanteDetailsPage extends StatefulWidget {
-  final String description;
-  final int? amount;
-  final String to;
-  final String tTipe;
-  final String createdAt;
-  final String authentication;
+  final String id;
 
   const ComprovanteDetailsPage({
     Key? key,
-    required this.description,
-    required this.amount,
-    required this.to,
-    required this.tTipe,
-    required this.createdAt,
-    required this.authentication,
+    required this.id,
   }) : super(key: key);
 
   @override
@@ -24,227 +25,118 @@ class ComprovanteDetailsPage extends StatefulWidget {
 }
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
+  //late DetStatement? detStatement;
+  late DetStatement? detStatement;
+  final nfc = NumberFormat.currency(
+    symbol: "R\$",
+    locale: "pt_BR",
+  );
+
+  final GetDetStatements _detStt = GetDetStatements(
+    DetStatementsRepositoryImpl(
+      DetStatementsRemoteDataSourceImpl(
+        httpService: HttpServiceImpl(),
+      ),
+    ),
+  );
+
+  @override
+  void initState() {
+    _getDetStatement();
+    super.initState();
+  }
+
+  void _getDetStatement() async {
+    detStatement = await _detStt.get(widget.id);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        // leading para inserir um ícone do lado esquerdo
-        leading: IconButton(
-          color: Colors.black,
-          iconSize: 35,
-          icon: const Icon(Icons.keyboard_arrow_left),
-          onPressed: () {},
-        ),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(56),
+        child: CustomAppBar(),
       ),
       body: Container(
         margin: const EdgeInsets.all(10),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Comprovante',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+              CustomRow(
+                cabecalho: 'Comprovante',
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
-
               const SizedBox(height: 2),
-
-              // Divider para criar uma linha de separação
-              const Divider(
-                height: 15,
-                thickness: 1.2,
-                color: Colors.black,
-                // endIndent: 100,
-              ),
+              CustomDivider(),
               const SizedBox(height: 15),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Tipo de movimentação',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+              CustomRow(
+                cabecalho: 'Tipo de movimentação',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
-
               const SizedBox(height: 3),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'description.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
+              CustomRow(
+                  cabecalho: detStatement!.description,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Valor',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(
+                  cabecalho: 'Valor',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'R\$ ' 'amount.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
+              CustomRow(
+                  cabecalho: nfc.format(detStatement!.amount),
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Recebedor',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(
+                  cabecalho: 'Recebedor',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'to.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
+              CustomRow(
+                  cabecalho: detStatement!.to,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Instituição Bancária',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(
+                  cabecalho: 'Instituição Bancária',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'tTipe.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
+              CustomRow(
+                  cabecalho: detStatement!.tType,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Data/Hora',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(
+                  cabecalho: 'Data/Hora',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'createdAt.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
+              CustomRow(
+                  cabecalho: detStatement!.createdAt,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Autenticação',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-
+              CustomRow(
+                  cabecalho: 'Autenticação',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'authentication.toString()',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
+              CustomRow(
+                  cabecalho: detStatement!.authentication,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 60),
-              ElevatedButton(
-                style: ButtonStyle(
-                  minimumSize: MaterialStateProperty.all(
-                    const Size(500, 50),
-                  ),
-                ),
-                child: const Text(
-                  'Compartilhar',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+              CustomButtonCompartilhar(
+                titulo: 'Compartilhar',
+                fontSize: 18,
               ),
               const SizedBox(height: 5),
             ],
