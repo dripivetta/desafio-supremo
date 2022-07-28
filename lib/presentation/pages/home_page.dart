@@ -10,6 +10,7 @@ import 'package:desafio/models/amount_model.dart';
 import 'package:desafio/models/statement_model.dart';
 import 'package:desafio/services/http_service_imp.dart';
 import 'package:desafio/widgets/amount_widget.dart';
+import 'package:desafio/widgets/component/loading_progress.dart';
 import 'package:desafio/widgets/statements_list_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -126,10 +127,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         centerTitle: true,
         title: Text(
           'Extrato',
           style: TextStyle(
+            fontFamily: 'Khalid',
             shadows: const <Shadow>[
               Shadow(
                 offset: Offset(1.0, 4.0),
@@ -142,7 +145,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _isFirstLoadRunning
           ? const Center(
-              child: const CircularProgressIndicator(),
+              child: const CustomLoading(),
             )
           : Column(
               children: [
@@ -152,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                     return amount != null
                         ? AmountWidget(amount: amount) //Widget Ricardo
                         : Center(
-                            child: CircularProgressIndicator(),
+                            child: CustomLoading(),
                           );
                   },
                 ),
@@ -169,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                   const Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 40),
                     child: Center(
-                      child: CircularProgressIndicator(),
+                      child: CustomLoading(),
                     ),
                   ),
 

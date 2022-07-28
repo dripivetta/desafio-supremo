@@ -8,6 +8,7 @@ import 'package:desafio/widgets/component/comprovante_details_page/custom_app_ba
 import 'package:desafio/widgets/component/comprovante_details_page/custom_button_compartilhar.dart';
 import 'package:desafio/widgets/component/comprovante_details_page/customdivider.dart';
 import 'package:desafio/widgets/component/comprovante_details_page/customrow.dart';
+import 'package:desafio/widgets/component/loading_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -53,7 +54,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
         future: detStatement,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Scaffold(body: CustomLoading());
           }
 
           if (snapshot.connectionState == ConnectionState.done &&
@@ -63,100 +64,99 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                 preferredSize: Size.fromHeight(56),
                 child: CustomAppBar(),
               ),
-              body: detStatement == null //verifica se tem dados
-                  ? CircularProgressIndicator()
-                  : Container(
-                      margin: const EdgeInsets.only(top: 10, bottom: 10, left: 16, right: 10 ),
-                      child: SingleChildScrollView(
-                        physics: NeverScrollableScrollPhysics(),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomRow(
-                              cabecalho: 'Comprovante',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            const SizedBox(height: 2),
-                            CustomDivider(),
-                            const SizedBox(height: 15),
-                            CustomRow(
-                              cabecalho: 'Tipo de movimentação',
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            const SizedBox(height: 3),
-                            CustomRow(
-                                cabecalho: snapshot.data!.description,
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal),
-                            const SizedBox(height: 15),
-                            CustomRow(
-                                cabecalho: 'Valor',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                            const SizedBox(height: 3),
-                            CustomRow(
-                                cabecalho: nfc.format(snapshot.data!.amount),
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal),
-                            const SizedBox(height: 15),
-                            CustomRow(
-                                cabecalho: 'Recebedor',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                            const SizedBox(height: 3),
-                            snapshot.data!.to != null 
-                            ? CustomRow(
-                                cabecalho: snapshot.data!.to!,
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal)
-                            : CustomRow(
-                                cabecalho: snapshot.data!.from!,
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal)  ,   
-                            const SizedBox(height: 15),
-                            CustomRow(
-                                cabecalho: 'Instituição Bancária',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                            const SizedBox(height: 3),
-                            CustomRow(
-                                cabecalho: snapshot.data!.tType,
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal),
-                            const SizedBox(height: 15),
-                            CustomRow(
-                                cabecalho: 'Data/Hora',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                            const SizedBox(height: 5),
-                            CustomRow(
-                                cabecalho: DateFormat('dd/MM/yyyy - hh:mm').format(snapshot.data!.createdAt),
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal),
-                            const SizedBox(height: 15),
-                            CustomRow(
-                                cabecalho: 'Autenticação',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                            const SizedBox(height: 5),
-                            CustomRow(
-                                cabecalho: snapshot.data!.authentication,
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal),
-                            const SizedBox(height: 150),
-                            
-                            CustomButtonCompartilhar(
-                              titulo: 'Compartilhar',
-                              fontSize: 18,
-                            ),
-                            const SizedBox(height: 5),
-                          ],
-                        ),
+              body: Container(
+                margin: const EdgeInsets.only(
+                    top: 10, bottom: 10, left: 16, right: 10),
+                child: SingleChildScrollView(
+                  physics: NeverScrollableScrollPhysics(),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomRow(
+                        cabecalho: 'Comprovante',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
-                    ),
+                      const SizedBox(height: 2),
+                      CustomDivider(),
+                      const SizedBox(height: 15),
+                      CustomRow(
+                        cabecalho: 'Tipo de movimentação',
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      const SizedBox(height: 3),
+                      CustomRow(
+                          cabecalho: snapshot.data!.description,
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal),
+                      const SizedBox(height: 15),
+                      CustomRow(
+                          cabecalho: 'Valor',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      const SizedBox(height: 3),
+                      CustomRow(
+                          cabecalho: nfc.format(snapshot.data!.amount),
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal),
+                      const SizedBox(height: 15),
+                      CustomRow(
+                          cabecalho: 'Recebedor',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      const SizedBox(height: 3),
+                      snapshot.data!.to != null
+                          ? CustomRow(
+                              cabecalho: snapshot.data!.to!,
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal)
+                          : CustomRow(
+                              cabecalho: snapshot.data!.from!,
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal),
+                      const SizedBox(height: 15),
+                      CustomRow(
+                          cabecalho: 'Instituição Bancária',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      const SizedBox(height: 3),
+                      CustomRow(
+                          cabecalho: snapshot.data!.tType,
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal),
+                      const SizedBox(height: 15),
+                      CustomRow(
+                          cabecalho: 'Data/Hora',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      const SizedBox(height: 5),
+                      CustomRow(
+                          cabecalho: DateFormat('dd/MM/yyyy - hh:mm')
+                              .format(snapshot.data!.createdAt),
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal),
+                      const SizedBox(height: 15),
+                      CustomRow(
+                          cabecalho: 'Autenticação',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      const SizedBox(height: 5),
+                      CustomRow(
+                          cabecalho: snapshot.data!.authentication,
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal),
+                      const SizedBox(height: 150),
+                      CustomButtonCompartilhar(
+                        titulo: 'Compartilhar',
+                        fontSize: 18,
+                      ),
+                      const SizedBox(height: 5),
+                    ],
+                  ),
+                ),
+              ),
             );
           }
 
