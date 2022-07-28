@@ -55,7 +55,7 @@ class ComprovantePage extends StatelessWidget {
 
   Future saveAndShare(Uint8List bytes) async {
     final directory = await getApplicationDocumentsDirectory();
-    final image = File('${directory.path}/flutter.png');
+    final image = File('${directory.path}/flutter.jpg');
     image.writeAsBytesSync(bytes);
 
     await Share.shareFiles([image.path]);
