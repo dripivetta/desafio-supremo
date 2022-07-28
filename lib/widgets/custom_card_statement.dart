@@ -21,24 +21,28 @@ class CustomCardStatement extends StatelessWidget {
     return Material(
       child: InkWell(
         onTap: () {
-          Navigator.push(context,
-          MaterialPageRoute(builder: (_) => ComprovanteDetailsPage(id: statement.id), fullscreenDialog: true));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => ComprovanteDetailsPage(id: statement.id),
+                  fullscreenDialog: true));
         },
         child: Padding(
           padding: const EdgeInsets.only(top: 6, bottom: 6),
           child: Container(
-            
             height: 100,
             width: MediaQuery.of(context).size.width,
             decoration: isPix(statement.tType)
-                ? BoxDecoration(color: BaseColors().getWhiteColor())
+                ? BoxDecoration(
+                    color: BaseColors().getWhiteColor(),
+                  )
                 : BoxDecoration(),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 6, left: 30, right: 15),
+                    padding: const EdgeInsets.only(top: 6, left: 30, right: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -47,7 +51,9 @@ class CustomCardStatement extends StatelessWidget {
                             Text(
                               statement.description,
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontFamily: 'Khalid',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
                               softWrap: true,
                               overflow: TextOverflow.visible,
                             ),
@@ -55,16 +61,18 @@ class CustomCardStatement extends StatelessWidget {
                             isPix(statement.tType)
                                 ? Container(
                                     decoration: BoxDecoration(
-                                        color: BaseColors().getGreenColor()),
+                                      color: BaseColors().getGreenColor(),
+                                    ),
                                     width: 50,
                                     height: 20,
                                     child: Center(
                                       child: Text(
                                         'Pix',
                                         style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
-                                            color: BaseColors().getWhiteColor()),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: BaseColors().getWhiteColor(),
+                                        ),
                                         softWrap: true,
                                         overflow: TextOverflow.visible,
                                       ),
@@ -78,15 +86,13 @@ class CustomCardStatement extends StatelessWidget {
                         statement.bankName != null
                             ? Row(
                                 children: [
-                                  // Icon(
-                                  //   Icons.circle,
-                                  //   size: 12,
-                                  //   color: BaseColors().getGreenColor(),
-                                  // ),
-                                  Text(statement.from!,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: BaseColors().getGreyColor())),
+                                  Text(
+                                    statement.from!,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: BaseColors().getGreyColor(),
+                                    ),
+                                  ),
                                   Spacer(),
                                   Text(
                                       DateFormat("dd/MM")
@@ -98,11 +104,6 @@ class CustomCardStatement extends StatelessWidget {
                               )
                             : Row(
                                 children: [
-                                  // Icon(
-                                  //   Icons.circle,
-                                  //   size: 12,
-                                  //   color: BaseColors().getGreenColor(),
-                                  // ),
                                   Text(
                                     statement.to!,
                                     style: TextStyle(
@@ -124,6 +125,7 @@ class CustomCardStatement extends StatelessWidget {
                             ? Text(
                                 '-${nfc.format(statement.amount)}',
                                 style: TextStyle(
+                                    fontFamily: 'Khalid',
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                     fontSize: 16),
@@ -135,7 +137,6 @@ class CustomCardStatement extends StatelessWidget {
                                     color: Colors.black,
                                     fontSize: 16),
                               ),
-                              
                       ],
                     ),
                   ),
@@ -170,31 +171,3 @@ isPix(x) {
 
   return isComprovant;
 }
-
-// return ListTile(
-    //   isThreeLine: true,
-    //   title: Text(statement.description),
-    //   subtitle: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: [
-    //       statement.bankName != null
-    //           ? Text(statement.from!)
-    //           : Text(statement.to!),
-    //       Text(
-    //         nfc.format(statement.amount),
-    //         style: TextStyle(
-    //             fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
-    //       ),
-    //     ],
-    //   ),
-    //   trailing: Text(
-    //     DateFormat("dd/MM").format(statement.createdAt),
-    //   ),
-    //   leading: VerticalDivider(
-    //     width: 20,
-    //     thickness: 1,
-    //     indent: 0,
-    //     endIndent: 0,
-    //     color: Color.fromARGB(255, 48, 47, 47),
-    //   ),
-    // );

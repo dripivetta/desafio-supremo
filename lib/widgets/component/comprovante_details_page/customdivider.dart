@@ -1,3 +1,4 @@
+import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomDivider extends StatelessWidget {
@@ -8,7 +9,7 @@ class CustomDivider extends StatelessWidget {
     return Divider(
       height: 15,
       thickness: 1.2,
-      color: Colors.black,
+      color: BaseColors().getGreyColor(),
       // endIndent: 100,
     );
   }

@@ -17,6 +17,9 @@ dependencies:
   http:
   http_interceptor:
   flutter_native_splash: ^2.2.3+1
+  google_fonts:
+  #icon google
+  font_awesome_flutter: ^9.0.0
 
 flutter_native_splash:
   color: "#00C1AF" 
@@ -39,4 +42,10 @@ flutter:
     - assets/img/splash.png
 
   uses-material-design: true
+
+fonts:
+    - family: Khalid
+      fonts:
+        - asset: assets/fonts/ae_Khalid.ttf
+
 
