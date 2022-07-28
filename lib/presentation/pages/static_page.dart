@@ -1,4 +1,3 @@
-// import 'package:desafio/widgets/component/base_colors.dart';
 // import 'package:flutter/material.dart';
 
 // class StaticPage extends StatefulWidget {
@@ -18,7 +17,9 @@
 //         centerTitle: true,
 //         title: Text('Extrato'),
 //       ),
-//       body: 
+//       body: Scaffold(
+//         backgroundColor: Colors.amber,
+//       ),
 //     );
 //   }
 // }
