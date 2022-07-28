@@ -1,4 +1,5 @@
 import 'package:desafio/models/statement_model.dart';
+import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:desafio/widgets/custom_card_statement.dart';
 import 'package:flutter/material.dart';
 
@@ -17,21 +18,52 @@ class StatementsListWidget extends StatefulWidget {
 }
 
 class _StatementsListWidgetState extends State<StatementsListWidget> {
-  
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
       controller: widget.controller,
       itemCount: widget.statementsList.length,
-      itemBuilder: (BuildContext context, int index) => 
-      CustomCardStatement(
-        statement: widget.statementsList[index],
-        idx: index,
-      ),
-      separatorBuilder: (_, __) => 
-      SizedBox(
-        height: 16,
+      itemBuilder: (BuildContext context, int index){
+        return Stack(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 24),
+              child: CustomCardStatement(statement: widget.statementsList[index], idx: index,),
+            ),
+            Positioned(
+              top: 0.0,
+              bottom: 0.0,
+              left: 24.0,
+              child: Container(
+                height: double.infinity,
+                width: 1.0,
+                color: BaseColors().getGreyColor(),
+              ),
+            ),
+            Positioned(
+              top: 42.0,
+              left: 15.0,
+              child: Container(
+                margin: EdgeInsets.all(5.0),
+                height: 10.0,
+                width: 10.0,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: BaseColors().getGreenColor()),
+              ),
+            )
+          ]
+        );
+      }, 
+      
+      
+      //=> 
+      //CustomCardStatement(
+      //  statement: widget.statementsList[index],
+      //  idx: index,
+      //),
+      separatorBuilder: (_, __) => SizedBox(
+        height: 0,
       ),
     );
   }
