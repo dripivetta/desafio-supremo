@@ -22,14 +22,5 @@ class _CustomLoadingState extends State<CustomLoading> {
         strokeWidth: 5.0,
       ),
     );
-
-    // Scaffold(
-    //   body: Center(
-    //     child: CircularProgressIndicator(
-    //       //valueColor: AlwaysStoppedAnimation(BaseColors().getGreenColor()),
-    //       strokeWidth: 5.0,
-    //     ),
-    //   ),
-    // );
   }
 }

@@ -25,7 +25,7 @@ class ComprovanteDetailsPage extends StatefulWidget {
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
   final controller = ScreenshotController();
-  
+
   //late DetStatement? detStatement;
   late Future<DetStatement> detStatement;
 
@@ -47,32 +47,33 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DetStatement?>(
-        future: detStatement,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Scaffold(body: CustomLoading());
-          }
-          if (snapshot.connectionState == ConnectionState.done &&
-              snapshot.hasData) {
-            return Screenshot(
-              controller: controller,
-              child: Scaffold(
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(56),
-                  child: CustomAppBar(),
-                ),
-                body: ComprovantePage(
-                  value: snapshot.data!,
-                ),
+      future: detStatement,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Scaffold(body: CustomLoading());
+        }
+        if (snapshot.connectionState == ConnectionState.done &&
+            snapshot.hasData) {
+          return Screenshot(
+            controller: controller,
+            child: Scaffold(
+              appBar: PreferredSize(
+                preferredSize: Size.fromHeight(56),
+                child: CustomAppBar(),
               ),
-            );
-          }
+              body: ComprovantePage(
+                value: snapshot.data!,
+              ),
+            ),
+          );
+        }
 
-          if (snapshot.hasError) {
-            return Container();
-          }
-
+        if (snapshot.hasError) {
           return Container();
-        });
+        }
+
+        return Container();
+      },
+    );
   }
 }
