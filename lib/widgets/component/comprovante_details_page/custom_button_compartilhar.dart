@@ -5,7 +5,9 @@ class CustomButtonCompartilhar extends StatelessWidget {
   final String titulo;
   final double fontSize;
 
-  const CustomButtonCompartilhar({Key? key, required this.titulo, required this.fontSize}) : super(key: key);
+  final Function printScreen;
+
+  const CustomButtonCompartilhar({Key? key, required this.titulo, required this.fontSize, required this.printScreen}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,8 @@ class CustomButtonCompartilhar extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Navigator.pop(context);
+         printScreen();
+          
         },
       ),
     );
