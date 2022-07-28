@@ -26,6 +26,8 @@ class DetStatement {
     description = json['description'];
   }
 
+  get title => null;
+
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['amount'] = amount;

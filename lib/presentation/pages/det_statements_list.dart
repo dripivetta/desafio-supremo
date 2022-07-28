@@ -2,8 +2,11 @@ import 'package:desafio/models/detail_statement_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class DetStatementsList extends StatelessWidget {
-  const DetStatementsList({Key? key, required this.detStatement})
-      : super(key: key);
+  const DetStatementsList({
+    Key? key,
+    required this.detStatement,
+    required Text leading
+  }) : super(key: key);
 
   final DetStatement detStatement;
 

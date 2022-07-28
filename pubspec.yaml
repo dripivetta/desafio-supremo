@@ -11,10 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   material_design_icons_flutter: ^5.0.6996
   
   http:
   http_interceptor:
+
   flutter_native_splash: ^2.2.3+1
 
 flutter_native_splash:
@@ -26,6 +28,13 @@ flutter_native_splash:
   # Use with the CupertinoIcons class for iOS style icons.
 
   cupertino_icons: ^1.0.2
+  # pdf: ^3.8.2
+  # share_extend: ^2.0.0
+  # path_provider: ^2.0.11
+  # flutter_full_pdf_viewer: ^1.0.6
+  # open_document: ^1.0.4
+  # social_share: ^2.2.1
+
 
 dev_dependencies:
   flutter_test:

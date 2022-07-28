@@ -1,24 +1,9 @@
 import 'dart:core';
+import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ComprovanteDetailsPage extends StatefulWidget {
-  final String description;
-  final int? amount;
-  final String to;
-  final String tTipe;
-  final String createdAt;
-  final String authentication;
-
-  const ComprovanteDetailsPage({
-    Key? key,
-    required this.description,
-    required this.amount,
-    required this.to,
-    required this.tTipe,
-    required this.createdAt,
-    required this.authentication,
-  }) : super(key: key);
+  const ComprovanteDetailsPage({Key? key}) : super(key: key);
 
   @override
   State<ComprovanteDetailsPage> createState() => _ComprovanteDetailsPageState();
@@ -82,7 +67,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                 ],
               ),
 
-              const SizedBox(height: 3),
+              const SizedBox(height: 2),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -109,7 +94,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                 ],
               ),
 
-              const SizedBox(height: 3),
+              const SizedBox(height: 2),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -136,7 +121,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                 ],
               ),
 
-              const SizedBox(height: 3),
+              const SizedBox(height: 2),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -163,7 +148,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                 ],
               ),
 
-              const SizedBox(height: 3),
+              const SizedBox(height: 2),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -190,7 +175,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                 ],
               ),
 
-              const SizedBox(height: 5),
+              const SizedBox(height: 2),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -217,7 +202,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                 ],
               ),
 
-              const SizedBox(height: 5),
+              const SizedBox(height: 2),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -230,24 +215,22 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 60),
+              const SizedBox(height: 50),
               ElevatedButton(
-                style: ButtonStyle(
+                style: ButtonStyle( 
                   minimumSize: MaterialStateProperty.all(
                     const Size(500, 50),
                   ),
                 ),
+                onPressed: () {},
                 child: const Text(
                   'Compartilhar',
                   style: TextStyle(
                     fontSize: 18,
                   ),
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 2),
             ],
           ),
         ),
