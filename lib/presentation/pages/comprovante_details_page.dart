@@ -10,7 +10,7 @@ import 'package:desafio/widgets/component/comprovante_details_page/customdivider
 import 'package:desafio/widgets/component/comprovante_details_page/customrow.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import 'package:screenshot/screenshot.dart';
 
 class ComprovanteDetailsPage extends StatefulWidget {
   final String id;
@@ -25,6 +25,7 @@ class ComprovanteDetailsPage extends StatefulWidget {
 }
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
+  final controller = ScreenshotController();
   //late DetStatement? detStatement;
   late DetStatement? detStatement;
   final nfc = NumberFormat.currency(
@@ -52,97 +53,103 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(56),
-        child: CustomAppBar(),
-      ),
-      body: Container(
-        margin: const EdgeInsets.all(10),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomRow(
-                cabecalho: 'Comprovante',
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              const SizedBox(height: 2),
-              CustomDivider(),
-              const SizedBox(height: 15),
-              CustomRow(
-                cabecalho: 'Tipo de movimentação',
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-              const SizedBox(height: 3),
-              CustomRow(
-                  cabecalho: detStatement!.description,
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
-              CustomRow(
-                  cabecalho: 'Valor',
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-              const SizedBox(height: 3),
-              CustomRow(
-                  cabecalho: nfc.format(detStatement!.amount),
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
-              CustomRow(
-                  cabecalho: 'Recebedor',
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-              const SizedBox(height: 3),
-              CustomRow(
-                  cabecalho: detStatement!.to,
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
-              CustomRow(
-                  cabecalho: 'Instituição Bancária',
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-              const SizedBox(height: 3),
-              CustomRow(
-                  cabecalho: detStatement!.tType,
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
-              CustomRow(
-                  cabecalho: 'Data/Hora',
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-              const SizedBox(height: 5),
-              CustomRow(
-                  cabecalho: detStatement!.createdAt,
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
-              CustomRow(
-                  cabecalho: 'Autenticação',
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-              const SizedBox(height: 5),
-              CustomRow(
-                  cabecalho: detStatement!.authentication,
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal),
-              const SizedBox(height: 60),
-              CustomButtonCompartilhar(
-                titulo: 'Compartilhar',
-                fontSize: 18,
-              ),
-              const SizedBox(height: 5),
-            ],
+  Widget build(BuildContext context) => Screenshot(
+    controller: controller,
+    child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(56),
+          child: CustomAppBar(),
+        ),
+        body: Container(
+          margin: const EdgeInsets.all(10),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildImage(),
+              ],
+            ),
           ),
         ),
       ),
-    );
-  }
+  );
+  
+
+  Widget buildImage() => Stack(
+        children: [
+          CustomRow(
+            cabecalho: 'Comprovante',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          const SizedBox(height: 2),
+          CustomDivider(),
+          const SizedBox(height: 15),
+          CustomRow(
+            cabecalho: 'Tipo de movimentação',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          const SizedBox(height: 3),
+          CustomRow(
+              cabecalho: detStatement!.description,
+              fontSize: 20,
+              fontWeight: FontWeight.normal),
+          const SizedBox(height: 15),
+          CustomRow(
+              cabecalho: 'Valor', fontSize: 18, fontWeight: FontWeight.bold),
+          const SizedBox(height: 3),
+          CustomRow(
+              cabecalho: nfc.format(detStatement!.amount),
+              fontSize: 20,
+              fontWeight: FontWeight.normal),
+          const SizedBox(height: 15),
+          CustomRow(
+              cabecalho: 'Recebedor',
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
+          const SizedBox(height: 3),
+          CustomRow(
+              cabecalho: detStatement!.to,
+              fontSize: 20,
+              fontWeight: FontWeight.normal),
+          const SizedBox(height: 15),
+          CustomRow(
+              cabecalho: 'Instituição Bancária',
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
+          const SizedBox(height: 3),
+          CustomRow(
+              cabecalho: detStatement!.tType,
+              fontSize: 20,
+              fontWeight: FontWeight.normal),
+          const SizedBox(height: 15),
+          CustomRow(
+              cabecalho: 'Data/Hora',
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
+          const SizedBox(height: 5),
+          CustomRow(
+              cabecalho: detStatement!.createdAt,
+              fontSize: 20,
+              fontWeight: FontWeight.normal),
+          const SizedBox(height: 15),
+          CustomRow(
+              cabecalho: 'Autenticação',
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
+          const SizedBox(height: 5),
+          CustomRow(
+              cabecalho: detStatement!.authentication,
+              fontSize: 20,
+              fontWeight: FontWeight.normal),
+          const SizedBox(height: 60),
+          CustomButtonCompartilhar(
+            titulo: 'Compartilhar',
+            fontSize: 18,
+          ),
+          const SizedBox(height: 5),
+        ],
+      );
 }
