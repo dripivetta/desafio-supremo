@@ -1,3 +1,4 @@
+import 'package:desafio/presentation/pages/home_page.dart';
 import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:desafio/widgets/component/loading_progress.dart';
 import 'package:flutter/material.dart';
