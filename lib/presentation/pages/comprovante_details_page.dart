@@ -5,12 +5,8 @@ import 'package:desafio/data/usecases/get_detail_statements.dart';
 import 'package:desafio/models/detail_statement_model.dart';
 import 'package:desafio/services/http_service_imp.dart';
 import 'package:desafio/widgets/component/comprovante_details_page/custom_app_bar.dart';
-import 'package:desafio/widgets/component/comprovante_details_page/custom_button_compartilhar.dart';
-import 'package:desafio/widgets/component/comprovante_details_page/customdivider.dart';
-import 'package:desafio/widgets/component/comprovante_details_page/customrow.dart';
 import 'package:desafio/widgets/component/loading_progress.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../widgets/component/comprovante.dart';
@@ -29,6 +25,7 @@ class ComprovanteDetailsPage extends StatefulWidget {
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
   final controller = ScreenshotController();
+  
   //late DetStatement? detStatement;
   late Future<DetStatement> detStatement;
 
