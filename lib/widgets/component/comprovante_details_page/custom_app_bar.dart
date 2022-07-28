@@ -12,7 +12,9 @@ class CustomAppBar extends StatelessWidget {
         color: Colors.black,
         iconSize: 35,
         icon: const Icon(Icons.keyboard_arrow_left),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
     );
   }
