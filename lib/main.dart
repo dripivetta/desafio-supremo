@@ -1,5 +1,5 @@
-import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:desafio/presentation/pages/home_page.dart';
+import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {

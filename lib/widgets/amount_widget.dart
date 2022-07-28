@@ -28,9 +28,10 @@ class _AmountWidgetState extends State<AmountWidget>
     //return Text(amount.amount.toString());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: [   
         SizedBox(
           height: 100,
+          width: MediaQuery.of(context).size.width,
           child: Card(
             color: BaseColors().getWhiteColor(),
             elevation: 0,
