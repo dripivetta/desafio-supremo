@@ -38,7 +38,7 @@ class CustomCardStatement extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 6, left: 30, right: 15),
+                    padding: const EdgeInsets.only(top: 6, left: 30, right: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

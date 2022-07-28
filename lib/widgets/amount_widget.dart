@@ -29,6 +29,8 @@ class _AmountWidgetState extends State<AmountWidget> with AutomaticKeepAliveClie
           height: 100,
           width: MediaQuery.of(context).size.width,
           child: Card(
+            color: BaseColors().getWhiteColor(),
+            elevation: 0,
             shape: RoundedRectangleBorder(),
             child: Padding(
               padding: EdgeInsets.all(10),

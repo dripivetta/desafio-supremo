@@ -25,7 +25,7 @@ class ComprovanteDetailsPage extends StatefulWidget {
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
   //late DetStatement? detStatement;
-  late Future<DetStatement>? detStatement;
+  late Future<DetStatement> detStatement;
 
   final nfc = NumberFormat.currency(
     symbol: "R\$",
@@ -66,7 +66,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
               body: detStatement == null //verifica se tem dados
                   ? CircularProgressIndicator()
                   : Container(
-                      margin: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.only(top: 10, bottom: 10, left: 16, right: 10 ),
                       child: SingleChildScrollView(
                         physics: NeverScrollableScrollPhysics(),
                         child: Column(
@@ -88,7 +88,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                             ),
                             const SizedBox(height: 3),
                             CustomRow(
-                                cabecalho: snapshot.data!.tType,
+                                cabecalho: snapshot.data!.description,
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal),
                             const SizedBox(height: 15),
@@ -107,10 +107,15 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold),
                             const SizedBox(height: 3),
-                            CustomRow(
-                                cabecalho: snapshot.data!.to,
+                            snapshot.data!.to != null 
+                            ? CustomRow(
+                                cabecalho: snapshot.data!.to!,
                                 fontSize: 20,
-                                fontWeight: FontWeight.normal),
+                                fontWeight: FontWeight.normal)
+                            : CustomRow(
+                                cabecalho: snapshot.data!.from!,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal)  ,   
                             const SizedBox(height: 15),
                             CustomRow(
                                 cabecalho: 'Instituição Bancária',
@@ -128,7 +133,7 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                                 fontWeight: FontWeight.bold),
                             const SizedBox(height: 5),
                             CustomRow(
-                                cabecalho: snapshot.data!.createdAt,
+                                cabecalho: DateFormat('dd/MM/yyyy - hh:mm').format(snapshot.data!.createdAt),
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal),
                             const SizedBox(height: 15),
@@ -142,12 +147,10 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal),
                             const SizedBox(height: 150),
-                            Container(
-                              //height: MediaQuery.of(context).size.height * 0.3,
-                              child: CustomButtonCompartilhar(
-                                titulo: 'Compartilhar',
-                                fontSize: 18,
-                              ),
+                            
+                            CustomButtonCompartilhar(
+                              titulo: 'Compartilhar',
+                              fontSize: 18,
                             ),
                             const SizedBox(height: 5),
                           ],

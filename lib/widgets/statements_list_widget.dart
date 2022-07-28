@@ -34,10 +34,10 @@ class _StatementsListWidgetState extends State<StatementsListWidget> {
             Positioned(
               top: 0.0,
               bottom: 0.0,
-              left: 24.0,
+              left: 25.0,
               child: Container(
                 height: double.infinity,
-                width: 1.0,
+                width: 0.5,
                 color: BaseColors().getGreyColor(),
               ),
             ),
