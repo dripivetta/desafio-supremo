@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:desafio/data/datasources/detStatements_remote_ds.dart';
 import 'package:desafio/data/repositories/repository.dart';
 import 'package:desafio/models/detail_statement_model.dart';

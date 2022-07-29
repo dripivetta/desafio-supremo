@@ -13,21 +13,15 @@ import '../../widgets/component/comprovante.dart';
 
 class ComprovanteDetailsPage extends StatefulWidget {
   final String id;
-
-  const ComprovanteDetailsPage({
-    Key? key,
-    required this.id,
-  }) : super(key: key);
+  const ComprovanteDetailsPage({Key? key, required this.id}) : super(key: key);
 
   @override
   State<ComprovanteDetailsPage> createState() => _ComprovanteDetailsPageState();
 }
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
-  final controller = ScreenshotController();
-
-  //late DetStatement? detStatement;
   late Future<DetStatement> detStatement;
+  final controller = ScreenshotController();
 
   final GetDetStatements _detStt = GetDetStatements(
     DetStatementsRepositoryImpl(
@@ -40,7 +34,6 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
   @override
   void initState() {
     detStatement = _detStt.get(widget.id);
-
     super.initState();
   }
 
@@ -50,7 +43,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
       future: detStatement,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Scaffold(body: CustomLoading());
+          return Scaffold(
+            body: CustomLoading(),
+          );
         }
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {

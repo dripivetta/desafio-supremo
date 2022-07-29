@@ -22,6 +22,7 @@ class _AmountWidgetState extends State<AmountWidget>
   );
 
   @override
+  // ignore: must_call_super
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

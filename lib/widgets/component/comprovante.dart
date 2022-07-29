@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:desafio/models/detail_statement_model.dart';
-import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
@@ -11,17 +10,36 @@ import 'comprovante_details_page/custom_button_compartilhar.dart';
 import 'comprovante_details_page/customdivider.dart';
 import 'comprovante_details_page/customrow.dart';
 
-class ComprovantePage extends StatelessWidget {
-  final controller = ScreenshotController();
-
-  ComprovantePage({Key? key, required this.value}) : super(key: key);
+class ComprovantePage extends StatefulWidget {
+  const ComprovantePage({Key? key, required this.value}) : super(key: key);
 
   final DetStatement value;
+
+  @override
+  State<ComprovantePage> createState() => _ComprovantePageState();
+}
+
+class _ComprovantePageState extends State<ComprovantePage> {
+  final controller = ScreenshotController();
+  final bool _isLoading = false;
 
   final nfc = NumberFormat.currency(
     symbol: "R\$",
     locale: "pt_BR",
   );
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future saveAndShare(Uint8List bytes) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final image = File('${directory.path}/flutter.jpeg');
+    image.writeAsBytesSync(bytes);
+
+    await Share.shareFiles([image.path]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,20 +61,13 @@ class ComprovantePage extends StatelessWidget {
                   var image = await controller.captureFromWidget(buildImage());
                   saveAndShare(image);
                 },
+                isLoading: _isLoading,
               ),
             ),
           ],
         ),
       ),
     );
-  }
-
-  Future saveAndShare(Uint8List bytes) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final image = File('${directory.path}/flutter.jpeg');
-    image.writeAsBytesSync(bytes);
-
-    await Share.shareFiles([image.path]);
   }
 
   Widget buildImage() => Stack(
@@ -82,7 +93,7 @@ class ComprovantePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 CustomRow(
-                    cabecalho: value.description,
+                    cabecalho: widget.value.description,
                     fontSize: 20,
                     fontWeight: FontWeight.normal),
                 const SizedBox(height: 15),
@@ -92,7 +103,7 @@ class ComprovantePage extends StatelessWidget {
                     fontWeight: FontWeight.bold),
                 const SizedBox(height: 3),
                 CustomRow(
-                    cabecalho: nfc.format(value.amount),
+                    cabecalho: nfc.format(widget.value.amount),
                     fontSize: 20,
                     fontWeight: FontWeight.normal),
                 const SizedBox(height: 15),
@@ -101,13 +112,13 @@ class ComprovantePage extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.bold),
                 const SizedBox(height: 3),
-                value.to != null
+                widget.value.to != null
                     ? CustomRow(
-                        cabecalho: value.to!,
+                        cabecalho: widget.value.to!,
                         fontSize: 20,
                         fontWeight: FontWeight.normal)
                     : CustomRow(
-                        cabecalho: value.from!,
+                        cabecalho: widget.value.from!,
                         fontSize: 20,
                         fontWeight: FontWeight.normal),
                 const SizedBox(height: 15),
@@ -117,7 +128,7 @@ class ComprovantePage extends StatelessWidget {
                     fontWeight: FontWeight.bold),
                 const SizedBox(height: 3),
                 CustomRow(
-                    cabecalho: value.tType,
+                    cabecalho: widget.value.tType,
                     fontSize: 20,
                     fontWeight: FontWeight.normal),
                 const SizedBox(height: 15),
@@ -128,7 +139,7 @@ class ComprovantePage extends StatelessWidget {
                 const SizedBox(height: 5),
                 CustomRow(
                     cabecalho: DateFormat('dd/MM/yyyy - hh:mm')
-                        .format(value.createdAt),
+                        .format(widget.value.createdAt),
                     fontSize: 20,
                     fontWeight: FontWeight.normal),
                 const SizedBox(height: 15),
@@ -138,7 +149,7 @@ class ComprovantePage extends StatelessWidget {
                     fontWeight: FontWeight.bold),
                 const SizedBox(height: 5),
                 CustomRow(
-                    cabecalho: value.authentication,
+                    cabecalho: widget.value.authentication,
                     fontSize: 20,
                     fontWeight: FontWeight.normal),
                 const SizedBox(height: 50),

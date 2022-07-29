@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:desafio/data/utils/urls.dart';
 import 'package:desafio/models/detail_statement_model.dart';
 import 'package:desafio/services/http_service.dart';
