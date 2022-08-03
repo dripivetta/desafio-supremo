@@ -5,7 +5,7 @@ import 'package:desafio/models/amount_model.dart';
 import 'package:desafio/models/statement_model.dart';
 import 'package:desafio/services/http_service_imp.dart';
 import 'package:desafio/widgets/amount_widget.dart';
-import 'package:desafio/widgets/component/loading_progress.dart';
+import 'package:desafio/widgets/component/base_loading_pages/loading_progress.dart';
 import 'package:desafio/widgets/statements_list_widget.dart';
 import 'package:flutter/material.dart';
 
