@@ -7,8 +7,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import 'comprovante_details_page/custom_button_compartilhar.dart';
-import 'comprovante_details_page/customdivider.dart';
-import 'comprovante_details_page/customrow.dart';
+import 'comprovante_details_page/custom_divider.dart';
+import 'comprovante_details_page/custom_row.dart';
 
 class ComprovantePage extends StatefulWidget {
   const ComprovantePage({Key? key, required this.value}) : super(key: key);
