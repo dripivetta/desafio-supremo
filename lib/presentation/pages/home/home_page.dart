@@ -5,7 +5,7 @@ import 'package:desafio/data/usecases/get_statements.dart';
 import 'package:desafio/models/statement_model.dart';
 import 'package:desafio/presentation/pages/home/statement_page.dart';
 import 'package:desafio/services/http_service_imp.dart';
-import 'package:desafio/widgets/component/comprovante_details_page/custom_loading_progress.dart';
+import 'package:desafio/widgets/component/base_loading_pages/loading_progress.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return _isFirstLoadRunning
-        ? CustomHomeLoading()
+        ? CustomLoading()
         : StatementPage(
             isLoadMoreRunning: _isLoadMoreRunning,
             statementsList: statementsList,

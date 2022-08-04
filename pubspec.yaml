@@ -16,6 +16,8 @@ dependencies:
   screenshot: ^1.2.3
   share_plus: ^4.0.10
   path_provider: ^2.0.11
+  firebase_core:
+  firebase_auth:
  
   
   http:
