@@ -1,4 +1,5 @@
 import 'package:desafio/presentation/pages/home/home_page.dart';
+import 'package:desafio/presentation/pages/onboarding/bloc_onboarding.dart';
 import 'package:desafio/widgets/component/onboarding_page/custom_buttom_continue.dart';
 import 'package:desafio/widgets/component/onboarding_page/custom_link_pular_instrucao.dart';
 import 'package:desafio/widgets/component/onboarding_page/custom_paginator.dart';
@@ -14,9 +15,13 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
-  final PageController _controller = PageController();
 
-  int _currentPage = 0;
+  final bloc = Onboarding();
+
+
+  //final PageController _controller = PageController();
+
+  //int _currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +44,10 @@ class _OnboardState extends State<Onboard> {
             child: Stack(
               children: [
                 PageView(
-                  controller: _controller,
+                  controller: bloc.pageController,
                   onPageChanged: (int page) {
                     setState(() {
-                      _currentPage = page;
+                      bloc.changePage(page);
                     });
                   },
                   physics: ClampingScrollPhysics(),
@@ -98,7 +103,7 @@ class _OnboardState extends State<Onboard> {
                   ],
                 ),
                 CustomPaginator(
-                  page: _currentPage,
+                  page: bloc.currentPage,
                   shape: BoxShape.circle,
                   coloridx: BaseColors().getGreenColor(),
                   colornotidx: BaseColors().getGreyColor(),
@@ -111,9 +116,9 @@ class _OnboardState extends State<Onboard> {
                   mainAxisAlignmentRow: MainAxisAlignment.center,
                 ),
                 CustomBottomContinue(
-                  text: _currentPage == 2 ? 'QUERO ENTRAR' : 'CONTINUAR',
+                  text: bloc.currentPage == 2 ? 'QUERO ENTRAR' : 'CONTINUAR',
                   goToInicialPage:
-                      _currentPage == 2 ? goToInicialPage : proximoCard,
+                      bloc.currentPage == 2 ? goToInicialPage : proximoCard,
                   fontSize: 18,
                   color: BaseColors().getWhiteColor(),
                   paddingText:
@@ -158,6 +163,6 @@ class _OnboardState extends State<Onboard> {
   }
 
   proximoCard() {
-    _controller.nextPage(duration: Duration(seconds: 1), curve: Curves.easeIn);
+    bloc.pageController.nextPage(duration: Duration(seconds: 1), curve: Curves.easeIn);
   }
 }

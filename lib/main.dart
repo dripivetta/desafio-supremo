@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: BaseColors().getWhiteColor(),
         brightness: Brightness.light,
       ),
-      home: HomePage(),
+
+      home: Onboard(),
     );
   }
 }
