@@ -1,10 +1,9 @@
-import 'package:desafio/domain/entities/amount.dart';
 import 'package:desafio/injection.dart';
 import 'package:desafio/presentation/bloc/amount/amount_bloc.dart';
 import 'package:desafio/presentation/bloc/amount/amount_event.dart';
 import 'package:desafio/presentation/bloc/amount/amount_state.dart';
-import 'package:desafio/widgets/component/base_colors.dart';
-import 'package:desafio/widgets/component/loading_progress.dart';
+import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -109,9 +108,6 @@ class _AmountWidgetState extends State<AmountWidget>
                 ],
               ),
             ),
-            //child: Icon(_showSaldo == false
-            // ? Icons.visibility_off
-            //: Icons.visibility),
           ),
         ),
       ],

@@ -4,11 +4,11 @@ import 'package:desafio/models/detail_statement_model.dart';
 import 'package:desafio/presentation/bloc/detailStatement/detailStatement_bloc.dart';
 import 'package:desafio/presentation/bloc/detailStatement/detailStatement_event.dart';
 import 'package:desafio/presentation/bloc/detailStatement/detailStatement_state.dart';
+import 'package:desafio/widgets/component/comprovante.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:screenshot/screenshot.dart';
 
-import '../../../widgets/component/comprovante.dart';
 
 class ComprovanteDetailsPage extends StatefulWidget {
   final String id;
@@ -24,7 +24,6 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
 
   @override
   void initState() {
-    //detStatement = _detStt.get(widget.id);
     super.initState();
   }
 

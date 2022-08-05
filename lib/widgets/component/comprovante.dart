@@ -1,15 +1,16 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:desafio/domain/entities/detailStatement.dart';
-import 'package:desafio/widgets/component/comprovante_details_page/custom_app_bar.dart';
+import 'package:desafio/widgets/component/base_appbar_pages/custom_app_bar.dart';
+import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import 'comprovante_details_page/custom_button_compartilhar.dart';
-import 'comprovante_details_page/customdivider.dart';
-import 'comprovante_details_page/customrow.dart';
+import 'comprovante_details_page/custom_divider.dart';
+import 'comprovante_details_page/custom_row.dart';
 
 class ComprovantePage extends StatefulWidget {
   const ComprovantePage({Key? key, required this.value}) : super(key: key);
@@ -46,7 +47,18 @@ class _ComprovantePageState extends State<ComprovantePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56), child: CustomAppBar()),
+          preferredSize: Size.fromHeight(56),
+          child: CustomAppBar(
+            navigator: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.keyboard_arrow_left),
+            iconSize: 35,
+            colorIcon: BaseColors().getBlackColor(),
+            elevationApp: 0,
+            backgroundColorApp: Colors.transparent,
+            scrolledUnderElevationApp: 0,
+          )),
       body: Container(
         margin: const EdgeInsets.only(top: 10, bottom: 10, left: 16, right: 10),
         child: SingleChildScrollView(

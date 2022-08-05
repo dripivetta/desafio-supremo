@@ -1,4 +1,4 @@
-import 'package:desafio/widgets/component/base_colors.dart';
+import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomDivider extends StatelessWidget {

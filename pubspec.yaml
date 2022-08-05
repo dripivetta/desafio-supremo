@@ -20,10 +20,14 @@ dependencies:
   get_it: ^7.2.0
   screenshot: ^1.2.3
   share_plus: ^4.0.10
+  provider:
   path_provider: ^2.0.11
   either_dart: ^0.2.0
   stream_transform: ^2.0.0
   bloc_concurrency:
+  firebase_core:
+  firebase_auth:
+
  
   
   http:
@@ -36,7 +40,7 @@ dependencies:
 
 flutter_native_splash:
   color: "#00C1AF" 
-  image: "assets/img/splash.png"
+  image: "assets/img/splashpage/splash.png"
   android: true
   ios: true
   # The following adds the Cupertino Icons font to your application.
@@ -53,6 +57,9 @@ dev_dependencies:
 flutter:
   assets:
     - assets/img/splash.png
+    - assets/img/onboarding/cell.png
+    - assets/img/onboarding/moca.png
+    - assets/img/onboarding/cellmoca.png
 
   uses-material-design: true
 
