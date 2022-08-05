@@ -1,15 +1,21 @@
-import 'package:desafio/models/statement_model.dart';
+import 'package:desafio/injection.dart';
+import 'package:desafio/presentation/bloc/statement/statement_bloc.dart';
+import 'package:desafio/presentation/bloc/statement/statement_event.dart';
+import 'package:desafio/presentation/bloc/statement/statement_state.dart';
 import 'package:desafio/widgets/component/base_colors.dart';
+import 'package:desafio/widgets/component/loading_progress.dart';
 import 'package:desafio/widgets/custom_card_statement.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StatementsListWidget extends StatefulWidget {
-  final List<Statement> statementsList;
+  //final StatementHasData state;
+
   final ScrollController controller;
 
   const StatementsListWidget({
     Key? key,
-    required this.statementsList,
+    //required this.state,
     required this.controller,
   }) : super(key: key);
 
@@ -20,16 +26,35 @@ class StatementsListWidget extends StatefulWidget {
 class _StatementsListWidgetState extends State<StatementsListWidget> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return BlocBuilder<StatementBloc, StatementState>(
+      bloc: getIt.get<StatementBloc>()..add(FetchStatement()),
+      builder: (context, state) {
+        if (state is StatementIsEmpty) {
+          return CustomLoading();
+        }
+
+        if (state is StatementHasData) {
+          if (state.statement.isEmpty) {
+            return Text('No Statements');
+          }
+
+          return 
+          
+          
+          ListView.builder(
       shrinkWrap: true,
       controller: widget.controller,
-      itemCount: widget.statementsList.length,
+      itemCount: state.hasReachedMax
+          ? state.statement.length
+          : state.statement.length + 1,
       itemBuilder: (BuildContext context, int index) {
+        if (index >= state.statement.length) return CustomLoading();
+
         return Stack(children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(left: 24),
             child: CustomCardStatement(
-              statement: widget.statementsList[index],
+              statement: state.statement[index],
               idx: index,
             ),
           ),
@@ -59,5 +84,21 @@ class _StatementsListWidgetState extends State<StatementsListWidget> {
         ]);
       },
     );
+
+
+
+        } else if (state is StatementIsError) {
+          return const Center(
+            child: Text('Error'),
+          );
+        } else {
+          return const Center(
+            child: Text(''),
+          );
+        }
+      },
+    );
+    
+    
   }
 }

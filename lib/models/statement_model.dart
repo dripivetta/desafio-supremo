@@ -1,38 +1,28 @@
-// To parse this JSON data, do
-//
-//     final statement = statementFromJson(jsonString);
-
-import 'dart:convert';
-
+import 'package:desafio/domain/entities/statement.dart';
 import 'package:intl/intl.dart';
 
-List<Statement> statementFromJson(String str) => List<Statement>.from(json.decode(str).map((x) => Statement.fromJson(x)));
+class StatementModel {
+  StatementModel({
+    required this.createdAt,
+    required this.id,
+    required this.amount,
+    required this.description,
+    required this.tType,
+    this.to,
+    this.from,
+    this.bankName,
+  });
 
-String statementToJson(List<Statement> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+  final DateTime createdAt;
+  final String id;
+  final int amount;
+  final String description;
+  final String tType;
+  final String? bankName;
+  String? from;
+  String? to;
 
-class Statement {
-  
-    Statement({
-        required this.createdAt,
-        required this.id,
-        required this.amount,
-        required this.description,
-        required this.tType,
-        this.to,
-        this.from,
-        this.bankName,
-    });
-
-    final DateTime createdAt;
-    final String id;
-    final int amount;
-    String? to;
-    final String description;
-    final String tType;
-    String? from;
-    final String? bankName;
-
-    factory Statement.fromJson(Map<String, dynamic> json) => Statement(
+  factory StatementModel.fromJson(Map<String, dynamic> json) => StatementModel(
         createdAt: DateTime.parse(json["createdAt"]),
         id: json["id"],
         amount: json["amount"],
@@ -41,9 +31,9 @@ class Statement {
         tType: json["tType"],
         from: json["from"],
         bankName: json["bankName"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "createdAt": DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(createdAt),
         "id": id,
         "amount": amount,
@@ -52,9 +42,9 @@ class Statement {
         "tType": tType,
         "from": from,
         "bankName": bankName,
-    };
+      };
 
-     Statement toEntity() => Statement(
+  Statement toEntity() => Statement(
         createdAt: createdAt,
         id: id,
         amount: amount,
@@ -65,4 +55,14 @@ class Statement {
         bankName: bankName,
       );
 
+  List<Object?> get props => [
+        createdAt,
+        id,
+        amount,
+        to,
+        description,
+        tType,
+        from,
+        bankName,
+      ];
 }

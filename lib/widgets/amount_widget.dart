@@ -1,12 +1,16 @@
-import 'package:desafio/models/amount_model.dart';
+import 'package:desafio/domain/entities/amount.dart';
+import 'package:desafio/injection.dart';
+import 'package:desafio/presentation/bloc/amount/amount_bloc.dart';
+import 'package:desafio/presentation/bloc/amount/amount_event.dart';
+import 'package:desafio/presentation/bloc/amount/amount_state.dart';
 import 'package:desafio/widgets/component/base_colors.dart';
+import 'package:desafio/widgets/component/loading_progress.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-
 class AmountWidget extends StatefulWidget {
-  const AmountWidget({Key? key, required this.amount}) : super(key: key);
-  final Amount amount;
+  const AmountWidget({Key? key}) : super(key: key);
 
   @override
   State<AmountWidget> createState() => _AmountWidgetState();
@@ -14,7 +18,7 @@ class AmountWidget extends StatefulWidget {
 
 class _AmountWidgetState extends State<AmountWidget>
     with AutomaticKeepAliveClientMixin {
-  bool _showSaldo = true;
+  bool _showSaldo = false;
 
   var nfc = NumberFormat.currency(
     symbol: "R\$",
@@ -26,7 +30,7 @@ class _AmountWidgetState extends State<AmountWidget>
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [   
+      children: [
         SizedBox(
           height: 100,
           width: MediaQuery.of(context).size.width,
@@ -64,24 +68,42 @@ class _AmountWidgetState extends State<AmountWidget>
                   Padding(padding: EdgeInsets.all(3)),
                   Row(
                     children: [
-                      _showSaldo
-                          ? Text(
-                              nfc.format(widget.amount.amount),
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: BaseColors().getGreenColor(),
-                              ),
-                            )
-                          : Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(1, 12, 4, 4),
-                              child: Container(
-                                height: 5,
-                                width: 150,
-                                color: BaseColors().getGreenColor(),
-                              ),
-                            ),
+                      BlocBuilder(
+                        bloc: getIt.get<AmountBloc>()
+                          ..add(
+                            FetchAmount(),
+                          ),
+                        builder: (context, state) {
+                          if (state is AmountHasData) {
+                            return _showSaldo
+                                ? Text(
+                                    nfc.format(state.result.amount),
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: BaseColors().getGreenColor(),
+                                    ),
+                                  )
+                                : Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        1, 12, 4, 4),
+                                    child: Container(
+                                      height: 5,
+                                      width: 150,
+                                      color: BaseColors().getGreenColor(),
+                                    ),
+                                  );
+                          } else if (state is AmountIsError) {
+                            return const Center(
+                              child: Text('Error'),
+                            );
+                          } else {
+                            return const Center(
+                              child: Text(''),
+                            );
+                          }
+                        },
+                      )
                     ],
                   ),
                 ],
@@ -90,15 +112,6 @@ class _AmountWidgetState extends State<AmountWidget>
             //child: Icon(_showSaldo == false
             // ? Icons.visibility_off
             //: Icons.visibility),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(12),
-          child: SizedBox(
-            child: Text(
-              'Suas movimentações',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
           ),
         ),
       ],

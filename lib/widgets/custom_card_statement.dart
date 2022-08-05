@@ -1,5 +1,5 @@
-import 'package:desafio/models/statement_model.dart';
-import 'package:desafio/presentation/pages/comprovante_details_page.dart';
+import 'package:desafio/domain/entities/statement.dart';
+import 'package:desafio/presentation/pages/comprovante/comprovante_details_page.dart';
 import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
