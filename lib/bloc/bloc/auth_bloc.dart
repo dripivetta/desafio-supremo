@@ -1,8 +1,11 @@
 
 import 'package:bloc/bloc.dart';
-import 'package:desafio/bloc/auth_event.dart';
-import 'package:desafio/bloc/auth_state.dart';
-import '../data/repositories/authentication/auth_repository.dart';
+import 'package:desafio/data/repositories/authentication/auth_repository.dart';
+import 'package:equatable/equatable.dart';
+
+
+part 'auth_event.dart';
+part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;

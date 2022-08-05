@@ -1,6 +1,6 @@
 
 
-import 'package:desafio/bloc/auth_bloc.dart';
+import 'package:desafio/bloc/bloc/auth_bloc.dart';
 import 'package:desafio/data/repositories/authentication/auth_repository.dart';
 import 'package:desafio/presentation/pages/dashboard/dashboard.dart';
 import 'package:desafio/presentation/pages/signIn/sign_in_page.dart';
@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(create: (context) => AuthRepository(),
+    
     child: BlocProvider(create: (context)=> AuthBloc(
       authRepository: RepositoryProvider.of<AuthRepository>(context),
       ),
