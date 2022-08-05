@@ -19,7 +19,7 @@ class StatementBloc extends Bloc<StatementEvent, StatementState> {
               emit(StatementIsError(failure.message));
             },
             (data) {
-              //offset++;
+              offset++;
               emit(StatementHasData(statement: data, hasReachedMax: false));
             },
           );
@@ -35,7 +35,7 @@ class StatementBloc extends Bloc<StatementEvent, StatementState> {
               emit(StatementIsError(failure.message));
             },
             (data) {
-              // offset++;
+              offset++;
               data.isEmpty
                   ? emit(statementLoaded.copyWith(hasReachedMax: true))
                   : emit(statementLoaded.copyWith(

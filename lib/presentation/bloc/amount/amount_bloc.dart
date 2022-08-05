@@ -7,18 +7,19 @@ class AmountBloc extends Bloc<AmountEvent, AmountState> {
   final GetAmount _getAmount;
 
   AmountBloc(this._getAmount) : super(AmountEmpty()) {
-    on<FetchAmount>((event, emit) async {
-      emit(AmountLoading());
-
-      final result = await _getAmount.get();
-      result.fold(
-        (failure) {
-          emit(AmountIsError(failure.message));
-        },
-        (data) {
-          emit(AmountHasData(data));
-        },
-      );
-    });
+    on<FetchAmount>(
+      (event, emit) async {
+        emit(AmountLoading());
+        final result = await _getAmount.get();
+        result.fold(
+          (failure) {
+            emit(AmountIsError(failure.message));
+          },
+          (data) {
+            emit(AmountHasData(data));
+          },
+        );
+      },
+    );
   }
 }
