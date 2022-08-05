@@ -1,6 +1,3 @@
-
-
-import 'package:desafio/bloc/bloc/auth_bloc.dart';
 import 'package:desafio/data/repositories/authentication/auth_repository.dart';
 import 'package:desafio/presentation/pages/dashboard/dashboard.dart';
 import 'package:desafio/presentation/pages/signIn/sign_in_page.dart';
@@ -9,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/auth/auth_bloc.dart';
 
 Future main() async {
  WidgetsFlutterBinding.ensureInitialized();
