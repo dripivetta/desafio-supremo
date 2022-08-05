@@ -1,10 +1,11 @@
-import 'package:desafio/bloc/bloc/auth_bloc.dart';
+
 import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:desafio/widgets/component/loading_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/gestures.dart';
 import 'package:email_validator/email_validator.dart';
+import '../../../bloc/auth/auth_bloc.dart';
 import '../dashboard/dashboard.dart';
 
 

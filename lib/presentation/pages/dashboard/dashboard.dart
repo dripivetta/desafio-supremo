@@ -4,7 +4,8 @@ import 'package:desafio/presentation/pages/signIn/sign_in_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../bloc/bloc/auth_bloc.dart';
+import '../../../bloc/auth/auth_bloc.dart';
+
 
 
 class Dashboard extends StatelessWidget {
