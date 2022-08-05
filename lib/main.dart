@@ -1,14 +1,15 @@
 import 'package:desafio/presentation/pages/forgotpassword/forgotpassword.dart';
 import 'package:desafio/presentation/pages/home/home_page.dart';
 import 'package:desafio/presentation/pages/onboarding/onboarding.dart';
+import 'package:desafio/presentation/pages/register/register.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() async{
- //WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  //WidgetsFlutterBinding.ensureInitialized();
   //await Firebase.initializeApp();
-  //runApp(const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: BaseColors().getWhiteColor(),
         brightness: Brightness.light,
       ),
-      home: ForgotPassword(),
+      home: RegisterPage(),
     );
   }
 }

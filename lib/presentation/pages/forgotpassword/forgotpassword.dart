@@ -1,6 +1,6 @@
 import 'package:desafio/widgets/component/base_appbar_pages/custom_app_bar.dart';
-import 'package:desafio/widgets/component/forgotpassword/firebasebuttom.dart';
 import 'package:desafio/widgets/component/forgotpassword/custom_text_field.dart';
+import 'package:desafio/widgets/component/forgotpassword/forgot_password_buttom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
@@ -13,7 +13,7 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           navigator: () {},
           icon: const Icon(Icons.keyboard_arrow_left),
           iconSize: 35,
-          colorIcon: Colors.black,
+          colorIcon: BaseColors().getBlackColor(),
           elevationApp: 0,
           backgroundColorApp: Colors.transparent,
           scrolledUnderElevationApp: 0,
@@ -58,28 +58,41 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   icon: Icons.email_outlined,
                   text: 'Enter Email',
                   isPasswordType: false,
-                  cursorColor: Colors.white,
-                  textStyleColor: Colors.white.withOpacity(0.9),
-                  colorIcon: Colors.white,
+                  cursorColor: BaseColors().getWhiteColor(),
+                  textStyleColor: BaseColors().getWhiteColor().withOpacity(0.9),
+                  colorIcon: BaseColors().getWhiteColor(),
                   filled: true,
-                  fillColor: Colors.grey.withOpacity(0.3),
-                  labelTextStyleColor: Colors.white.withOpacity(0.9),
+                  fillColor: BaseColors().getGreyColor().withOpacity(0.3),
+                  labelTextStyleColor:
+                      BaseColors().getWhiteColor().withOpacity(0.9),
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   outlineBorderRadius: BorderRadius.circular(18),
                   widthBorderSide: 0,
                   borderStyle: BorderStyle.none,
                 ),
                 SizedBox(height: 16),
-                firebaseButtom(
-                  context,
-                  'Reset Password',
-                  () {
+                ForgotPasswordButtom(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                  ),
+                  buttomColor: MaterialStateProperty.all(
+                    BaseColors().getBlackColor().withOpacity(0.3),
+                  ),
+                  fontWeightText: FontWeight.bold,
+                  fontSizeText: 16,
+                  textColor: BaseColors().getWhiteColor(),
+                  title: 'Reset Password',
+                  onTap: () {
                     FirebaseAuth.instance
                         .sendPasswordResetEmail(
                             email: _emailTextController.text)
                         .then((value) => Navigator.of(context).pop());
                   },
-                ),
+                  marginContainerButtom: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  heightContainerButtom: 50,
+                )
               ],
             ),
           ),
