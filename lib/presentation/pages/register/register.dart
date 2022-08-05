@@ -54,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
             reverse: true,
             child: Padding(
               padding: EdgeInsets.fromLTRB(
-                  20, MediaQuery.of(context).size.height * 0.2, 20, 0),
+                  20, MediaQuery.of(context).size.height * 0.12, 20, 0),
               child: Column(
                 children: <Widget>[
                   Image.asset(
@@ -132,7 +132,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   SizedBox(height: 10),
                   CustomButtomSingUp(
-                    heightContainerButtom: 16,
+                    heightContainerButtom: 48,
                     marginButtom: EdgeInsets.fromLTRB(0, 8, 0, 8),
                     borderRadius: BorderRadius.circular(90),
                     onTap: () {
