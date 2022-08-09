@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:desafio/data/datasources/statements_remote_ds.dart';
 import 'package:desafio/domain/entities/statement.dart';
 import 'package:desafio/domain/repositories/statement_repository_imp.dart';
