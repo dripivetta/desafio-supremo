@@ -54,11 +54,8 @@ class _RegisterPageState extends State<RegisterPage> {
             //reverse: true,
             child: Padding(
               padding: EdgeInsets.fromLTRB(
-<<<<<<< HEAD
                   20, MediaQuery.of(context).size.height * 0.1, 20, 0),
-=======
-                  20, MediaQuery.of(context).size.height * 0.12, 20, 0),
->>>>>>> dev
+
               child: Column(
                 children: <Widget>[
                   Image.asset(

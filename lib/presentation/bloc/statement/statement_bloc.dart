@@ -23,6 +23,7 @@ class StatementBloc extends Bloc<StatementEvent, StatementState> {
               emit(StatementHasData(statement: data, hasReachedMax: false));
             },
           );
+          return;
         }
 
         if (state is StatementHasData) {
@@ -42,6 +43,7 @@ class StatementBloc extends Bloc<StatementEvent, StatementState> {
                       statement: statementLoaded.statement + data));
             },
           );
+
         }
       },
     );
