@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
+
+
+import 'package:flutter/material.dart';
 
 class Onboarding {
- final pageController = PageController();
+  final pageController = PageController();
  int currentPage = 0;
 
   changePage (int page) {

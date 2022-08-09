@@ -1,27 +1,27 @@
 import 'package:desafio/injection.dart';
 import 'package:desafio/presentation/bloc/statement/statement_bloc.dart';
 import 'package:desafio/presentation/bloc/statement/statement_event.dart';
-import 'package:desafio/presentation/pages/home/statement_page.dart';
+import 'package:desafio/presentation/pages/extrato/statement_page.dart';
 
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ExtratoPage extends StatelessWidget {
+  const ExtratoPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return HomeBody();
+    return ExtratoBody();
   }
 }
 
-class HomeBody extends StatefulWidget {
-  const HomeBody({Key? key}) : super(key: key);
+class ExtratoBody extends StatefulWidget {
+  const ExtratoBody({Key? key}) : super(key: key);
 
   @override
-  State<HomeBody> createState() => _HomePageState();
+  State<ExtratoBody> createState() => _ExtratoPageState();
 }
 
-class _HomePageState extends State<HomeBody> {
+class _ExtratoPageState extends State<ExtratoBody> {
   final ScrollController _controller = ScrollController();
 
   @override
