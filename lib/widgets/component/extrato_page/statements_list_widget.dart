@@ -1,3 +1,4 @@
+import 'package:desafio/models/statement_model.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +7,7 @@ class StatementsListWidget extends StatefulWidget {
 
   const StatementsListWidget({
     Key? key,
-    required this.controller,
+    required this.controller, required List<Statement> statementsList,
   }) : super(key: key);
 
   @override

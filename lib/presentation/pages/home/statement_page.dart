@@ -4,9 +4,9 @@ import 'package:desafio/data/usecases/get_amount.dart';
 import 'package:desafio/models/amount_model.dart';
 import 'package:desafio/models/statement_model.dart';
 import 'package:desafio/services/http_service_imp.dart';
-import 'package:desafio/widgets/amount_widget.dart';
 import 'package:desafio/widgets/component/base_loading_pages/loading_progress.dart';
-import 'package:desafio/widgets/statements_list_widget.dart';
+import 'package:desafio/widgets/component/extrato_page/custom_card_amount.dart';
+import 'package:desafio/widgets/component/extrato_page/statements_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class StatementPage extends StatefulWidget {
@@ -59,13 +59,12 @@ class _StatementPageState extends State<StatementPage> {
             valueListenable: amount.amount,
             builder: (__, amount, _) {
               return amount != null
-                  ? AmountWidget(amount: amount) //Widget Ricardo
+                  ? CustomCardAmount(amount: amount) //Widget Ricardo
                   : Center(
                       child: CustomLoading(),
                     );
             },
           ),
-
           Expanded(
             //flex: 10,
             child: StatementsListWidget(
@@ -73,7 +72,6 @@ class _StatementPageState extends State<StatementPage> {
               controller: widget.controller,
             ),
           ),
-
           if (widget.isLoadMoreRunning == true)
             const Padding(
               padding: EdgeInsets.only(top: 10, bottom: 40),
@@ -81,10 +79,6 @@ class _StatementPageState extends State<StatementPage> {
                 child: CustomLoading(),
               ),
             ),
-
-          // When nothing else to load
-          //if (_hasNextPage == false)
-          //Text('chegou no final')
         ],
       ),
     );

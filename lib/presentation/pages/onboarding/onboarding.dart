@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import 'package:desafio/presentation/pages/onboarding/bloc_onboarding.dart';
-=======
->>>>>>> 43913adc1a7631c8387058a20a659b0faaa8c0c6
 import 'package:desafio/presentation/pages/home/home_page.dart';
 import 'package:desafio/widgets/component/onboarding_page/custom_buttom_continue.dart';
 import 'package:desafio/widgets/component/onboarding_page/custom_link_pular_instrucao.dart';

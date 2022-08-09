@@ -1,18 +1,4 @@
-<<<<<<< HEAD
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
-import 'package:desafio/widgets/component/home_page/app_bar.dart';
-import 'package:desafio/widgets/component/home_page/cartao_credito.dart';
-import 'package:desafio/widgets/component/home_page/conta.dart';
-import 'package:desafio/widgets/component/home_page/descubra_mais.dart';
-import 'package:desafio/widgets/component/home_page/emprestimo.dart';
-import 'package:desafio/widgets/component/home_page/icons.dart';
-import 'package:desafio/widgets/component/home_page/informacoes.dart';
-import 'package:desafio/widgets/component/home_page/investimento.dart';
-import 'package:desafio/widgets/component/home_page/seguro_vida.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
-=======
-// ignore_for_file: unnecessary_const
 import 'package:desafio/data/repositories/statement_repository_imp.dart';
 import 'package:desafio/data/datasources/statements_remote_ds.dart';
 import 'package:desafio/data/usecases/get_statements.dart';
@@ -21,13 +7,11 @@ import 'package:desafio/presentation/pages/home/statement_page.dart';
 import 'package:desafio/services/http_service_imp.dart';
 import 'package:desafio/widgets/component/base_loading_pages/loading_progress.dart';
 import 'package:flutter/material.dart';
->>>>>>> 43913adc1a7631c8387058a20a659b0faaa8c0c6
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-<<<<<<< HEAD
   HomePageState createState() => HomePageState();
 }
 
@@ -41,7 +25,6 @@ class HomePageState extends State<HomePage> {
 
   _setStatusbarColor() {
     FlutterStatusbarcolor.setStatusBarColor(BaseColors().getGreenColor());
-=======
   State<HomePage> createState() => _HomePageState();
 }
 
@@ -139,12 +122,11 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     _controller.removeListener(_loadMore);
     super.dispose();
->>>>>>> 43913adc1a7631c8387058a20a659b0faaa8c0c6
   }
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
+
     return Scaffold(
       appBar: appBar(),
       body: body(),

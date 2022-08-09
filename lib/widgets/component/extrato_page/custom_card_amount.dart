@@ -1,9 +1,10 @@
+import 'package:desafio/models/amount_model.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class CustomCardAmount extends StatefulWidget {
-  const CustomCardAmount({Key? key}) : super(key: key);
+  const CustomCardAmount({Key? key, required Amount amount}) : super(key: key);
 
   @override
   State<CustomCardAmount> createState() => _CustomCardAmountState();
