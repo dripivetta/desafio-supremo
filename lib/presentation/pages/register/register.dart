@@ -1,7 +1,7 @@
 import 'package:desafio/widgets/component/base_appbar_pages/custom_app_bar.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/widgets/component/forgotpassword/custom_text_field.dart';
-import 'package:desafio/widgets/component/home_page/home_page.dart';
+import 'package:desafio/presentation/pages/home/home_page.dart';
 import 'package:desafio/widgets/component/register_page/custom_bottom_singup.dart';
 import 'package:desafio/widgets/component/register_page/custom_buttom_singin.dart';
 import 'package:desafio/widgets/component/register_page/descriptions.dart';

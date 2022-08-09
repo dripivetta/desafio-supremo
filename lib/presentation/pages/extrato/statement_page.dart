@@ -1,6 +1,6 @@
-import 'package:desafio/widgets/amount_widget.dart';
+import 'package:desafio/widgets/component/extrato_page/custom_card_amount.dart';
 
-import 'package:desafio/widgets/statements_list_widget.dart';
+import 'package:desafio/widgets/component/extrato_page/statements_list_widget.dart';
 
 import 'package:flutter/material.dart';
 
@@ -40,7 +40,7 @@ class _StatementPageState extends State<StatementPage> {
       ),
       body: Column(
         children: [
-          AmountWidget(),
+          CustomCardAmount(),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [

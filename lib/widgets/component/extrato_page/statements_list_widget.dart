@@ -5,7 +5,7 @@ import 'package:desafio/presentation/bloc/statement/statement_state.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/widgets/component/base_loading_pages/loading_progress.dart';
 
-import 'package:desafio/widgets/custom_card_statement.dart';
+import 'package:desafio/widgets/component/extrato_page/custom_card_statement.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
