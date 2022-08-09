@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+
 class CustomTextField extends StatelessWidget {
   final String text;
   final IconData icon;
@@ -15,6 +17,8 @@ class CustomTextField extends StatelessWidget {
   final BorderRadius outlineBorderRadius;
   final double widthBorderSide;
   final BorderStyle borderStyle;
+  final AutovalidateMode? autovalidateMode;
+  final String? Function(String?)? validator;
 
   // ignore: use_key_in_widget_constructors
   const CustomTextField({
@@ -22,7 +26,7 @@ class CustomTextField extends StatelessWidget {
     required this.text,
     required this.icon,
     required this.isPasswordType,
-    required this.controller,
+    required this.controller,  
     required this.cursorColor,
     required this.textStyleColor,
     required this.colorIcon,
@@ -33,16 +37,25 @@ class CustomTextField extends StatelessWidget {
     required this.outlineBorderRadius,
     required this.widthBorderSide,
     required this.borderStyle,
+             this.autovalidateMode,
+             this.validator,
+  
+    
+    
+      
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
+      
       obscureText: isPasswordType,
       enableSuggestions: !isPasswordType,
       autocorrect: !isPasswordType,
       cursorColor: cursorColor,
+    
+      
       style: TextStyle(
         color: textStyleColor,
       ),
@@ -66,9 +79,13 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
       ),
+      autovalidateMode: autovalidateMode,
+      validator:validator,
+         
       keyboardType: isPasswordType
           ? TextInputType.visiblePassword
           : TextInputType.emailAddress,
-    );
+      );
+    
   }
 }

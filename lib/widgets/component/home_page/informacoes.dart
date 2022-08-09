@@ -1,5 +1,5 @@
-import 'package:desafio/presentation/pages/home/emprestimo.dart';
-import 'package:desafio/presentation/pages/home/seguro_vida.dart';
+import 'package:desafio/widgets/component/home_page/emprestimo.dart';
+import 'package:desafio/widgets/component/home_page/seguro_vida.dart';
 import 'package:flutter/material.dart';
 
 informacoes() {

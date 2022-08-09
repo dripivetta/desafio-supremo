@@ -1,8 +1,7 @@
-
-import 'package:desafio/presentation/pages/home/investimento.dart';
-import 'package:desafio/presentation/pages/home/seguro_celular.dart';
-import 'package:desafio/presentation/pages/home/seguro_vida.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
+import 'package:desafio/widgets/component/home_page/investimento.dart';
+import 'package:desafio/widgets/component/home_page/seguro_celular.dart';
+import 'package:desafio/widgets/component/home_page/seguro_vida.dart';
 import 'package:flutter/material.dart';
 
 class PlanejamentosPage extends StatelessWidget {

@@ -1,7 +1,7 @@
-import 'package:desafio/presentation/pages/home/home_page.dart';
 import 'package:desafio/widgets/component/base_appbar_pages/custom_app_bar.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/widgets/component/forgotpassword/custom_text_field.dart';
+import 'package:desafio/presentation/pages/home/home_page.dart';
 import 'package:desafio/widgets/component/register_page/custom_bottom_singup.dart';
 import 'package:desafio/widgets/component/register_page/custom_buttom_singin.dart';
 import 'package:desafio/widgets/component/register_page/descriptions.dart';
@@ -135,7 +135,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(height: 10),
                   CustomButtomSingUp(
                     heightContainerButtom: 50,
-
                     marginButtom: EdgeInsets.fromLTRB(0, 8, 0, 8),
                     borderRadius: BorderRadius.circular(90),
                     onTap: () {

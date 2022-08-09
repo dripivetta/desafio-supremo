@@ -26,7 +26,6 @@ contaTexto() {
           color: BaseColors().getBlackColor(),
         ),
       ),
-      
       Icon(MdiIcons.chevronRight)
     ],
   );

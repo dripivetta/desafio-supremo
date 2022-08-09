@@ -1,5 +1,5 @@
-import 'package:desafio/presentation/pages/home/indicar_amigos.dart';
-import 'package:desafio/presentation/pages/home/seguro_celular.dart';
+import 'package:desafio/widgets/component/home_page/indicar_amigos.dart';
+import 'package:desafio/widgets/component/home_page/seguro_celular.dart';
 import 'package:flutter/material.dart';
 
 descubraText() {

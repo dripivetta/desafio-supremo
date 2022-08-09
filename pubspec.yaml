@@ -22,21 +22,24 @@ dependencies:
   share_plus: ^4.0.10
   provider:
   path_provider: ^2.0.11
+  mobx: ^2.0.7+5
+  flutter_mobx: ^2.0.6+1
+  flutter_svg:
+  cloud_firestore: ^3.2.1
+  firebase_core: ^1.20.0
+  firebase_auth: ^3.6.2
+  bloc: ^8.0.3
+  email_validator: '^2.1.16'
   either_dart: ^0.2.0
   stream_transform: ^2.0.0
   flutter_statusbarcolor_ns: ^0.4.0
   bloc_concurrency:
-  firebase_core:
-  firebase_auth:
-
- 
-  
   http:
   http_interceptor:
-  flutter_native_splash: ^2.2.3+1
   google_fonts:
   #icon google
   font_awesome_flutter: ^9.0.0
+  google_sign_in: ^5.4.0
 
 
 flutter_native_splash:
@@ -52,8 +55,9 @@ flutter_native_splash:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.0
+  build_runner: ^2.2.0
+  mobx_codegen: ^2.0.7
 
 flutter:
   assets:
@@ -63,6 +67,7 @@ flutter:
     - assets/img/onboarding/cellmoca.png
 
   uses-material-design: true
+  
 
 fonts:
     - family: Khalid

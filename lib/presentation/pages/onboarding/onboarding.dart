@@ -1,5 +1,5 @@
-import 'package:desafio/presentation/pages/home/home_page.dart';
 import 'package:desafio/presentation/pages/onboarding/bloc_onboarding.dart';
+import 'package:desafio/presentation/pages/home/home_page.dart';
 import 'package:desafio/widgets/component/onboarding_page/custom_buttom_continue.dart';
 import 'package:desafio/widgets/component/onboarding_page/custom_link_pular_instrucao.dart';
 import 'package:desafio/widgets/component/onboarding_page/custom_paginator.dart';
@@ -17,6 +17,7 @@ class Onboard extends StatefulWidget {
 class _OnboardState extends State<Onboard> {
 
   final bloc = Onboarding();
+  
 
 
   //final PageController _controller = PageController();

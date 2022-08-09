@@ -1,8 +1,7 @@
-
-import 'package:desafio/presentation/pages/home/bem_vindo.dart';
-import 'package:desafio/presentation/pages/home/icons.dart';
-import 'package:desafio/presentation/pages/home/perfil_usuario.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
+import 'package:desafio/widgets/component/home_page/bem_vindo.dart';
+import 'package:desafio/widgets/component/home_page/icons.dart';
+import 'package:desafio/widgets/component/home_page/perfil_usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

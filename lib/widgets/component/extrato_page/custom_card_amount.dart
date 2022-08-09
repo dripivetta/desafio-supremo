@@ -8,14 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-class AmountWidget extends StatefulWidget {
-  const AmountWidget({Key? key}) : super(key: key);
+class CustomCardAmount extends StatefulWidget {
+  const CustomCardAmount({Key? key}) : super(key: key);
 
   @override
-  State<AmountWidget> createState() => _AmountWidgetState();
+  State<CustomCardAmount> createState() => _CustomCardAmountState();
 }
 
-class _AmountWidgetState extends State<AmountWidget>
+class _CustomCardAmountState extends State<CustomCardAmount>
     with AutomaticKeepAliveClientMixin {
   bool _showSaldo = false;
 

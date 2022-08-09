@@ -48,24 +48,3 @@ investimentoInfo() {
     ),
   );
 }
-
-// investimentoButton() {
-//   return Container(
-//     margin: const EdgeInsets.only(top: 15, left: 120),
-//     child: ElevatedButton(
-//       style: ButtonStyle(
-//         padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-//         backgroundColor: MaterialStateProperty.all(BaseColors().getGreenColor()),
-//         shape: MaterialStateProperty.all(RoundedRectangleBorder()),
-//       ),
-//       child: Text(
-//         'Investir agora',
-//         style: TextStyle(
-//           fontSize: 16,
-//           color: BaseColors().getWhiteColor(),
-//         ),
-//       ),
-//       onPressed: () {},
-//     ),
-//   );
-// }
