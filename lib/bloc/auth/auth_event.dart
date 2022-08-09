@@ -22,6 +22,13 @@ class SignUpRequested extends AuthEvent {
   SignUpRequested(this.email, this.password);
 }
 
+
+class ForgetPasswordRequest extends AuthEvent{
+  final String email;
+
+  ForgetPasswordRequest(this.email);
+}
+
 // When the user signing in with google this event is called and the [AuthRepository] is called to sign in the user
 class GoogleSignInRequested extends AuthEvent {}
 

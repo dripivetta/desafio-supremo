@@ -1,12 +1,12 @@
 import 'package:desafio/data/repositories/authentication/auth_repository.dart';
 import 'package:desafio/presentation/pages/dashboard/dashboard.dart';
+import 'package:desafio/presentation/pages/onboarding/onboarding.dart';
 import 'package:desafio/presentation/pages/signIn/sign_in_page.dart';
-import 'package:desafio/widgets/component/base_colors.dart';
+import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'bloc/auth/auth_bloc.dart';
 
 Future main() async {
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
          builder: (context,snaphot) {
            // If the snapshot has user data, then they're already signed in. So Navigating to the Dashboard.
            if(snaphot.hasData){
-          return const Dashboard();
+          return const Onboard();
           }
           //Otherwise, they are not signed in. Show the sign in page.
             return LoginPage();

@@ -1,12 +1,10 @@
-
-
 import 'package:desafio/presentation/pages/signIn/sign_in_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/auth/auth_bloc.dart';
-
-
+import '../../../widgets/component/base_color_pages/base_colors.dart';
+import '../../../widgets/component/register_page/custom_bottom_singup.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -38,19 +36,25 @@ class Dashboard extends StatelessWidget {
                 style: const TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
-              user.photoURL != null
-                  ? Image.network("${user.photoURL}")
-                  : Container(),
-              user.displayName != null
-                  ? Text("${user.displayName}")
-                  : Container(),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                child: const Text('Sign Out'),
-                onPressed: () {
+                        const SizedBox(height: 16),
+              CustomButtomSingUp(
+                heightContainerButtom: 60,
+                marginButtom: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                borderRadius: BorderRadius.circular(50),
+                onTap: () {
                   // Signing out the user
                   context.read<AuthBloc>().add(SignOutRequested());
                 },
+                textButtom: 'Logout',
+                colorTextButtom: BaseColors().getWhiteColor(),
+                fontSizeText: 16,
+                fontWeightText: FontWeight.bold,
+                backgroundColorButtom: MaterialStateProperty.all(
+                  BaseColors().getBlackColor().withOpacity(0.3),
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18))),
               ),
             ],
           ),

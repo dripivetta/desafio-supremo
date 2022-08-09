@@ -1,14 +1,13 @@
-
-import 'package:desafio/widgets/component/base_colors.dart';
-import 'package:desafio/widgets/component/loading_progress.dart';
+import 'package:desafio/presentation/pages/forgotpassword/forgotpassword.dart';
+import 'package:desafio/presentation/pages/onboarding/onboarding.dart';
+import 'package:desafio/presentation/pages/signUp/sign_up_page.dart';
+import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
+import 'package:desafio/widgets/component/base_loading_pages/loading_progress.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/gestures.dart';
-import 'package:email_validator/email_validator.dart';
 import '../../../bloc/auth/auth_bloc.dart';
-import '../dashboard/dashboard.dart';
-
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -38,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         if (state is Authenticated) {
           // Navigating to the dashboard screen if the user is authenticated
           Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const Dashboard()));
+              MaterialPageRoute(builder: (context) => const Onboard()));
         }
         if (state is AuthError) {
           // Showing the error message if the user has entered invalid credentials
@@ -103,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                                     validator: (val) {
                                       return val != null &&
                                               !EmailValidator.validate(val)
-                                          ? 'Enter a valid email'
+                                          ? 'Insira um email válido'
                                           : null;
                                     }),
                               ),
@@ -123,13 +122,13 @@ class _LoginPageState extends State<LoginPage> {
                                     decoration: InputDecoration(
                                         icon: Icon(Icons.key,
                                             color: BaseColors().getGreyColor()),
-                                        hintText: 'Password'),
+                                        hintText: 'Senha'),
                                     obscureText: true,
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,
                                     validator: (val) {
                                       return val != null && val.length < 6
-                                          ? 'Enter min 6 characters'
+                                          ? 'A senha deve possuir pelo menos 6 caracteres'
                                           : null;
                                     }),
                               ),
@@ -146,12 +145,20 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.only(top: 10, right: 12),
                       child: RichText(
                         text: TextSpan(
-                            text: 'Forgot your password?',
+                            text: 'Esqueceu a senha?',
                             style: TextStyle(
                                 color: BaseColors().getBlackColor(),
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold),
-                            recognizer: TapGestureRecognizer()..onTap = () {}),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ForgotPassword()),
+                                );
+                              }),
                       ),
                     )),
                 SizedBox(height: 70),
@@ -174,8 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     onPressed: () {
-                      _authenticateWithEmailAndPassword(
-                                          context);
+                      _authenticateWithEmailAndPassword(context);
                     },
                   ),
                 ),
@@ -185,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     RichText(
                       text: TextSpan(
-                        text: "Don't have an Account?",
+                        text: "Não possui conta?",
                         style: TextStyle(
                             color: BaseColors().getBlackColor(),
                             fontSize: 14,
@@ -195,12 +201,19 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(padding: EdgeInsets.only(right: 5)),
                     RichText(
                       text: TextSpan(
-                          text: 'Sign Up',
+                          text: 'Registre-se',
                           style: TextStyle(
                               color: BaseColors().getGreenColor(),
                               fontSize: 14,
                               fontWeight: FontWeight.bold),
-                          recognizer: TapGestureRecognizer()..onTap = () {}),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage()),
+                              );
+                            }),
                     ),
                   ],
                 )
@@ -210,8 +223,7 @@ class _LoginPageState extends State<LoginPage> {
           return Container();
         },
       ),
-    )
-    );
+    ));
   }
 
   void _authenticateWithEmailAndPassword(context) {
@@ -221,9 +233,4 @@ class _LoginPageState extends State<LoginPage> {
       );
     }
   }
-
-  
-
-
 }
- 

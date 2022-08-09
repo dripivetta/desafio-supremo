@@ -4,12 +4,12 @@ import 'package:desafio/data/repositories/detStatement_repository_imp.dart';
 import 'package:desafio/data/usecases/get_detail_statements.dart';
 import 'package:desafio/models/detail_statement_model.dart';
 import 'package:desafio/services/http_service_imp.dart';
-import 'package:desafio/widgets/component/comprovante_details_page/custom_app_bar.dart';
-import 'package:desafio/widgets/component/loading_progress.dart';
+import 'package:desafio/widgets/component/base_appbar_pages/custom_app_bar.dart';
+import 'package:desafio/widgets/component/base_loading_pages/loading_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 
-import '../../widgets/component/comprovante.dart';
+import '../../../widgets/component/comprovante.dart';
 
 class ComprovanteDetailsPage extends StatefulWidget {
   final String id;
@@ -54,7 +54,9 @@ class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
             child: Scaffold(
               appBar: PreferredSize(
                 preferredSize: Size.fromHeight(56),
-                child: CustomAppBar(),
+                child: CustomAppBar(navigator: () { 
+                  Navigator.pop(context);
+                 }, icon: const Icon(Icons.keyboard_arrow_left), iconSize: 35, colorIcon: Colors.black, elevationApp: 0, backgroundColorApp: Colors.transparent, scrolledUnderElevationApp: 0,),
               ),
               body: ComprovantePage(
                 value: snapshot.data!,
