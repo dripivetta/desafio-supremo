@@ -1,7 +1,8 @@
+import 'package:desafio/domain/entities/detailStatement.dart';
 import 'package:intl/intl.dart';
 
-class DetStatement {
-  DetStatement({
+class DetStatementModel {
+  DetStatementModel({
     required this.amount,
     required this.id,
     required this.authentication,
@@ -9,40 +10,44 @@ class DetStatement {
     required this.createdAt,
      this.to,
      this.from,
+     this.bankName,
     required this.description,
   });
-  late final int amount;
-  late final String id;
-  late final String authentication;
-  late final String tType;
-  late final DateTime createdAt;
-  late final String? to;
-  late final String? from;
-  late final String description;
+   final int amount;
+   final String id;
+   final String authentication;
+   final String? bankName;
+   final String tType;
+   final DateTime createdAt;
+   final String? to;
+   final String? from;
+   final String description;
   
-  DetStatement.fromJson(Map<String, dynamic> json){
-    amount = json['amount'];
-    id = json['id'];
-    authentication = json['authentication'];
-    tType = json['tType'];
-    createdAt = DateTime.parse(json['createdAt']);
-    to = json['to'];
-    from = json['from'];
-    description = json['description'];
-  }
+  factory DetStatementModel.fromJson(Map<String, dynamic> json) => DetStatementModel(
+    amount: json['amount'],
+    id: json['id'],
+    authentication: json['authentication'],
+    tType: json['tType'],
+    createdAt: DateTime.parse(json['createdAt']),
+    to: json['to'],
+    from: json['from'],
+    bankName: json['bankName'],
+    description: json['description'],
+    );
+  
 
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['amount'] = amount;
-    data['id'] = id;
-    data['authentication'] = authentication;
-    data['tType'] = tType;
-    data["createdAt"] = DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(createdAt);
-    data['to'] = to;
-    data['from'] = from;
-    data['description'] = description;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    'amount': amount,
+    'id': id,
+    'authentication': authentication,
+    'tType': tType,
+    "createdAt": DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(createdAt),
+    'to': to,
+    'from': from,
+    'bankName': bankName,
+    'description': description,
+  };
+
   DetStatement toEntity() => DetStatement(
         createdAt: createdAt,
         id: id,
@@ -50,7 +55,20 @@ class DetStatement {
         to: to,
         from: from,
         description: description,
+        bankName: bankName,
         tType: tType,
         authentication: authentication,
       );
+
+      List<Object?> get props => [
+        amount,
+        id,
+        authentication,
+        tType,
+        createdAt,
+        to,
+        from,
+        bankName,
+        description
+      ];
 }
