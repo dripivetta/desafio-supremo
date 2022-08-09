@@ -1,25 +1,15 @@
-import 'package:desafio/domain/entities/amount.dart';
-import 'package:equatable/equatable.dart';
+class Amount {
+  int? amount;
 
-class AmountModel extends Equatable{
-  final int amount;
+  Amount({this.amount});
 
-  const AmountModel({required this.amount});
+  Amount.fromJson(Map<String, dynamic> json) {
+    amount = json['amount'];
+  }
 
-   AmountModel copyWith({required int amount}) => AmountModel(amount: amount);
-
-  factory AmountModel.fromJson(Map<String, dynamic> json) =>
-    AmountModel(amount: json['amount']);
-  
-
-  Map<String, dynamic> toJson() => {'amount': amount};
-
-  Amount toEntity() => Amount(amount: amount);
-
-  @override
-  List<Object?> get props => [amount];
-
-
-    
-  
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['amount'] = amount;
+    return data;
+  }
 }

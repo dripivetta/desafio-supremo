@@ -1,26 +1,20 @@
-import 'dart:convert';
-
-import 'package:desafio/data/utils/api.dart';
+import 'package:desafio/data/utils/urls.dart';
 import 'package:desafio/models/amount_model.dart';
-import 'package:desafio/widgets/component/error/exception.dart';
-import 'package:http/http.dart' as http;
+import 'package:desafio/services/http_service.dart';
 
 abstract class AmountRemoteDataSource {
-  Future<AmountModel> getAmount();
+  Future<Amount> getAmount();
 }
 
 class AmountRemoteDataSourceImpl implements AmountRemoteDataSource {
-  final http.Client client;
-  AmountRemoteDataSourceImpl({required this.client});
+  final HttpService httpService;
+  AmountRemoteDataSourceImpl({required this.httpService});
 
   @override
-  Future<AmountModel> getAmount() async {
-    final response = await client.get(Uri.parse(API.amount),headers: API.defaultHeaders);
+  Future<Amount> getAmount() async {
+    final response = await httpService.get(Urls.amount());
+    Amount amount = Amount.fromJson(response);
 
-    if (response.statusCode == 200) {
-      return AmountModel.fromJson(json.decode(response.body));
-    } else {
-      throw ServerException();
-    }
+    return amount;
   }
 }

@@ -1,33 +1,22 @@
 // ignore_for_file: file_names
 
-import 'dart:convert';
-
-import 'package:desafio/data/utils/api.dart';
+import 'package:desafio/data/utils/urls.dart';
 import 'package:desafio/models/detail_statement_model.dart';
-import 'package:desafio/widgets/component/error/exception.dart';
-import 'package:http/http.dart' as http;
+import 'package:desafio/services/http_service.dart';
 
 abstract class DetStatementsRemoteDataSource {
-  Future<DetStatementModel> getDetStatement(String id);
+  Future<DetStatement> getDetStatement(String id);
 }
 
-class DetStatementsRemoteDataSourceImpl
-    implements DetStatementsRemoteDataSource {
-  final http.Client client;
-  DetStatementsRemoteDataSourceImpl({required this.client});
+class DetStatementsRemoteDataSourceImpl implements DetStatementsRemoteDataSource {
+  final HttpService httpService;
+  DetStatementsRemoteDataSourceImpl({required this.httpService});
 
   @override
-  Future<DetStatementModel> getDetStatement(String id) async {
-    var response = await client.get(
-      Uri.parse(API.statementDetail(id)),
-      headers: API.defaultHeaders,
-    );
+  Future<DetStatement> getDetStatement(String id) async {
+    var response = await httpService.get(Urls.statementDetail(id));
+    DetStatement detStatements = DetStatement.fromJson(response);
 
-    if (response.statusCode == 200) {
-      return DetStatementModel.fromJson(json.decode(response.body));
-
-    } else {
-      throw ServerException();
-    }
+    return detStatements;
   }
 }
