@@ -1,4 +1,4 @@
-import 'package:desafio/presentation/pages/home_page.dart';
+import 'package:desafio/presentation/home/home_page.dart';
 import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: BaseColors().getWhiteColor(),
         brightness: Brightness.light,
       ),
+      // home: HomePage(),
       home: HomePage(),
     );
   }

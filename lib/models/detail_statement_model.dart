@@ -39,4 +39,13 @@ class DetStatement {
     data['description'] = description;
     return data;
   }
+  DetStatement toEntity() => DetStatement(
+        createdAt: createdAt,
+        id: id,
+        amount: amount,
+        to: to,
+        description: description,
+        tType: tType,
+        authentication: authentication,
+      );
 }

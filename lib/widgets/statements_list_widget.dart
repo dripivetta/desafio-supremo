@@ -17,6 +17,7 @@ class StatementsListWidget extends StatefulWidget {
 }
 
 class _StatementsListWidgetState extends State<StatementsListWidget> {
+  
   @override
   Widget build(BuildContext context) {
     return ListView.separated(

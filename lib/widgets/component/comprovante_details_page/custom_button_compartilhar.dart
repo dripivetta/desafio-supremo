@@ -1,3 +1,4 @@
+import 'package:desafio/widgets/component/base_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonCompartilhar extends StatelessWidget {
@@ -8,21 +9,25 @@ class CustomButtonCompartilhar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        minimumSize: MaterialStateProperty.all(
-          const Size(500, 50),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: ElevatedButton(
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(18)),
+          backgroundColor: MaterialStateProperty.all<Color>(BaseColors().getGreenColor()),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder()),
         ),
-      ),
-      child: Text(
-        titulo,
-        style: TextStyle(
-        fontSize: fontSize,
+        child: Text(
+          titulo,
+          style: TextStyle(
+          color: BaseColors().getWhiteColor(),
+          fontSize: fontSize,
+          ),
         ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
-      onPressed: () {
-        Navigator.pop(context);
-      },
     );
   }
 }

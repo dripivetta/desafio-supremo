@@ -1,10 +1,15 @@
 import 'dart:core';
+import 'package:desafio/data/datasources/detStatements_remote_ds.dart';
+import 'package:desafio/data/repositories/detStatement_repository_imp.dart';
+import 'package:desafio/data/usecases/get_detail_statements.dart';
 import 'package:desafio/models/detail_statement_model.dart';
-import 'package:desafio/widgets/component/base_colors.dart';
+import 'package:desafio/services/http_service_imp.dart';
+import 'package:desafio/widgets/component/comprovante_details_page/custom_app_bar.dart';
 import 'package:desafio/widgets/component/comprovante_details_page/custom_button_compartilhar.dart';
 import 'package:desafio/widgets/component/comprovante_details_page/customdivider.dart';
 import 'package:desafio/widgets/component/comprovante_details_page/customrow.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ComprovanteDetailsPage extends StatefulWidget {
   final String id;
@@ -19,237 +24,119 @@ class ComprovanteDetailsPage extends StatefulWidget {
 }
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
-  late final DetStatement detStatement;
+  //late DetStatement? detStatement;
+  late DetStatement? detStatement;
+  final nfc = NumberFormat.currency(
+    symbol: "R\$",
+    locale: "pt_BR",
+  );
+
+  final GetDetStatements _detStt = GetDetStatements(
+    DetStatementsRepositoryImpl(
+      DetStatementsRemoteDataSourceImpl(
+        httpService: HttpServiceImpl(),
+      ),
+    ),
+  );
+
+  @override
+  void initState() {
+    _getDetStatement();
+    super.initState();
+  }
+
+  void _getDetStatement() async {
+    detStatement = await _detStt.get(widget.id);
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        // leading para inserir um ícone do lado esquerdo
-        leading: IconButton(
-          color: Colors.black,
-          iconSize: 35,
-          icon: const Icon(Icons.keyboard_arrow_left),
-          onPressed: () {},
-        ),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(56),
+        child: CustomAppBar(),
       ),
       body: Container(
         margin: const EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              CustomRow(cabecalho: 'Comprovante', fontSize: 20, fontWeight: FontWeight.bold,),
+              CustomRow(
+                cabecalho: 'Comprovante',
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
               const SizedBox(height: 2),
-              CustomDivider(), 
+              CustomDivider(),
               const SizedBox(height: 15),
-              
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'Tipo de movimentação',
-              //       style: TextStyle(
-              //         fontSize: 18,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-
-              // const SizedBox(height: 2),
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'description.toString()',
-              //       style: TextStyle(
-              //         fontSize: 20,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // const SizedBox(height: 15),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'Valor',
-              //       style: TextStyle(
-              //         fontSize: 18,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-
-              // const SizedBox(height: 2),
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'R\$ ' 'amount.toString()',
-              //       style: TextStyle(
-              //         fontSize: 20,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // const SizedBox(height: 15),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'Recebedor',
-              //       style: TextStyle(
-              //         fontSize: 18,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-
-              // const SizedBox(height: 2),
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'to.toString()',
-              //       style: TextStyle(
-              //         fontSize: 20,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // const SizedBox(height: 15),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'Instituição Bancária',
-              //       style: TextStyle(
-              //         fontSize: 18,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-
-              // const SizedBox(height: 2),
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'tTipe.toString()',
-              //       style: TextStyle(
-              //         fontSize: 20,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // const SizedBox(height: 15),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'Data/Hora',
-              //       style: TextStyle(
-              //         fontSize: 18,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-
-              // const SizedBox(height: 2),
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'createdAt.toString()',
-              //       style: TextStyle(
-              //         fontSize: 20,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // const SizedBox(height: 15),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'Autenticação',
-              //       style: TextStyle(
-              //         fontSize: 18,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-
-              // const SizedBox(height: 2),
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: const [
-              //     Text(
-              //       'authentication.toString()',
-              //       style: TextStyle(
-              //         fontSize: 20,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // const SizedBox(height: 50),
-              // ElevatedButton(
-              //   style: ButtonStyle( 
-              //     minimumSize: MaterialStateProperty.all(
-              //       const Size(500, 50),
-              //     ),
-              //   ),
-              //   onPressed: () {},
-              //   child: const Text(
-              //     'Compartilhar',
-              //     style: TextStyle(
-              //       fontSize: 18,
-              //     ),
-              //   ),
-              // ),
-              const SizedBox(height: 2),
-              CustomRow(cabecalho: 'Tipo de movimentação', fontSize: 18, fontWeight: FontWeight.bold,),
+              CustomRow(
+                cabecalho: 'Tipo de movimentação',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
               const SizedBox(height: 3),
-              CustomRow(cabecalho: 'detStatement.description.toString()', fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(
+                  cabecalho: detStatement!.description,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              CustomRow(cabecalho: 'Valor', fontSize: 18, fontWeight: FontWeight.bold),
+              CustomRow(
+                  cabecalho: 'Valor',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-              CustomRow(cabecalho: 'R\$ ${'detStatement.amoun'}', fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(
+                  cabecalho: nfc.format(detStatement!.amount),
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              CustomRow(cabecalho: 'Recebedor', fontSize: 18, fontWeight: FontWeight.bold),
+              CustomRow(
+                  cabecalho: 'Recebedor',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-              CustomRow(cabecalho: 'detStatement.to.toString()', fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(
+                  cabecalho: detStatement!.to,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              CustomRow(cabecalho: 'Instituição Bancária', fontSize: 18, fontWeight: FontWeight.bold), 
+              CustomRow(
+                  cabecalho: 'Instituição Bancária',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 3),
-              CustomRow(cabecalho: 'detStatement.tType.toString()', fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(
+                  cabecalho: detStatement!.tType,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              CustomRow(cabecalho: 'Data/Hora', fontSize: 18, fontWeight: FontWeight.bold),
+              CustomRow(
+                  cabecalho: 'Data/Hora',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
-              CustomRow(cabecalho: 'detStatement.createdAt.toString()', fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(
+                  cabecalho: detStatement!.createdAt,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 15),
-              CustomRow(cabecalho: 'Autenticação', fontSize: 18, fontWeight: FontWeight.bold),
+              CustomRow(
+                  cabecalho: 'Autenticação',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               const SizedBox(height: 5),
-              CustomRow(cabecalho: 'detStatement.authentication.toString()', fontSize: 20, fontWeight: FontWeight.normal),
+              CustomRow(
+                  cabecalho: detStatement!.authentication,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
               const SizedBox(height: 60),
-            
-              CustomButtonCompartilhar(titulo: 'Compartilhar', fontSize: 18,),
+              CustomButtonCompartilhar(
+                titulo: 'Compartilhar',
+                fontSize: 18,
+              ),
               const SizedBox(height: 5),
             ],
           ),

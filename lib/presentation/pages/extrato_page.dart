@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_const
-
 import 'package:desafio/data/datasources/amount_remote_ds.dart';
 import 'package:desafio/data/repositories/amount_repository_imp.dart';
 import 'package:desafio/data/repositories/statement_repository_imp.dart';
@@ -13,14 +11,14 @@ import 'package:desafio/widgets/amount_widget.dart';
 import 'package:desafio/widgets/statements_list_widget.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ExtratoPage extends StatefulWidget {
+  const ExtratoPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ExtratoPage> createState() => _ExtratoPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ExtratoPageState extends State<ExtratoPage> {
   late ScrollController _controller;
   final int _limit = 10;
   int _offset = 0;

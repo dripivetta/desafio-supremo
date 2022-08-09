@@ -9,11 +9,12 @@ class CustomRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Wrap(
+      //mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
           cabecalho,
+          softWrap: true,
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: fontWeight,
