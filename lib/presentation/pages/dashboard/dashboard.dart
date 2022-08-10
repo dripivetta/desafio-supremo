@@ -15,7 +15,9 @@ class Dashboard extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        centerTitle: true,
+        title: const Text('Cadastro efetuado com sucesso!', style: TextStyle(color: Colors.white, fontSize: 18),),
+        backgroundColor: BaseColors().getGreenColor(),
       ),
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
@@ -32,25 +34,26 @@ class Dashboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Email: \n ${user.email}',
-                style: const TextStyle(fontSize: 24),
+                'Bem Vindo \n ${user.email}',
+                style: const TextStyle(fontSize: 26),
                 textAlign: TextAlign.center,
               ),
-                        const SizedBox(height: 16),
+              SizedBox(height: 25,),
               CustomButtomSingUp(
                 heightContainerButtom: 60,
                 marginButtom: EdgeInsets.fromLTRB(0, 8, 0, 8),
                 borderRadius: BorderRadius.circular(50),
                 onTap: () {
                   // Signing out the user
+                  
                   context.read<AuthBloc>().add(SignOutRequested());
                 },
-                textButtom: 'Logout',
+                textButtom: 'Fazer Login',
                 colorTextButtom: BaseColors().getWhiteColor(),
-                fontSizeText: 16,
+                fontSizeText: 17,
                 fontWeightText: FontWeight.bold,
                 backgroundColorButtom: MaterialStateProperty.all(
-                  BaseColors().getBlackColor().withOpacity(0.3),
+                  BaseColors().getGreenLigthColor(),
                 ),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(

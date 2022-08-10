@@ -20,7 +20,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           await authRepository.signIn(
               email: event.email, password: event.password);
           emit(
-            Authenticated(),
+            Authenticated('Sucesso!'),
           );
         } catch (e) {
           emit(
@@ -43,7 +43,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         try {
           await authRepository.signUp(
               email: event.email, password: event.password);
-          emit(Authenticated());
+          emit(Authenticated('Sucesso!'));
         } catch (e) {
           emit(
             AuthError(

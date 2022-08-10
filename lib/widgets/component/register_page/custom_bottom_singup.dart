@@ -29,7 +29,7 @@ class CustomButtomSingUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width * 0.6,
       height: heightContainerButtom,
       margin: marginButtom,
       decoration: BoxDecoration(
@@ -56,3 +56,5 @@ class CustomButtomSingUp extends StatelessWidget {
     );
   }
 }
+
+

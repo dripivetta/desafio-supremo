@@ -8,8 +8,12 @@ class Loading extends AuthState {
 }
 
 class Authenticated extends AuthState{
+  final String sucess;
+
+  Authenticated(this.sucess);
+
  @override
-  List<Object?> get  props => [];
+  List<Object?> get  props => [sucess];
 }
 
 class UnAuthenticated extends AuthState{
@@ -19,6 +23,7 @@ class UnAuthenticated extends AuthState{
 
 class AuthError extends AuthState {
   final String error;
+  
 
   AuthError(this.error);
   @override
