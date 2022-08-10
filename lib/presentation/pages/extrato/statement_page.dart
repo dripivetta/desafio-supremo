@@ -40,7 +40,7 @@ class _StatementPageState extends State<StatementPage> {
       ),
       body: Column(
         children: [
-          CustomCardAmount(),
+          CustomCardAmount(amount: null,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [

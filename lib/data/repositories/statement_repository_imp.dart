@@ -1,5 +1,5 @@
-import 'package:desafio/data/repositories/repository.dart';
 import 'package:desafio/data/datasources/statements_remote_ds.dart';
+import 'package:desafio/data/repositories/repository.dart';
 import 'package:desafio/models/statement_model.dart';
 
 class StatementsRepositoryImpl implements StatementsRepository {

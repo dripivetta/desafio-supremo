@@ -25,7 +25,10 @@ dependencies:
   firebase_auth: ^3.6.2
   bloc: ^8.0.3
   email_validator: '^2.1.16'
- 
+  either_dart: ^0.2.0
+  stream_transform: ^2.0.0
+  bloc_concurrency:
+  flutter_statusbarcolor_ns: ^0.4.0
   
   http:
   http_interceptor:
