@@ -1,26 +1,48 @@
+import 'package:desafio/presentation/pages/extrato/extrato_page.dart';
+import 'package:desafio/presentation/pages/help/help_page.dart';
+import 'package:desafio/presentation/pages/my_app.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-icon(icon) {
-  return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 10),
-    child: Icon(
+icon(icon, BuildContext context, widget, bool logout) {
+  return IconButton(
+    icon: Icon(
       icon,
       color: BaseColors().getWhiteColor(),
     ),
+    onPressed: () {
+      logout
+          ? [
+              FirebaseAuth.instance.signOut(),
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                '/myapp',
+                (route) => false,
+              ),
+            ]
+          : [
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => widget,
+                ),
+              )
+            ];
+    },
   );
 }
 
-iconsAppBar() {
+iconsAppBar(BuildContext context) {
   return Row(
     children: [
       // visibility para Visualizar saldo
-      icon(Icons.visibility_outlined),
+      icon(Icons.visibility_outlined, context, ExtratoPage(), false),
       // help para Ajuda com o App
-      icon(MdiIcons.helpCircleOutline),
+      icon(MdiIcons.helpCircleOutline, context, HelpPage(), false),
       // email para Convidar amigos
-      icon(Icons.person_add_outlined),
+      //icon(Icons.person_add_outlined),
+      icon(Icons.logout_sharp, context, MyApp(), true),
     ],
   );
 }
@@ -32,14 +54,39 @@ acoesIcons() {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          acaoIcon(icon: Icons.pix_outlined, name: 'Área Pix', isFirst: true),
-          acaoIcon(icon: MdiIcons.barcode, name: 'Pagar'),
-          acaoIcon(icon: Icons.arrow_upward_outlined, name: 'Transferir'),
-          acaoIcon(icon: Icons.arrow_downward_outlined, name: 'Depositar'),
-          acaoIcon(icon: Icons.phone_android, name: 'Recarga'),
-          acaoIcon(icon: Icons.chat_outlined, name: 'Cobrar'),
-          acaoIcon(icon: MdiIcons.heartOutline, name: 'Doação'),
-          acaoIcon(icon: MdiIcons.finance, name: 'Investir'),
+          acaoIcon(
+            icon: Icons.pix_outlined,
+            name: 'Área Pix',
+            isFirst: true,
+          ),
+          acaoIcon(
+            icon: MdiIcons.barcode,
+            name: 'Pagar',
+          ),
+          acaoIcon(
+            icon: Icons.arrow_upward_outlined,
+            name: 'Transferir',
+          ),
+          acaoIcon(
+            icon: Icons.arrow_downward_outlined,
+            name: 'Depositar',
+          ),
+          acaoIcon(
+            icon: Icons.phone_android,
+            name: 'Recarga',
+          ),
+          acaoIcon(
+            icon: Icons.chat_outlined,
+            name: 'Cobrar',
+          ),
+          acaoIcon(
+            icon: MdiIcons.heartOutline,
+            name: 'Doação',
+          ),
+          acaoIcon(
+            icon: MdiIcons.finance,
+            name: 'Investir',
+          ),
         ],
       ),
     ),
@@ -64,9 +111,7 @@ acaoIcon({required IconData icon, required String name, bool? isFirst}) {
         ),
         Text(
           name,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold
-          ),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         )
       ],
     ),

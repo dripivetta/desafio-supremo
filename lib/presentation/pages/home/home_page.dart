@@ -1,6 +1,3 @@
-
-
-
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/widgets/component/home_page/app_bar.dart';
 import 'package:desafio/widgets/component/home_page/cartao_credito.dart';
@@ -11,6 +8,7 @@ import 'package:desafio/widgets/component/home_page/icons.dart';
 import 'package:desafio/widgets/component/home_page/informacoes.dart';
 import 'package:desafio/widgets/component/home_page/investimento.dart';
 import 'package:desafio/widgets/component/home_page/seguro_vida.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 
@@ -22,7 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   void initState() {
     _setStatusbarColor();
@@ -49,8 +47,8 @@ class HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              header(),
-              conta(),
+              header(context, user),
+              conta(context),
               acoesIcons(),
               meusCartoes(),
               informacoes(),

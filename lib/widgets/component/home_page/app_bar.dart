@@ -2,6 +2,7 @@ import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/widgets/component/home_page/bem_vindo.dart';
 import 'package:desafio/widgets/component/home_page/icons.dart';
 import 'package:desafio/widgets/component/home_page/perfil_usuario.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,9 +16,7 @@ appBar() {
   );
 }
 
-
-
-header() {
+header(BuildContext context,User user) {
   return Container(
     color: BaseColors().getGreenColor(),
     child: Column(
@@ -27,10 +26,10 @@ header() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             perfil(),
-            iconsAppBar(),
+            iconsAppBar(context),
           ],
         ),
-        bemVindo(),
+        bemVindo(user ),
       ],
     ),
   );
