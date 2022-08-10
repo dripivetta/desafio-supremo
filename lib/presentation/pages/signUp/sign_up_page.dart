@@ -1,5 +1,6 @@
 import 'package:desafio/presentation/bloc/auth/auth_bloc.dart';
 import 'package:desafio/presentation/pages/home/home_page.dart';
+import 'package:desafio/presentation/pages/onboarding/onboarding.dart';
 import 'package:desafio/presentation/pages/signIn/sign_in_page.dart';
 import 'package:desafio/widgets/component/base_appbar_pages/custom_app_bar.dart';
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
@@ -54,9 +55,10 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         body: BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
           if (state is Authenticated) {
+            //MENSAGEM DE OK
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => const HomePage(),
+                builder: (context) => const Onboard(),
               ),
             );
           }
@@ -91,7 +93,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Form(
                 key: _formKey,
                 child: SingleChildScrollView(
-                    reverse: true,
+                   // reverse: true,
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
                           10, MediaQuery.of(context).size.height * 0.2, 10, 0),
