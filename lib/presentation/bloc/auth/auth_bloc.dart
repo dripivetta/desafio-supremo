@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:desafio/data/repositories/authentication/auth_repository.dart';
+import 'package:desafio/data/repositories/auth_repository.dart';
 import 'package:equatable/equatable.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';

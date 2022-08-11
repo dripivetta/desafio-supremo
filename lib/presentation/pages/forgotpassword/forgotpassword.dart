@@ -1,10 +1,11 @@
-import 'package:desafio/widgets/component/base_appbar_pages/custom_app_bar.dart';
-import 'package:desafio/widgets/component/forgotpassword/custom_text_field.dart';
-import 'package:desafio/widgets/component/forgotpassword/forgot_password_buttom.dart';
+
+import 'package:desafio/presentation/widgets/component/base_appbar_pages/custom_app_bar.dart';
+import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
+import 'package:desafio/presentation/widgets/component/forgotpassword/custom_text_field.dart';
+import 'package:desafio/presentation/widgets/component/forgotpassword/forgot_password_buttom.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);

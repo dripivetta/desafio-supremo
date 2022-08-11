@@ -1,4 +1,4 @@
-import 'package:desafio/injection.dart';
+import 'package:desafio/presentation/injection.dart';
 import 'package:desafio/presentation/bloc/statement/statement_bloc.dart';
 import 'package:desafio/presentation/bloc/statement/statement_event.dart';
 import 'package:desafio/presentation/pages/extrato/statement_page.dart';

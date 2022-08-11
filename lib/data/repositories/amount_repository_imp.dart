@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:desafio/data/datasources/amount_remote_ds.dart';
 import 'package:desafio/domain/entities/amount.dart';
 import 'package:desafio/domain/repositories/amount_repository_imp.dart';
-import 'package:desafio/widgets/component/error/exception.dart';
-import 'package:desafio/widgets/component/error/failure.dart';
+import 'package:desafio/presentation/widgets/component/error/exception.dart';
+import 'package:desafio/presentation/widgets/component/error/failure.dart';
 import 'package:either_dart/either.dart';
 
 class AmountRepositoryImpl implements AmountRepository {

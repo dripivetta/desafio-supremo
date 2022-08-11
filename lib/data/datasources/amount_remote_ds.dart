@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:desafio/data/utils/api.dart';
 import 'package:desafio/models/amount_model.dart';
-import 'package:desafio/widgets/component/error/exception.dart';
+import 'package:desafio/presentation/widgets/component/error/exception.dart';
 import 'package:http/http.dart' as http;
 
 abstract class AmountRemoteDataSource {
@@ -15,7 +15,7 @@ class AmountRemoteDataSourceImpl implements AmountRemoteDataSource {
 
   @override
   Future<AmountModel> getAmount() async {
-    final response = await client.get(Uri.parse(API.amount),headers: API.defaultHeaders);
+    final response = await client.get(Uri.parse(API.amount), headers: API.defaultHeaders);
 
     if (response.statusCode == 200) {
       return AmountModel.fromJson(json.decode(response.body));

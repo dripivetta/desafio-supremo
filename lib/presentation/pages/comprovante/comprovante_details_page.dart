@@ -1,5 +1,5 @@
 import 'dart:core';
-import 'package:desafio/injection.dart';
+import 'package:desafio/presentation/injection.dart';
 import 'package:desafio/models/detail_statement_model.dart';
 import 'package:desafio/presentation/bloc/detailStatement/detailStatement_bloc.dart';
 import 'package:desafio/presentation/bloc/detailStatement/detailStatement_event.dart';

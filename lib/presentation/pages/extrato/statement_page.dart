@@ -1,7 +1,5 @@
-import 'package:desafio/widgets/component/extrato_page/custom_card_amount.dart';
-
-import 'package:desafio/widgets/component/extrato_page/statements_list_widget.dart';
-
+import 'package:desafio/presentation/widgets/component/extrato_page/custom_card_amount.dart';
+import 'package:desafio/presentation/widgets/component/extrato_page/statements_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class StatementPage extends StatefulWidget {
@@ -9,10 +7,8 @@ class StatementPage extends StatefulWidget {
     Key? key,
     required this.controller,
   }) : super(key: key);
-
+  
   final ScrollController controller;
-  //final StatementHasData state;
-
   @override
   State<StatementPage> createState() => _StatementPageState();
 }
@@ -27,7 +23,10 @@ class _StatementPageState extends State<StatementPage> {
         title: Text(
           'Extrato',
           style: TextStyle(
+            letterSpacing: 0,
+            fontSize: 20,
             fontFamily: 'Khalid',
+            fontWeight: FontWeight.bold,
             shadows: const <Shadow>[
               Shadow(
                 offset: Offset(1.0, 4.0),
@@ -49,7 +48,7 @@ class _StatementPageState extends State<StatementPage> {
                 child: SizedBox(
                   child: Text(
                     'Suas movimentações',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
