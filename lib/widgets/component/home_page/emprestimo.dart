@@ -1,116 +1,57 @@
-import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-emprestimo() {
-  return Container(
-    margin: const EdgeInsets.only(left: 20, top: 10, right: 20),
-    padding: const EdgeInsets.all(20),
-    decoration: BoxDecoration(
-      color: BaseColors().getGreyLigthColor(),
-    ),
-    child: RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: 'Você tem R\$ 150.000,00 \n disponíveis para ',
-            style: TextStyle(
-              fontSize: 15,
-              color: BaseColors().getBlackColor(),
-            ),
-          ),
-          TextSpan(
-            text: 'empréstimo.',
-            style: TextStyle(
-              fontSize: 15,
-              color: BaseColors().getGreenColor(),
-            ),
-          ),
-        ],
+class Emprestimo extends StatelessWidget {
+  final Color colorText1;
+  final double fontSizeText1;
+  final String text1;
+  final Color colorText2;
+  final double fontSizeText2;
+  final String text2;
+  final Color colorBox;
+  final EdgeInsets padding;
+  final EdgeInsets margin;
+
+  const Emprestimo({
+    Key? key,
+    required this.colorText1,
+    required this.fontSizeText1,
+    required this.text1,
+    required this.colorText2,
+    required this.fontSizeText2,
+    required this.text2,
+    required this.colorBox,
+    required this.padding,
+    required this.margin,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin,
+      padding: padding,
+      decoration: BoxDecoration(
+        color: colorBox,
       ),
-    ),
-  );
-}
-
-emprestimoArea() {
-  return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 20),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        emprestimoText(),
-        emprestimoInfo(),
-        emprestimoButton(),
-      ],
-    ),
-  );
-}
-
-emprestimoText() {
-  return Center(
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Icon(MdiIcons.cash),
-        Text(
-          'Empréstimo',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: BaseColors().getBlackColor(),
-          ),
-        ),
-        Icon(Icons.keyboard_arrow_right),
-      ],
-    ),
-  );
-}
-
-emprestimoInfo() {
-  return Center(
-    child: Container(
-      margin: EdgeInsets.only(top: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Valor disponível até  ',
-            style: TextStyle(
-              fontSize: 16,
-              color: BaseColors().getGreyColor(),
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: text2,
+              style: TextStyle(
+                fontSize: fontSizeText2,
+                color: colorText2,
+              ),
             ),
-          ),
-          Text(
-            'R\$ 150.000,00',
-            style: TextStyle(
-              fontSize: 18,
-              color: BaseColors().getGreenColor(),
+            TextSpan(
+              text: text1,
+              style: TextStyle(
+                fontSize: fontSizeText1,
+                color: colorText1,
+              ),
             ),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
-emprestimoButton() {
-  return Container(
-    margin: const EdgeInsets.only(top: 15, left: 100),
-    child: ElevatedButton(
-      style: ButtonStyle(
-        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-        backgroundColor:
-            MaterialStateProperty.all(BaseColors().getGreenColor()),
-        shape: MaterialStateProperty.all(RoundedRectangleBorder()),
-      ),
-      child: Text(
-        'Simular empréstimo',
-        style: TextStyle(
-          fontSize: 16,
-          color: BaseColors().getWhiteColor(),
+          ],
         ),
       ),
-      onPressed: () {},
-    ),
-  );
+    );
+  }
 }

@@ -4,8 +4,8 @@
 // import 'package:desafio/widgets/component/home_page/seguro_cel_area.dart';
 // import 'package:flutter/material.dart';
 
-// class PlanejamentosPage extends StatelessWidget {
-//   const PlanejamentosPage({Key? key}) : super(key: key);
+// class PerfilPage extends StatelessWidget {
+//   const PerfilPage({Key? key}) : super(key: key);
 
 //   @override
 //   Widget build(BuildContext context) {

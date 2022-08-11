@@ -1,50 +1,42 @@
 import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
+import 'package:desafio/widgets/component/home_page/investimento_infod.dart';
+import 'package:desafio/widgets/component/home_page/investimento_text.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-investimentoArea() {
-  return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 20),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        investimentoText(),
-        investimentoInfo(),
-        // investimentoButton(),
-      ],
-    ),
-  );
-}
+class InvestimentoArea extends StatelessWidget {
+  final CrossAxisAlignment crossAxixColumn;
+  final EdgeInsets margin;
 
-investimentoText() {
-  return Container(
-    margin: const EdgeInsets.symmetric(vertical: 20),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Icon(MdiIcons.finance),
-        Text(
-          'Investimento Fácil',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: BaseColors().getBlackColor(),
+  const InvestimentoArea({
+    Key? key,
+    required this.crossAxixColumn,
+    required this.margin,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin,
+      child: Column(
+        crossAxisAlignment: crossAxixColumn,
+        children: [
+          InvestimentoText(
+            colorText: BaseColors().getBlackColor(),
+            fontWeightText: FontWeight.bold,
+            fontSizeText: 22,
+            text: 'Investimento Fácil',
+            mainAxixRow: MainAxisAlignment.spaceBetween,
+            margin: EdgeInsets.symmetric(vertical: 20),
           ),
-        ),
-        Icon(Icons.keyboard_arrow_right),
-      ],
-    ),
-  );
-}
-
-investimentoInfo() {
-  return Center(
-    child: Text(
-      'Conheça o Investimento Fácil! \n Sem taxas e sem burocracia! ',
-      style: TextStyle(
-        fontSize: 16,
-        color: BaseColors().getGreyColor(),
+          InvestimentoInfo(
+            colorText: BaseColors().getGreyColor(),
+            fontSizeText: 16,
+            text:
+                'Conheça o Investimento Fácil! \n Sem taxas e sem burocracia! ',
+          ),
+          // investimentoButton(),
+        ],
       ),
-    ),
-  );
+    );
+  }
 }

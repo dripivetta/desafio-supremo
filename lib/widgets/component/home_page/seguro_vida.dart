@@ -1,102 +1,58 @@
-import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-seguroVida() {
-  return Container(
-    margin: const EdgeInsets.only(left: 20, top: 10),
-    padding: const EdgeInsets.all(20),
-    decoration: BoxDecoration(
-      color: BaseColors().getGreyLigthColor(),
-      // borderRadius: BorderRadius.circular(15),
-    ),
-    child: RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: 'Seguro de vida a partir de \n R\$4,99/mês?  ',
-            style: TextStyle(
-              fontSize: 15,
-              color: BaseColors().getBlackColor(),
-            ),
-          ),
-          TextSpan(
-            text: 'Conheça...',
-            style: TextStyle(
-              fontSize: 15,
-              color: BaseColors().getGreenColor(),
-            ),
-          ),
-        ],
+class SeguroVida extends StatelessWidget {
+  final Color colorText;
+  final double fontSizeText;
+  final String text;
+  final Color colorText2;
+  final double fontSizeText2;
+  final String text2;
+  final Color colorBox;
+  final EdgeInsets padding;
+  final EdgeInsets margin;
+
+  const SeguroVida({
+    Key? key,
+    required this.colorText,
+    required this.fontSizeText,
+    required this.text,
+    required this.colorText2,
+    required this.fontSizeText2,
+    required this.text2,
+    required this.colorBox,
+    required this.padding,
+    required this.margin,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin,
+      padding: padding,
+      decoration: BoxDecoration(
+        color: colorBox,
+        // borderRadius: BorderRadius.circular(15),
       ),
-    ),
-  );
-}
-
-seguroVidaArea() {
-  return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 20),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // seguroVidaIcon(),
-        seguroVidaText(),
-        seguroVidaInfo(),
-      ],
-    ),
-  );
-}
-
-seguroVidaText() {
-  return Container(
-    margin: const EdgeInsets.symmetric(vertical: 20),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Icon(MdiIcons.heartOutline),
-        Text(
-          'Seguro de vida',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: BaseColors().getBlackColor(),
-            ),  
-          ),
-        Icon(Icons.keyboard_arrow_right),
-      ],
-    ),
-  );
-}
-
-seguroVidaInfo() {
-  return Center(
-    child: Text(
-      'Conheça nosso Seguro de Vida: \n simples e cabe no seu bolso.',
-      style: TextStyle(
-          fontSize: 16,
-          color: BaseColors().getGreyColor(),
-        ),
-    ),
-  );
-}
-
-seguroVidaButton() {
-  return Container(
-    margin: const EdgeInsets.only(top: 15, left: 120),
-    child: ElevatedButton(
-      style: ButtonStyle(
-        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-        backgroundColor: MaterialStateProperty.all(BaseColors().getGreenColor()),
-        shape: MaterialStateProperty.all(RoundedRectangleBorder()),
-      ),
-      child: Text(
-        'Contratar seguro',
-        style: TextStyle(
-          fontSize: 16,
-          color: BaseColors().getWhiteColor(),
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: text2,
+              style: TextStyle(
+                fontSize: fontSizeText2,
+                color: colorText2,
+              ),
+            ),
+            TextSpan(
+              text: text,
+              style: TextStyle(
+                fontSize: fontSizeText,
+                color: colorText,
+              ),
+            ),
+          ],
         ),
       ),
-      onPressed: () {},
-    ),
-  );
+    );
+  }
 }
