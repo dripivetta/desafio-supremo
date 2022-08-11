@@ -4,9 +4,12 @@ import 'dart:io';
 import 'package:desafio/data/datasources/detStatements_remote_ds.dart';
 import 'package:desafio/domain/entities/detailStatement.dart';
 import 'package:desafio/domain/repositories/detStatement_repository_imp.dart';
-import 'package:desafio/widgets/component/error/exception.dart';
-import 'package:desafio/widgets/component/error/failure.dart';
+import 'package:desafio/widgets/component/error_page/exception.dart';
+
+
 import 'package:either_dart/either.dart';
+
+import '../../widgets/component/error_page/failure.dart';
 
 class DetStatementsRepositoryImpl implements DetStatementsRepository {
   final DetStatementsRemoteDataSource detRemoteDataSource;

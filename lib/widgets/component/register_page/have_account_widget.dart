@@ -1,6 +1,6 @@
 import 'package:desafio/presentation/pages/signIn/sign_in_page.dart';
-import 'package:desafio/widgets/component/register_page/custom_buttom_singin.dart';
-import 'package:desafio/widgets/component/register_page/descriptions.dart';
+import 'package:desafio/widgets/component/register_page/auxiliar/custom_buttom_singin.dart';
+import 'package:desafio/widgets/component/register_page/auxiliar/descriptions.dart';
 import 'package:flutter/material.dart';
 
 class HaveAccountWidget extends StatelessWidget {

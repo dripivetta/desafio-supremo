@@ -1,8 +1,7 @@
 import 'dart:convert';
-
 import 'package:desafio/data/utils/api.dart';
 import 'package:desafio/models/statement_model.dart';
-import 'package:desafio/widgets/component/error/exception.dart';
+import 'package:desafio/widgets/component/error_page/exception.dart';
 import 'package:http/http.dart' as http;
 
 abstract class StatementsRemoteDataSource {

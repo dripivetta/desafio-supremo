@@ -1,10 +1,12 @@
 import 'dart:io';
+
 import 'package:desafio/data/datasources/statements_remote_ds.dart';
 import 'package:desafio/domain/entities/statement.dart';
 import 'package:desafio/domain/repositories/statement_repository_imp.dart';
-import 'package:desafio/widgets/component/error/exception.dart';
-import 'package:desafio/widgets/component/error/failure.dart';
 import 'package:either_dart/either.dart';
+
+import '../../widgets/component/error_page/exception.dart';
+import '../../widgets/component/error_page/failure.dart';
 
 class StatementsRepositoryImpl implements StatementsRepository {
   final StatementsRemoteDataSource stetementRemoteDataSource;

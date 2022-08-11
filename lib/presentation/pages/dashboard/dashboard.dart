@@ -1,10 +1,11 @@
 import 'package:desafio/presentation/bloc/auth/auth_bloc.dart';
 import 'package:desafio/presentation/pages/signIn/sign_in_page.dart';
+import 'package:desafio/widgets/component/register_page/auxiliar/custom_bottom_singup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/component/base_color_pages/base_colors.dart';
-import '../../../widgets/component/register_page/custom_bottom_singup.dart';
+
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);

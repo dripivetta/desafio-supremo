@@ -1,5 +1,7 @@
-import 'package:desafio/widgets/component/login/login_bloc_listener.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../widgets/component/login_page/login_bloc_listener.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
