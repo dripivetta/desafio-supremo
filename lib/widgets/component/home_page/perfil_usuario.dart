@@ -21,6 +21,7 @@ class Perfil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: BaseColors().getGreenColor(),
       child: InkWell(
         // ignore: sort_child_properties_last
         child: Container(

@@ -34,17 +34,17 @@ class SeguroVidaArea extends StatelessWidget {
             text:
                 'Conheça nosso Seguro de Vida: \n simples e cabe no seu bolso.',
           ),
-          SeguroVidaButton(
-            onTap: () {},
-            colorText: BaseColors().getWhiteColor(),
-            fontSizeText: 16,
-            text: 'Contratar seguro',
-            shape: MaterialStateProperty.all(RoundedRectangleBorder()),
-            padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-            backgroundColor:
-                MaterialStateProperty.all(BaseColors().getGreenColor()),
-            margin: const EdgeInsets.only(top: 15, left: 120),
-          ),
+          // SeguroVidaButton(
+          //   onTap: () {},
+          //   colorText: BaseColors().getWhiteColor(),
+          //   fontSizeText: 16,
+          //   text: 'Contratar seguro',
+          //   shape: MaterialStateProperty.all(RoundedRectangleBorder()),
+          //   padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+          //   backgroundColor:
+          //       MaterialStateProperty.all(BaseColors().getGreenColor()),
+          //   margin: const EdgeInsets.only(top: 15, left: 120),
+          // ),
         ],
       ),
     );

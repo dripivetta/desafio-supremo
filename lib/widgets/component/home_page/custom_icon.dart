@@ -5,8 +5,7 @@ class CustomIcon extends StatelessWidget {
   final icon;
   final Color color;
 
-  const CustomIcon(
-    IconData helpCircleOutline, {
+  const CustomIcon({
     Key? key,
     this.icon,
     required this.color,

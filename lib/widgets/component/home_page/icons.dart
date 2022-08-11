@@ -13,20 +13,21 @@ class IconsAppBar extends StatelessWidget {
       children: [
         // visibility para Visualizar saldo
         CustomIcon(
-          Icons.visibility_outlined,
+          icon: Icons.visibility_outlined,
           color: BaseColors().getWhiteColor(),
         ),
         // help para Ajuda com o App
         CustomIcon(
-          MdiIcons.helpCircleOutline,
+          icon: MdiIcons.helpCircleOutline,
           color: BaseColors().getWhiteColor(),
         ),
         // email para Convidar amigos
         CustomIcon(
-          Icons.person_add_outlined,
+          icon: Icons.person_add_outlined,
           color: BaseColors().getWhiteColor(),
         ),
       ],
     );
   }
 }
+
