@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:desafio/data/utils/api.dart';
 import 'package:desafio/models/amount_model.dart';
 import 'package:desafio/presentation/widgets/component/error/exception.dart';

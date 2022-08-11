@@ -1,6 +1,6 @@
 import 'package:desafio/presentation/bloc/auth/auth_bloc.dart';
 import 'package:desafio/presentation/pages/onboarding/onboarding.dart';
-import 'package:desafio/presentation/widgets/component/login/login_bloc_widget.dart';
+import 'package:desafio/presentation/widgets/component/login_page/login_bloc_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

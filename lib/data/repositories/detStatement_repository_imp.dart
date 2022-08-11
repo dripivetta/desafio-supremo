@@ -8,6 +8,7 @@ import 'package:desafio/presentation/widgets/component/error/exception.dart';
 import 'package:desafio/presentation/widgets/component/error/failure.dart';
 import 'package:either_dart/either.dart';
 
+
 class DetStatementsRepositoryImpl implements DetStatementsRepository {
   final DetStatementsRemoteDataSource detRemoteDataSource;
   DetStatementsRepositoryImpl({required this.detRemoteDataSource});

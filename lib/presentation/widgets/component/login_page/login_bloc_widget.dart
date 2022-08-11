@@ -1,10 +1,11 @@
 import 'package:desafio/presentation/bloc/auth/auth_bloc.dart';
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/presentation/widgets/component/base_loading_pages/loading_progress.dart';
-import 'package:desafio/presentation/widgets/component/login/forgot_pass_widget.dart';
-import 'package:desafio/presentation/widgets/component/login/form_login_widget.dart';
-import 'package:desafio/presentation/widgets/component/login/login_button_widget.dart';
-import 'package:desafio/presentation/widgets/component/login/register_row_widget.dart';
+import 'package:desafio/presentation/widgets/component/login_page/forgot_pass_widget.dart';
+import 'package:desafio/presentation/widgets/component/login_page/form_login_widget.dart';
+import 'package:desafio/presentation/widgets/component/login_page/login_button_widget.dart';
+import 'package:desafio/presentation/widgets/component/login_page/register_row_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

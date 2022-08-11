@@ -11,7 +11,7 @@ class AmountRepositoryImpl implements AmountRepository {
   AmountRepositoryImpl({required this.amountRemoteDataSource});
 
   @override
-  Future<Either<Failure, Amount>> getAmount() async {
+  Future<Either<Failure, Amount>> getAmount()async {
     try {
       final result = await amountRemoteDataSource.getAmount();
       return Right(result.toEntity());
