@@ -1,9 +1,9 @@
+import 'package:desafio/data/utils/function_money_converter.dart';
 import 'package:desafio/presentation/injection.dart';
 import 'package:desafio/presentation/bloc/amount/amount_bloc.dart';
 import 'package:desafio/presentation/bloc/amount/amount_event.dart';
 import 'package:desafio/presentation/bloc/amount/amount_state.dart';
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
-import 'package:desafio/data/utils/function_money_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,9 +14,27 @@ class CustomCardAmount extends StatefulWidget {
   State<CustomCardAmount> createState() => _CustomCardAmountState();
 }
 
-class _CustomCardAmountState extends State<CustomCardAmount>
-    with AutomaticKeepAliveClientMixin {
+class _CustomCardAmountState extends State<CustomCardAmount>{
+
+  @override
+  // ignore: must_call_super
+  Widget build(BuildContext context) {
+    return AmountBlocWidget();
+  }
+}
+
+class AmountBlocWidget extends StatefulWidget {
+ const AmountBlocWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<AmountBlocWidget> createState() => _AmountBlocWidgetState();
+}
+
+class _AmountBlocWidgetState extends State<AmountBlocWidget> with AutomaticKeepAliveClientMixin{
   bool _showSaldo = false;
+
 
   @override
   // ignore: must_call_super
@@ -46,7 +64,7 @@ class _CustomCardAmountState extends State<CustomCardAmount>
                         child: Icon(
                           _showSaldo == false
                               ? Icons.visibility_off
-                              : Icons.visibility,
+                               :Icons.visibility,
                           color: BaseColors().getGreenColor(),
                         ),
                         onTap: () {
@@ -84,8 +102,7 @@ class _CustomCardAmountState extends State<CustomCardAmount>
                                     child: Container(
                                       height: 6,
                                       //MediaQuery.of(context).size.height * 0.006,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.38,
+                                      width: MediaQuery.of(context).size.width * 0.38,
                                       color: BaseColors().getGreenColor(),
                                     ),
                                   );
@@ -110,7 +127,7 @@ class _CustomCardAmountState extends State<CustomCardAmount>
       ],
     );
   }
-
+  
   @override
-  bool get wantKeepAlive => true;
+  final bool wantKeepAlive = true;
 }

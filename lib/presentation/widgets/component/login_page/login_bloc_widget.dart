@@ -53,7 +53,7 @@ class LoginBlocWidget extends StatelessWidget {
                       Align(
                         alignment: Alignment.center,
                         child: Image.asset(
-                          "assets/img/splash.png",
+                          "assets/img/splashpage/splash.png",
                           height: MediaQuery.of(context).size.height * 0.25,
                         ),
                       ),

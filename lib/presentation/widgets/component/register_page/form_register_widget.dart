@@ -30,14 +30,15 @@ class FormRegisterWidget extends StatelessWidget {
           // reverse: true,
           child: Padding(
         padding: EdgeInsets.fromLTRB(
-            10, MediaQuery.of(context).size.height * 0.2, 10, 0),
+            10, MediaQuery.of(context).size.height * 0.15, 10, 0),
         child: Column(
           children: <Widget>[
             Image.asset(
-              "assets/img/splashpage/splash.png",
+              "assets/img/splashpage/logo.png",
               width: 150,
               height: 150,
             ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             Description(
               text: 'Registre-se',
               fontSize: 30,

@@ -11,9 +11,9 @@ import 'package:desafio/presentation/widgets/component/home_page/header.dart';
 import 'package:desafio/presentation/widgets/component/home_page/informacoes.dart';
 import 'package:desafio/presentation/widgets/component/home_page/investimento.dart';
 import 'package:desafio/presentation/widgets/component/home_page/parcelarbutton.dart';
+import 'package:desafio/presentation/widgets/component/home_page/seguro_vida_area.dart';
 import 'package:flutter/material.dart';
 
-import 'seguro_vida_area.dart';
 
 class BodyHomePage extends StatelessWidget {
   const BodyHomePage({Key? key}) : super(key: key);
