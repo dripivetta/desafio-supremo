@@ -1,9 +1,11 @@
-import 'package:desafio/presentation/pages/home/home_page.dart';
-import 'package:desafio/widgets/component/onboarding_page/custom_buttom_continue.dart';
-import 'package:desafio/widgets/component/onboarding_page/custom_link_pular_instrucao.dart';
-import 'package:desafio/widgets/component/onboarding_page/custom_paginator.dart';
-import 'package:desafio/widgets/component/onboarding_page/custom_slider.dart';
-import 'package:desafio/widgets/component/base_color_pages/base_colors.dart';
+import 'package:desafio/presentation/pages/signIn/sign_in_page.dart';
+import 'package:desafio/presentation/widgets/component/onboarding_page/class_onboard.dart';
+import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
+import 'package:desafio/presentation/widgets/component/onboarding_page/custom_buttom_continue.dart';
+import 'package:desafio/presentation/widgets/component/onboarding_page/custom_link_pular_instrucao.dart';
+import 'package:desafio/presentation/widgets/component/onboarding_page/custom_paginator.dart';
+import 'package:desafio/presentation/widgets/component/onboarding_page/custom_slider.dart';
+
 import 'package:flutter/material.dart';
 
 class Onboard extends StatefulWidget {
@@ -14,9 +16,7 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
-  final PageController _controller = PageController();
-
-  int _currentPage = 0;
+  final onboard = Onboarding();
 
   @override
   Widget build(BuildContext context) {
@@ -39,21 +39,24 @@ class _OnboardState extends State<Onboard> {
             child: Stack(
               children: [
                 PageView(
-                  controller: _controller,
+                  controller: onboard.pageController,
                   onPageChanged: (int page) {
-                    setState(() {
-                      _currentPage = page;
-                    });
+                    setState(
+                      () {
+                       onboard.changePage(page);
+                      },
+                    );
                   },
                   physics: ClampingScrollPhysics(),
                   children: [
+                    //SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
                     CustomSlider(
                       image: 'assets/img/onboarding/cell.png',
                       title: 'Na palma da mão',
                       text:
                           'Tudo o que você precisa na palma da mão, de qualquer lugar, simples assim.',
-                      widthImage: 300,
-                      heightImage: 250,
+                      widthImage: MediaQuery.of(context).size.width * 0.8,
+                      heightImage: MediaQuery.of(context).size.height * 0.3,
                       fontSizeTitle: 24,
                       fontWeightTitle: FontWeight.w500,
                       colorTitle: BaseColors().getBlackColor(),
@@ -61,15 +64,15 @@ class _OnboardState extends State<Onboard> {
                       fontSizeText: 18,
                       colorText: BaseColors().getBlackColor(),
                       textAlignText: TextAlign.center,
-                      padding: const EdgeInsets.symmetric(horizontal: 64.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 32.0),
                     ),
                     CustomSlider(
                       image: 'assets/img/onboarding/moca.png',
                       title: 'Controle',
                       text:
                           'Seu saldo, transferências e pagamentos, tudo em um só lugar.',
-                      widthImage: 300,
-                      heightImage: 250,
+                      widthImage: MediaQuery.of(context).size.width * 0.8,
+                      heightImage: MediaQuery.of(context).size.height * 0.3,
                       fontSizeTitle: 24,
                       fontWeightTitle: FontWeight.w500,
                       colorTitle: BaseColors().getBlackColor(),
@@ -77,15 +80,15 @@ class _OnboardState extends State<Onboard> {
                       fontSizeText: 18,
                       colorText: BaseColors().getBlackColor(),
                       textAlignText: TextAlign.center,
-                      padding: const EdgeInsets.symmetric(horizontal: 64.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 32.0),
                     ),
                     CustomSlider(
                       image: 'assets/img/onboarding/cellmoca.png',
                       title: 'Compartilhe',
                       text:
                           'Aqui é fácil e rápido, compartilhe seus comprovantes com apenas um clique.',
-                      widthImage: 300,
-                      heightImage: 250,
+                      widthImage: MediaQuery.of(context).size.width * 0.8,
+                      heightImage: MediaQuery.of(context).size.height * 0.3,
                       fontSizeTitle: 24,
                       fontWeightTitle: FontWeight.w500,
                       colorTitle: BaseColors().getBlackColor(),
@@ -93,17 +96,17 @@ class _OnboardState extends State<Onboard> {
                       fontSizeText: 18,
                       colorText: BaseColors().getBlackColor(),
                       textAlignText: TextAlign.center,
-                      padding: const EdgeInsets.symmetric(horizontal: 64.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 32.0),
                     ),
                   ],
                 ),
                 CustomPaginator(
-                  page: _currentPage,
+                  page: onboard.currentPage,
                   shape: BoxShape.circle,
                   coloridx: BaseColors().getGreenColor(),
                   colornotidx: BaseColors().getGreyColor(),
-                  height: 12,
-                  width: 12,
+                  height: MediaQuery.of(context).size.height * 0.015,
+                  width: MediaQuery.of(context).size.width * 0.04,
                   margin: const EdgeInsets.all(4),
                   listgenerate: 3,
                   mainAxisAlignmentColumn: MainAxisAlignment.end,
@@ -111,9 +114,10 @@ class _OnboardState extends State<Onboard> {
                   mainAxisAlignmentRow: MainAxisAlignment.center,
                 ),
                 CustomBottomContinue(
-                  text: _currentPage == 2 ? 'QUERO ENTRAR' : 'CONTINUAR',
-                  goToInicialPage:
-                      _currentPage == 2 ? goToInicialPage : proximoCard,
+                  text: onboard.currentPage == 2 ? 'QUERO ENTRAR' : 'CONTINUAR',
+                  goToInicialPage: onboard.currentPage == 2
+                      ? goToInicialPage
+                      : onboard.proximoCard,
                   fontSize: 18,
                   color: BaseColors().getWhiteColor(),
                   paddingText:
@@ -126,8 +130,8 @@ class _OnboardState extends State<Onboard> {
                   background: MaterialStateProperty.all<Color>(
                     BaseColors().getGreenColor(),
                   ),
-                  width: 300,
-                  height: 60,
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  height: MediaQuery.of(context).size.height * 0.08,
                   paddingButtom: const EdgeInsets.only(bottom: 85),
                   mainAxisAlignmentColumn: MainAxisAlignment.end,
                 ),
@@ -147,17 +151,15 @@ class _OnboardState extends State<Onboard> {
       ),
     );
   }
-
   goToInicialPage() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => HomePage(),
+        builder: (_) => LoginPage(),
       ),
     );
   }
-
-  proximoCard() {
-    _controller.nextPage(duration: Duration(seconds: 1), curve: Curves.easeIn);
-  }
+  
 }
+
+

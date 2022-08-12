@@ -1,14 +1,24 @@
+import 'dart:io';
 import 'package:desafio/data/datasources/amount_remote_ds.dart';
-import 'package:desafio/data/repositories/repository.dart';
-import 'package:desafio/models/amount_model.dart';
+import 'package:desafio/domain/entities/amount.dart';
+import 'package:desafio/domain/repositories/amount_repository_imp.dart';
+import 'package:desafio/presentation/widgets/component/error/exception.dart';
+import 'package:desafio/presentation/widgets/component/error/failure.dart';
+import 'package:either_dart/either.dart';
 
 class AmountRepositoryImpl implements AmountRepository {
-  final AmountRemoteDataSource remoteDataSource;
-  AmountRepositoryImpl(this.remoteDataSource);
+  final AmountRemoteDataSource amountRemoteDataSource;
+  AmountRepositoryImpl({required this.amountRemoteDataSource});
 
   @override
-  Future<Amount> getAmount() async {
-    final result = await remoteDataSource.getAmount();
-    return result;
+  Future<Either<Failure, Amount>> getAmount()async {
+    try {
+      final result = await amountRemoteDataSource.getAmount();
+      return Right(result.toEntity());
+    } on ServerException {
+      return const Left(ServerFailure(''));
+    } on SocketException {
+      return const Left(ConnectionFailure('Failed to connect to the Network'));
+    }
   }
 }

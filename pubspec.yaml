@@ -13,6 +13,11 @@ dependencies:
     sdk: flutter
   material_design_icons_flutter: ^5.0.6996
   intl:
+  equatable: ^2.0.3
+  #bloc
+  flutter_bloc: ^8.0.1
+  #get_it
+  get_it: ^7.2.0
   screenshot: ^1.2.3
   share_plus: ^4.0.10
   provider:
@@ -27,18 +32,20 @@ dependencies:
   email_validator: '^2.1.16'
   either_dart: ^0.2.0
   stream_transform: ^2.0.0
-  bloc_concurrency:
   flutter_statusbarcolor_ns: ^0.4.0
-  
+  bloc_concurrency:
   http:
   http_interceptor:
-  flutter_native_splash: ^2.2.3+1
   google_fonts:
   #icon google
   font_awesome_flutter: ^9.0.0
-  equatable: ^2.0.3
-  flutter_bloc: ^8.0.1
+  flutter_launcher_icons: ^0.10.0
   google_sign_in: ^5.4.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/img/splashpage/splash.png" 
 
 
 flutter_native_splash:
@@ -60,7 +67,9 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/img/splash.png
+    - assets/img/splashpage/splash.png
+    - assets/img/splashpage/logo.png
+    - assets/img/splashpage/reslogo.png
     - assets/img/onboarding/cell.png
     - assets/img/onboarding/moca.png
     - assets/img/onboarding/cellmoca.png
