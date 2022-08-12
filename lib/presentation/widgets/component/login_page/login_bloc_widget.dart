@@ -49,7 +49,7 @@ class LoginBlocWidget extends StatelessWidget {
                     children: <Widget>[
                       SizedBox(
                           height:
-                              MediaQuery.of(context).size.height * 0.11),
+                              MediaQuery.of(context).size.height * 0.05),
                       Align(
                         alignment: Alignment.center,
                         child: Image.asset(

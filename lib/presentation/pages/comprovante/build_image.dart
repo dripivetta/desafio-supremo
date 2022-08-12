@@ -91,7 +91,7 @@ buildImage(context, DetStatement value) {
                   cabecalho: value.authentication,
                   fontSize: 20,
                   fontWeight: FontWeight.normal),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.12),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             ],
           ),
         ),
