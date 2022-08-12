@@ -14,4 +14,6 @@ class Onboarding {
       curve: Curves.easeIn,
     );
   }
+
+  
 }

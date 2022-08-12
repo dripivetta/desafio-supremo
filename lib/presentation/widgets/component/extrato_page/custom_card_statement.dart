@@ -2,6 +2,7 @@ import 'package:desafio/domain/entities/statement.dart';
 import 'package:desafio/presentation/pages/comprovante/comprovante_details_page.dart';
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/presentation/widgets/component/extrato_page/function_card.dart';
+import 'package:desafio/data/utils/function_money_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -14,12 +15,7 @@ class CustomCardStatement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nfc = NumberFormat.currency(
-      symbol: "R\$",
-      locale: "pt_BR",
-    );
-
-    return Material(
+       return Material(
       child: InkWell(
         onTap: () {
           Navigator.push(
@@ -135,7 +131,7 @@ class CustomCardStatement extends StatelessWidget {
                             height: MediaQuery.of(context).size.height * 0.005),
                         isComprovant(statement.tType)
                             ? Text(
-                                '-${nfc.format(statement.amount)}',
+                                '-${moneyConverter(statement.amount)}',
                                 style: TextStyle(
                                     fontFamily: 'Khalid',
                                     fontWeight: FontWeight.bold,
@@ -143,7 +139,7 @@ class CustomCardStatement extends StatelessWidget {
                                     fontSize: 16),
                               )
                             : Text(
-                                nfc.format(statement.amount),
+                               moneyConverter(statement.amount),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,

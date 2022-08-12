@@ -1,4 +1,4 @@
-
+import 'package:desafio/presentation/pages/seguro/seguro_page.dart';
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/presentation/widgets/component/home_page/seguro_cel_button.dart';
 import 'package:desafio/presentation/widgets/component/home_page/seguro_cel_info.dart';
@@ -23,39 +23,57 @@ class SeguroCelArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
-      padding: padding,
-      decoration: BoxDecoration(
-        color: colorBox,
-      ),
-      child: Column(
-        crossAxisAlignment: crossAxixColumn,
-        mainAxisAlignment: mainAxisColumn,
-        children: [
-          SeguroCelText(
-            colorText: BaseColors().getBlackColor(),
-            fontWeightText: FontWeight.bold,
-            fontSizeText: 20,
-            text: 'Seguro para Celular',
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => SeguroPage(),
           ),
-          SeguroCelInfo(
-            colorText: BaseColors().getGreyColor(),
-            fontSizeText: 16,
-            text: 'Que tal fazer um seguro contra furto \n para o seu celular?',
-          ),
-          SeguroCelButton(
-            onTap: () {},
-            colorText: BaseColors().getWhiteColor(),
-            fontSizeText: 16,
-            text: 'Conhecer seguro',
-            shape: MaterialStateProperty.all(RoundedRectangleBorder()),
-            backgroundColor:
-                MaterialStateProperty.all(BaseColors().getGreenColor()),
-            padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-            margin: EdgeInsets.only(top: 15, left: 12),
-          ),
-        ],
+        );
+      },
+      child: Container(
+        margin: margin,
+        padding: padding,
+        decoration: BoxDecoration(
+          color: colorBox,
+        ),
+        child: Column(
+          crossAxisAlignment: crossAxixColumn,
+          mainAxisAlignment: mainAxisColumn,
+          children: [
+            SeguroCelText(
+              colorText: BaseColors().getBlackColor(),
+              fontWeightText: FontWeight.bold,
+              fontSizeText: 20,
+              text: 'Seguro para Celular',
+            ),
+            SeguroCelInfo(
+              colorText: BaseColors().getGreyColor(),
+              fontSizeText: 16,
+              text:
+                  'Que tal fazer um seguro contra furto \n para o seu celular?',
+            ),
+            SeguroCelButton(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => SeguroPage(),
+                  ),
+                );
+              },
+              colorText: BaseColors().getWhiteColor(),
+              fontSizeText: 16,
+              text: 'Conhecer seguro',
+              shape: MaterialStateProperty.all(RoundedRectangleBorder()),
+              backgroundColor:
+                  MaterialStateProperty.all(BaseColors().getGreenColor()),
+              padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+              margin: EdgeInsets.only(top: 15, left: 12),
+            ),
+          ],
+        ),
       ),
     );
   }

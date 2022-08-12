@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class AcaoIcon extends StatelessWidget {
   final IconData icon;
+  final dynamic widget;
   final String name;
   final bool? isFirst;
 
@@ -11,6 +12,7 @@ class AcaoIcon extends StatelessWidget {
     required this.icon,
     required this.name,
     this.isFirst,
+    this.widget,
   }) : super(key: key);
 
   @override
@@ -23,12 +25,26 @@ class AcaoIcon extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(20),
+            //color: Colors.pink,
+            padding: const EdgeInsets.all(10),
             margin: const EdgeInsets.only(bottom: 5),
             decoration: BoxDecoration(
               color: BaseColors().getGreyLigthColor(),
             ),
-            child: Icon(icon),
+            child: IconButton(
+              icon: Icon(
+                icon,
+                //color: BaseColors().getWhiteColor(),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => widget,
+                  ),
+                );
+              },
+            ),
           ),
           Text(
             name,

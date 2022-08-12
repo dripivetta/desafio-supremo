@@ -11,7 +11,7 @@ class GetAmount {
 
   Future<Either<Failure,Amount>> get() {
     // ignore: avoid_print
-    print('getting saldo api');
+    print('getting saldo api..');
     return repository.getAmount();
   }
 }

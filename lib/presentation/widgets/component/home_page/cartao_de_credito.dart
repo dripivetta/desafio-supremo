@@ -1,3 +1,4 @@
+import 'package:desafio/presentation/pages/cartao_de_credito/cartao_de_credito.dart';
 import 'package:flutter/material.dart';
 
 class MeusCartoes extends StatelessWidget {
@@ -22,28 +23,38 @@ class MeusCartoes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: marginContainer1,
-      padding: paddingContainer1,
-      decoration: BoxDecoration(
-        color: boxColor,
-        // borderRadius: BorderRadius.circular(15),
-      ),
-      child: Row(
-        children: [
-          Icon(Icons.credit_card),
-          Container(
-            margin: marginContainer2,
-            child: Text(
-              text,
-              style: TextStyle(
-                fontSize: fontSizeText,
-                // fontWeight: FontWeight.bold,
-                color: colorText,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CartaoCreditoPage(),
+          ),
+        );
+      },
+      child: Container(
+        margin: marginContainer1,
+        padding: paddingContainer1,
+        decoration: BoxDecoration(
+          color: boxColor,
+          // borderRadius: BorderRadius.circular(15),
+        ),
+        child: Row(
+          children: [
+            Icon(Icons.credit_card),
+            Container(
+              margin: marginContainer2,
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: fontSizeText,
+                  // fontWeight: FontWeight.bold,
+                  color: colorText,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

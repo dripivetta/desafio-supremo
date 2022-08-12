@@ -1,4 +1,3 @@
-
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/presentation/widgets/component/home_page/descubra_text.dart';
 import 'package:desafio/presentation/widgets/component/home_page/indicar_amigo.dart';

@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
 
-
-
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
 
@@ -18,7 +16,10 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Cadastro efetuado com sucesso!', style: TextStyle(color: Colors.white, fontSize: 18),),
+        title: const Text(
+          'Cadastro efetuado com sucesso!',
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
         backgroundColor: BaseColors().getGreenColor(),
       ),
       body: BlocListener<AuthBloc, AuthState>(
@@ -26,7 +27,9 @@ class Dashboard extends StatelessWidget {
           if (state is UnAuthenticated) {
             // Navigate to the sign in screen when the user Signs Out
             Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => LoginPage()),
+              MaterialPageRoute(
+                builder: (context) => LoginPage(),
+              ),
               (route) => false,
             );
           }
@@ -40,15 +43,19 @@ class Dashboard extends StatelessWidget {
                 style: const TextStyle(fontSize: 26),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 25,),
+              SizedBox(
+                height: 25,
+              ),
               CustomButtomSingUp(
                 heightContainerButtom: 60,
                 marginButtom: EdgeInsets.fromLTRB(0, 8, 0, 8),
                 borderRadius: BorderRadius.circular(50),
                 onTap: () {
                   // Signing out the user
-                  
-                  context.read<AuthBloc>().add(SignOutRequested());
+
+                  context.read<AuthBloc>().add(
+                        SignOutRequested(),
+                      );
                 },
                 textButtom: 'Fazer Login',
                 colorTextButtom: BaseColors().getWhiteColor(),
@@ -58,8 +65,10 @@ class Dashboard extends StatelessWidget {
                   BaseColors().getGreenLigthColor(),
                 ),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18))),
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                ),
               ),
             ],
           ),

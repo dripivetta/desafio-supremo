@@ -1,15 +1,11 @@
 import 'package:desafio/domain/entities/detailStatement.dart';
 import 'package:desafio/presentation/widgets/component/comprovante_details_page/custom_divider.dart';
 import 'package:desafio/presentation/widgets/component/comprovante_details_page/custom_row.dart';
+import 'package:desafio/data/utils/function_money_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 buildImage(context, DetStatement value) {
-  final nfc = NumberFormat.currency(
-    symbol: "R\$",
-    locale: "pt_BR",
-  );
-
   return Stack(
     alignment: AlignmentDirectional.topStart,
     children: [
@@ -26,35 +22,35 @@ buildImage(context, DetStatement value) {
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 2),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
               CustomDivider(),
-              const SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
               CustomRow(
                 cabecalho: 'Tipo de movimentação',
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 3),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
               CustomRow(
                   cabecalho: value.description,
                   fontSize: 20,
                   fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               CustomRow(
                   cabecalho: 'Valor',
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
-              const SizedBox(height: 3),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
               CustomRow(
-                  cabecalho: nfc.format(value.amount),
+                  cabecalho: moneyConverter(value.amount),
                   fontSize: 20,
                   fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               CustomRow(
                   cabecalho: 'Recebedor',
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
-              const SizedBox(height: 3),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
               value.to != null
                   ? CustomRow(
                       cabecalho: value.to!,
@@ -64,39 +60,38 @@ buildImage(context, DetStatement value) {
                       cabecalho: value.from!,
                       fontSize: 20,
                       fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               CustomRow(
                   cabecalho: 'Instituição Bancária',
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
-              const SizedBox(height: 3),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
               CustomRow(
                   cabecalho: value.tType,
                   fontSize: 20,
                   fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               CustomRow(
                   cabecalho: 'Data/Hora',
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
-              const SizedBox(height: 5),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
               CustomRow(
                   cabecalho:
                       DateFormat('dd/MM/yyyy - hh:mm').format(value.createdAt),
                   fontSize: 20,
                   fontWeight: FontWeight.normal),
-              const SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               CustomRow(
                   cabecalho: 'Autenticação',
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
-              const SizedBox(height: 5),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
               CustomRow(
                   cabecalho: value.authentication,
                   fontSize: 20,
                   fontWeight: FontWeight.normal),
               SizedBox(height: MediaQuery.of(context).size.height * 0.12),
-             
             ],
           ),
         ),
@@ -104,3 +99,14 @@ buildImage(context, DetStatement value) {
     ],
   );
 }
+
+// class CustomSB extends StatelessWidget {
+//   const CustomSB({
+//     Key? key,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(height: MediaQuery.of(context).size.height * 0.005);
+//   }
+// }

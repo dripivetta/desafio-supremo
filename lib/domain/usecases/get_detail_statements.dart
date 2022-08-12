@@ -9,7 +9,7 @@ class GetDetStatements {
   
   Future<Either<Failure, DetStatement>> get(String id) {
     // ignore: avoid_print
-    print('getting comprovante api');
+    print('getting comprovante api..');
     return repository.getStatementsDetail(id);
   }
 }

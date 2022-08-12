@@ -9,7 +9,9 @@ class AmountBloc extends Bloc<AmountEvent, AmountState> {
   AmountBloc(this._getAmount) : super(AmountEmpty()) {
     on<FetchAmount>(
       (event, emit) async {
-        emit(AmountLoading(),);
+        emit(
+          AmountLoading(),
+        );
         final result = await _getAmount.get();
         result.fold(
           (failure) {

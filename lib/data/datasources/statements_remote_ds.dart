@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'package:desafio/data/models/statement_model.dart';
 import 'package:desafio/data/utils/api.dart';
-import 'package:desafio/models/statement_model.dart';
 import 'package:desafio/presentation/widgets/component/error/exception.dart';
 import 'package:http/http.dart' as http;
 

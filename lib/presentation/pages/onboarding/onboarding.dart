@@ -1,5 +1,5 @@
 import 'package:desafio/presentation/pages/home/home_page.dart';
-import 'package:desafio/presentation/pages/onboarding/bloc_onboarding.dart';
+import 'package:desafio/presentation/widgets/component/onboarding_page/class_onboard.dart';
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/presentation/widgets/component/onboarding_page/custom_buttom_continue.dart';
 import 'package:desafio/presentation/widgets/component/onboarding_page/custom_link_pular_instrucao.dart';
@@ -16,7 +16,7 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
-  final bloc = Onboarding();
+  final onboard = Onboarding();
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +39,11 @@ class _OnboardState extends State<Onboard> {
             child: Stack(
               children: [
                 PageView(
-                  controller: bloc.pageController,
+                  controller: onboard.pageController,
                   onPageChanged: (int page) {
                     setState(
                       () {
-                        bloc.changePage(page);
+                       onboard.changePage(page);
                       },
                     );
                   },
@@ -101,7 +101,7 @@ class _OnboardState extends State<Onboard> {
                   ],
                 ),
                 CustomPaginator(
-                  page: bloc.currentPage,
+                  page: onboard.currentPage,
                   shape: BoxShape.circle,
                   coloridx: BaseColors().getGreenColor(),
                   colornotidx: BaseColors().getGreyColor(),
@@ -114,10 +114,10 @@ class _OnboardState extends State<Onboard> {
                   mainAxisAlignmentRow: MainAxisAlignment.center,
                 ),
                 CustomBottomContinue(
-                  text: bloc.currentPage == 2 ? 'QUERO ENTRAR' : 'CONTINUAR',
-                  goToInicialPage: bloc.currentPage == 2
+                  text: onboard.currentPage == 2 ? 'QUERO ENTRAR' : 'CONTINUAR',
+                  goToInicialPage: onboard.currentPage == 2
                       ? goToInicialPage
-                      : bloc.proximoCard,
+                      : onboard.proximoCard,
                   fontSize: 18,
                   color: BaseColors().getWhiteColor(),
                   paddingText:
@@ -159,6 +159,7 @@ class _OnboardState extends State<Onboard> {
       ),
     );
   }
+  
 }
 
 

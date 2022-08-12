@@ -1,4 +1,4 @@
-
+import 'package:desafio/presentation/pages/cartao_de_credito/parcelar.dart';
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
 import 'package:desafio/presentation/widgets/component/home_page/acoes_icon.dart';
 import 'package:desafio/presentation/widgets/component/home_page/cartao_credito_area.dart';
@@ -55,7 +55,14 @@ class BodyHomePage extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 20),
               ),
               ParcelarButton(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ParcelarPage(),
+                    ),
+                  );
+                },
                 colorText: BaseColors().getWhiteColor(),
                 fontSizeText: 16,
                 text: 'Parcelar compras',
@@ -103,5 +110,3 @@ class BodyHomePage extends StatelessWidget {
     );
   }
 }
-
-

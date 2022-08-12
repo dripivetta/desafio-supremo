@@ -3,10 +3,9 @@ import 'package:desafio/presentation/bloc/amount/amount_bloc.dart';
 import 'package:desafio/presentation/bloc/amount/amount_event.dart';
 import 'package:desafio/presentation/bloc/amount/amount_state.dart';
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
-
+import 'package:desafio/data/utils/function_money_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class CustomCardAmount extends StatefulWidget {
   const CustomCardAmount({Key? key}) : super(key: key);
@@ -18,11 +17,6 @@ class CustomCardAmount extends StatefulWidget {
 class _CustomCardAmountState extends State<CustomCardAmount>
     with AutomaticKeepAliveClientMixin {
   bool _showSaldo = false;
-
-  var nfc = NumberFormat.currency(
-    symbol: "R\$",
-    locale: "pt_BR",
-  );
 
   @override
   // ignore: must_call_super
@@ -77,7 +71,7 @@ class _CustomCardAmountState extends State<CustomCardAmount>
                           if (state is AmountHasData) {
                             return _showSaldo
                                 ? Text(
-                                    nfc.format(state.result.amount),
+                                    moneyConverter(state.result.amount),
                                     style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
@@ -90,7 +84,8 @@ class _CustomCardAmountState extends State<CustomCardAmount>
                                     child: Container(
                                       height: 6,
                                       //MediaQuery.of(context).size.height * 0.006,
-                                      width: MediaQuery.of(context).size.width * 0.38,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.38,
                                       color: BaseColors().getGreenColor(),
                                     ),
                                   );

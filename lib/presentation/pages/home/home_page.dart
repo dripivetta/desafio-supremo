@@ -27,11 +27,12 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(0),
-          child: CustomAppBarHome(
-            elevation: 0,
-            systemOverlayStyle: SystemUiOverlayStyle.light,
-          )),
+        preferredSize: Size.fromHeight(0),
+        child: CustomAppBarHome(
+          elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+        ),
+      ),
       body: BodyHomePage(),
     );
   }
