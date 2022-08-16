@@ -1,9 +1,9 @@
 // ignore_for_file: file_names
 
 import 'dart:io';
-import 'package:desafio/data/datasources/detStatements_remote_ds.dart';
-import 'package:desafio/domain/entities/detailStatement.dart';
-import 'package:desafio/domain/repositories/detStatement_repository_imp.dart';
+import 'package:desafio/data/datasources/comprovante_remote_ds.dart';
+import 'package:desafio/domain/entities/comprovante.dart';
+import 'package:desafio/domain/repositories/comprovante_repository_imp.dart';
 import 'package:desafio/presentation/widgets/component/error/exception.dart';
 import 'package:desafio/presentation/widgets/component/error/failure.dart';
 import 'package:either_dart/either.dart';

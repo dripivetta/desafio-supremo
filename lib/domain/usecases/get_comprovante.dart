@@ -1,5 +1,5 @@
-import 'package:desafio/domain/entities/detailStatement.dart';
-import 'package:desafio/domain/repositories/detStatement_repository_imp.dart';
+import 'package:desafio/domain/entities/comprovante.dart';
+import 'package:desafio/domain/repositories/comprovante_repository_imp.dart';
 import 'package:desafio/presentation/widgets/component/error/failure.dart';
 import 'package:either_dart/either.dart';
 

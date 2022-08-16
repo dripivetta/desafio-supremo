@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 import 'dart:convert';
-import 'package:desafio/data/models/detail_statement_model.dart';
+import 'package:desafio/data/models/comprovante_model.dart';
 import 'package:desafio/data/utils/api.dart';
 import 'package:desafio/presentation/widgets/component/error/exception.dart';
 import 'package:http/http.dart' as http;

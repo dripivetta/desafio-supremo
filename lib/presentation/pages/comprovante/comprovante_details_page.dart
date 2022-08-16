@@ -1,9 +1,9 @@
 import 'dart:core';
-import 'package:desafio/data/models/detail_statement_model.dart';
+import 'package:desafio/data/models/comprovante_model.dart';
+import 'package:desafio/presentation/bloc/comprovante/comprovante_bloc.dart';
+import 'package:desafio/presentation/bloc/comprovante/comprovante_event.dart';
+import 'package:desafio/presentation/bloc/comprovante/comprovante_state.dart';
 import 'package:desafio/presentation/injection.dart';
-import 'package:desafio/presentation/bloc/detailStatement/detailStatement_bloc.dart';
-import 'package:desafio/presentation/bloc/detailStatement/detailStatement_event.dart';
-import 'package:desafio/presentation/bloc/detailStatement/detailStatement_state.dart';
 import 'package:desafio/presentation/pages/comprovante/comprovante.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +20,7 @@ class ComprovanteDetailsPage extends StatefulWidget {
 
 class _ComprovanteDetailsPageState extends State<ComprovanteDetailsPage> {
   late Future<DetStatementModel> detStatement;
-  final controller = ScreenshotController();
+  final screenshotController = ScreenshotController();
 
   @override
   void initState() {

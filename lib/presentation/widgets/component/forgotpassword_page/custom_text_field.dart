@@ -4,7 +4,7 @@ class CustomTextField extends StatelessWidget {
   final String text;
   final IconData icon;
   final bool isPasswordType;
-  final TextEditingController controller;
+  final TextEditingController textfieldController;
   final Color cursorColor;
   final Color textStyleColor;
   final Color colorIcon;
@@ -25,7 +25,7 @@ class CustomTextField extends StatelessWidget {
     required this.text,
     required this.icon,
     required this.isPasswordType,
-    required this.controller,
+    required this.textfieldController,
     required this.cursorColor,
     required this.textStyleColor,
     required this.colorIcon,
@@ -43,7 +43,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
+      controller: textfieldController,
       obscureText: isPasswordType,
       enableSuggestions: !isPasswordType,
       autocorrect: !isPasswordType,

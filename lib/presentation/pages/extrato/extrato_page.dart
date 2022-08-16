@@ -22,28 +22,28 @@ class ExtratoBody extends StatefulWidget {
 }
 
 class _ExtratoPageState extends State<ExtratoBody> {
-  final ScrollController _controller = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(_onScroll);
+    _scrollController.addListener(_onScroll);
   }
 
   @override
   Widget build(BuildContext context) {
-    return StatementPage(controller: _controller);
+    return StatementPage(scrollController: _scrollController,);
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
   void _onScroll() {
-    double maxScroll = _controller.position.maxScrollExtent;
-    double currentScroll = _controller.offset;
+    double maxScroll = _scrollController.position.maxScrollExtent;
+    double currentScroll = _scrollController.offset;
     if (currentScroll == maxScroll) {
       getIt.get<StatementBloc>().add(FetchStatement());
     }

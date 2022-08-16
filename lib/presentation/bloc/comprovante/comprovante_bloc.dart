@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
-import 'package:desafio/domain/usecases/get_detail_statements.dart';
-import 'package:desafio/presentation/bloc/detailStatement/detailStatement_event.dart';
-import 'package:desafio/presentation/bloc/detailStatement/detailStatement_state.dart';
+import 'package:desafio/domain/usecases/get_comprovante.dart';
+import 'package:desafio/presentation/bloc/comprovante/comprovante_event.dart';
+import 'package:desafio/presentation/bloc/comprovante/comprovante_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailStatementBloc

@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 class StatementPage extends StatefulWidget {
   const StatementPage({
     Key? key,
-    required this.controller,
+    required this.scrollController,
   }) : super(key: key);
-  
-  final ScrollController controller;
+
+  final ScrollController scrollController;
   @override
   State<StatementPage> createState() => _StatementPageState();
 }
@@ -57,7 +57,7 @@ class _StatementPageState extends State<StatementPage> {
           Expanded(
             //flex: 10,
             child: StatementsListWidget(
-              controller: widget.controller,
+              scrollTransferenciaController: widget.scrollController,
               //state: widget.state,
             ),
           ),

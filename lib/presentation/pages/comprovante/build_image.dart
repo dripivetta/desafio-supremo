@@ -1,4 +1,4 @@
-import 'package:desafio/domain/entities/detailStatement.dart';
+import 'package:desafio/domain/entities/comprovante.dart';
 import 'package:desafio/presentation/widgets/component/comprovante_details_page/custom_divider.dart';
 import 'package:desafio/presentation/widgets/component/comprovante_details_page/custom_row.dart';
 import 'package:desafio/data/utils/function_money_converter.dart';

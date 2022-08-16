@@ -62,7 +62,7 @@ class _FormRegisterWidgetState extends State<FormRegisterWidget> {
               text: 'Email',
               icon: Icons.email_outlined,
               isPasswordType: false,
-              controller: widget._emailController,
+              textfieldController: widget._emailController,
               cursorColor: BaseColors().getWhiteColor(),
               textStyleColor:
                   BaseColors().getWhiteColor().withOpacity(0.9),
@@ -87,7 +87,7 @@ class _FormRegisterWidgetState extends State<FormRegisterWidget> {
               text: 'Senha',
               icon: Icons.lock_outline,
               isPasswordType: _showPassword == false,
-              controller: widget._passwordController,
+              textfieldController: widget._passwordController,
               cursorColor: BaseColors().getWhiteColor(),
               textStyleColor:
                   BaseColors().getWhiteColor().withOpacity(0.9),
@@ -122,7 +122,7 @@ class _FormRegisterWidgetState extends State<FormRegisterWidget> {
               text: 'Confirme sua senha',
               icon: Icons.lock_outline,
               isPasswordType: _showPassword == false,
-              controller: widget._confirmPasswordController,
+              textfieldController: widget._confirmPasswordController,
               cursorColor: BaseColors().getWhiteColor(),
               textStyleColor:
                   BaseColors().getWhiteColor().withOpacity(0.9),

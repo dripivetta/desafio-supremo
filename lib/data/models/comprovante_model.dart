@@ -1,4 +1,4 @@
-import 'package:desafio/domain/entities/detailStatement.dart';
+import 'package:desafio/domain/entities/comprovante.dart';
 import 'package:intl/intl.dart';
 
 class DetStatementModel {

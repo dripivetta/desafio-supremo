@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StatementsListWidget extends StatefulWidget {
-  final ScrollController controller;
+  final ScrollController scrollTransferenciaController;
   const StatementsListWidget({
     Key? key,
-    required this.controller,
+    required this.scrollTransferenciaController,
   }) : super(key: key);
 
   @override
@@ -36,7 +36,7 @@ class _StatementsListWidgetState extends State<StatementsListWidget> {
 
           return ListView.builder(
             shrinkWrap: true,
-            controller: widget.controller,
+            controller: widget.scrollTransferenciaController,
             itemCount: state.hasReachedMax
                 ? state.statement.length
                 : state.statement.length + 1,

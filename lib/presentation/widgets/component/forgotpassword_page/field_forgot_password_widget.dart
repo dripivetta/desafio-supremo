@@ -14,7 +14,7 @@ class FieldForgotPasswordWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
-        controller: _emailController,
+        textfieldController: _emailController,
         icon: Icons.email_outlined,
         text: 'Entre com seu email',
         isPasswordType: false,

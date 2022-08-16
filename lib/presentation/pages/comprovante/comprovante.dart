@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:desafio/domain/entities/detailStatement.dart';
+import 'package:desafio/domain/entities/comprovante.dart';
 import 'package:desafio/presentation/pages/comprovante/build_image.dart';
 import 'package:desafio/presentation/widgets/component/base_appbar_pages/custom_app_bar.dart';
 import 'package:desafio/presentation/widgets/component/base_color_pages/base_colors.dart';
@@ -20,7 +20,7 @@ class ComprovantePage extends StatefulWidget {
 }
 
 class _ComprovantePageState extends State<ComprovantePage> {
-  final controller = ScreenshotController();
+  final screenshotController = ScreenshotController();
   final bool _isLoading = false;
 
   @override
@@ -68,7 +68,7 @@ class _ComprovantePageState extends State<ComprovantePage> {
                   titulo: 'Compartilhar',
                   fontSize: 18,
                   printScreen: () async {
-                    var image = await controller
+                    var image = await screenshotController
                         .captureFromWidget(buildImage(context, widget.value));
                     saveAndShare(image);
                   },
